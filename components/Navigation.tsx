@@ -1,0 +1,48 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+
+export default function Navigation() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors ${
+        scrolled ? 'border-white/10 bg-black/90' : 'border-white/5 bg-black/80'
+      } backdrop-blur-sm`}
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center"
+          >
+            <span className="text-xl font-semibold text-white">APADCode</span>
+          </motion.div>
+          <div className="flex items-center gap-4">
+            <motion.a
+              href="#demo"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-white/90"
+            >
+              Book a Demo
+            </motion.a>
+          </div>
+        </div>
+      </div>
+    </motion.nav>
+  )
+}
