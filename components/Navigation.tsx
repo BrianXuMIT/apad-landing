@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import logo from '@/assets/logo-s.png'
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
@@ -27,9 +29,20 @@ export default function Navigation() {
         <div className="flex h-16 items-center justify-between">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center"
+            className="flex items-center gap-3"
           >
-            <span className="text-xl font-semibold text-white">APADCode</span>
+            <Image
+              src={logo}
+              alt="APADCode"
+              width={48}
+              height={48}
+              priority
+              className="h-12 w-auto"
+            />
+            <span className="text-xl font-semibold tracking-wide">
+              <span className="text-[#1e3a8a]">APAD</span>
+              <span className="text-white">Code</span>
+            </span>
           </motion.div>
           <div className="flex items-center gap-4">
             <motion.a
