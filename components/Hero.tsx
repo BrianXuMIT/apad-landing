@@ -1,11 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import back from '@/assets/back.webp'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${back.src})` }}
+    >
       {/* Animated background gradient */}
+      <div className="absolute inset-0 bg-black/70"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 animate-pulse"></div>
       
       <div className="mx-auto max-w-4xl text-center relative z-10">
@@ -90,7 +95,9 @@ export default function Hero() {
           className="text-xl md:text-2xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
           <span className="font-semibold">
-            <span className="text-[#1e3a8a]">APAD</span>
+            <span className="text-[#2563eb] drop-shadow-[0_0_12px_rgba(59,130,246,0.45)]">
+              APAD
+            </span>
             <span className="text-white">Code</span>
           </span>{" "}
           conducts real-time voice interviews.
@@ -99,7 +106,7 @@ export default function Hero() {
             <span className="bg-gradient-to-r from-sky-200 via-white to-sky-300 bg-clip-text text-transparent">
               Live coding
             </span>{" "}
-            evaluates how candidates think and communicate—not just whether their code passes tests.
+            evaluates how candidates think and communicate — not just whether their code passes tests.
           </span>
         </motion.p>
         <motion.a
@@ -109,9 +116,11 @@ export default function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           href="#demo"
-          className="inline-block rounded-lg bg-white px-8 py-4 text-lg font-medium text-black transition-all hover:bg-white/90"
+          className="group relative inline-flex items-center justify-center overflow-hidden rounded-md border border-white/20 bg-white/5 px-8 py-4 text-lg font-semibold text-white/95 backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
         >
-          Book a Demo
+          <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 before:absolute before:inset-0 before:content-[''] before:bg-gradient-to-r before:from-sky-400/20 before:via-transparent before:to-sky-400/20 group-hover:opacity-100" />
+          <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/40 opacity-60" />
+          <span className="relative">Book a Demo</span>
         </motion.a>
       </div>
     </section>

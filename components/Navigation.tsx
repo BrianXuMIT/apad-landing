@@ -40,7 +40,9 @@ export default function Navigation() {
               className="h-12 w-auto"
             />
             <span className="text-xl font-semibold tracking-wide">
-              <span className="text-[#1e3a8a]">APAD</span>
+              <span className="text-[#2563eb] drop-shadow-[0_0_12px_rgba(59,130,246,0.45)]">
+                APAD
+              </span>
               <span className="text-white">Code</span>
             </span>
           </motion.div>
