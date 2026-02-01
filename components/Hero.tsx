@@ -13,27 +13,94 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6"
+          className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6 leading-tight"
         >
-          A live AI interviewer,
-          <br />
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 0.7, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white/70"
-          >
-            not an automated grader.
-          </motion.span>
+          A{" "}
+          <span className="inline-flex items-center rounded-xl border border-white/35 bg-gradient-to-br from-white/35 via-white/15 to-white/5 px-3 py-1 text-6xl md:text-7xl lg:text-8xl leading-none tracking-tight text-white shadow-[0_12px_30px_rgba(15,23,42,0.4)] backdrop-blur-xl">
+            Live
+          </span>{" "}
+          <span className="bg-gradient-to-r from-white via-sky-100 to-sky-400 bg-clip-text text-transparent">
+            AI Interviewer
+          </span>
+          .
         </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.9, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="mt-6 flex justify-center"
+        >
+          <div className="mb-3 flex w-[120%] max-w-none self-center items-center gap-3 px-2">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-300/70 to-transparent" />
+            <svg
+              viewBox="0 0 40 24"
+              aria-hidden="true"
+              className="h-5 w-10"
+            >
+              <defs>
+                <linearGradient id="jewelSky" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#e0f2fe" stopOpacity="0.95" />
+                  <stop offset="50%" stopColor="#7dd3fc" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.25" />
+                </linearGradient>
+              </defs>
+              <g transform="translate(20 12)">
+                <polygon
+                  points="0,-6 6,0 0,6 -6,0"
+                  fill="url(#jewelSky)"
+                  stroke="#7dd3fc"
+                  strokeOpacity="0.9"
+                  strokeWidth="1"
+                />
+                <polygon
+                  points="0,-3.5 3.5,0 0,3.5 -3.5,0"
+                  fill="#38bdf8"
+                  fillOpacity="0.25"
+                  stroke="#7dd3fc"
+                  strokeOpacity="0.7"
+                  strokeWidth="0.8"
+                />
+                <polygon
+                  points="-9,0 -12,0 -10.5,-2.5"
+                  fill="#38bdf8"
+                  fillOpacity="0.25"
+                  stroke="#7dd3fc"
+                  strokeOpacity="0.6"
+                  strokeWidth="0.6"
+                />
+                <polygon
+                  points="9,0 12,0 10.5,-2.5"
+                  fill="#38bdf8"
+                  fillOpacity="0.25"
+                  stroke="#7dd3fc"
+                  strokeOpacity="0.6"
+                  strokeWidth="0.6"
+                />
+                <circle cx="0" cy="-8" r="1.1" fill="#7dd3fc" fillOpacity="0.8" />
+                <circle cx="0" cy="8" r="1.1" fill="#7dd3fc" fillOpacity="0.8" />
+              </g>
+            </svg>
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-300/70 to-transparent" />
+          </div>
+        </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="text-xl md:text-2xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          APADCode conducts real-time voice interviews with live coding, 
-          evaluating how candidates think and communicate—not just whether their code passes tests.
+          <span className="font-semibold">
+            <span className="text-[#1e3a8a]">APAD</span>
+            <span className="text-white">Code</span>
+          </span>{" "}
+          conducts real-time voice interviews.
+          <br />
+          <span className="text-white/90 font-semibold">
+            <span className="bg-gradient-to-r from-sky-200 via-white to-sky-300 bg-clip-text text-transparent">
+              Live coding
+            </span>{" "}
+            evaluates how candidates think and communicate—not just whether their code passes tests.
+          </span>
         </motion.p>
         <motion.a
           initial={{ opacity: 0, scale: 0.9 }}
