@@ -5,13 +5,18 @@ import { useEffect, useState } from 'react'
 
 function AnimatedWaveform() {
   const bars = [2, 4, 6, 8, 12, 8, 6, 4, 3, 5, 7, 9, 11, 9, 7, 5]
+  const gradients = [
+    'from-sky-500 via-cyan-400 to-emerald-300',
+    'from-fuchsia-500 via-purple-400 to-sky-400',
+    'from-amber-400 via-orange-400 to-rose-400',
+  ]
   
   return (
-    <div className="flex items-end justify-center gap-1 h-16">
+    <div className="flex items-end justify-center gap-1.5 h-16">
       {bars.map((height, i) => (
         <motion.div
           key={i}
-          className="w-1 bg-white/40 rounded-full"
+          className={`w-1.5 rounded-full bg-gradient-to-t ${gradients[i % gradients.length]} shadow-[0_0_14px_rgba(56,189,248,0.55)]`}
           initial={{ height: 4 }}
           animate={{
             height: [height * 4, (height * 1.5) * 4, height * 4],
@@ -114,7 +119,7 @@ function AnimatedCodeEditor() {
               x: lineIndex < visibleLines ? 0 : -10
             }}
             transition={{ duration: 0.3 }}
-            className="flex"
+            className="flex whitespace-pre"
           >
             {line.map((part, partIndex) => (
               <span key={partIndex} className={colors[lineIndex]?.[partIndex] || 'text-white/80'}>
@@ -129,6 +134,14 @@ function AnimatedCodeEditor() {
 }
 
 export default function VisualExplanation() {
+  const ratings = [
+    { label: 'Code-quality', value: 4 },
+    { label: 'Communication', value: 5 },
+    { label: 'Critical thinking', value: 4 },
+    { label: 'Testing discipline', value: 3 },
+    { label: 'Code correctness', value: 4 },
+  ]
+
   return (
     <section className="py-32 px-6 bg-gradient-to-b from-black to-black/95">
       <div className="mx-auto max-w-6xl">
@@ -141,7 +154,7 @@ export default function VisualExplanation() {
             className="space-y-6"
           >
             <h2 className="text-3xl md:text-4xl font-semibold text-white">
-              Real-time conversation meets live coding
+              Real-time conversation meets Live Coding
             </h2>
             <p className="text-lg text-white/60 leading-relaxed">
               The AI interviewer speaks with candidates through voice, explains problems, 
@@ -173,8 +186,31 @@ export default function VisualExplanation() {
               <AnimatedWaveform />
             </div>
 
-            {/* Code Editor */}
-            <AnimatedCodeEditor />
+            {/* Code Editor + Ratings */}
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
+              <div className="flex-1 min-w-0">
+                <AnimatedCodeEditor />
+              </div>
+              <div className="w-full lg:w-auto rounded border border-white/10 bg-white/5 p-3 flex flex-col justify-between gap-2">
+                {ratings.map((rating) => (
+                  <div key={rating.label} className="flex flex-col gap-0.5">
+                    <span className="text-[10px] leading-none text-white/70 tracking-[0.1em] uppercase">
+                      {rating.label}
+                    </span>
+                    <div className="flex items-center gap-1 text-sm leading-none">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <span
+                          key={index}
+                          className={index < rating.value ? 'text-amber-300' : 'text-white/20'}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
