@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0b1324" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="980" cy="120" r="260" fill="#0ea5e9" opacity="0.08" />
+  <circle cx="180" cy="520" r="280" fill="#38bdf8" opacity="0.08" />
+  <rect x="120" y="130" width="960" height="2" fill="url(#accent)" opacity="0.45" />
+  <text x="120" y="280" fill="#e2e8f0" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    APAD
+  </text>
+  <text x="305" y="280" fill="#ffffff" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Code
+  </text>
+  <text x="120" y="360" fill="#cbd5f5" font-size="40" font-family="Arial, Helvetica, sans-serif" font-weight="400">
+    Live AI Coding Interviews
+  </text>
+  <text x="120" y="420" fill="#94a3b8" font-size="28" font-family="Arial, Helvetica, sans-serif">
+    Evaluate how candidates think, communicate, and reason.
+  </text>
+</svg>
