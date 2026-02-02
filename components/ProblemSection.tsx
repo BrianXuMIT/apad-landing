@@ -89,6 +89,7 @@ function MissileRect({
     const turn = Math.max(-maxTurn, Math.min(maxTurn, diff))
     current.angle = normalizeAngle(current.angle + turn)
 
+
     const vx = Math.cos(current.angle) * speed
     const vy = Math.sin(current.angle) * speed
     current.pos.x += vx * dt
@@ -126,10 +127,16 @@ function MissileRect({
   })
 
   return (
-    <motion.div
-      className={config.className}
-      style={{ x, y, rotate }}
-    />
+    <motion.div className={config.className} style={{ x, y, rotate }}>
+      <div className="relative h-full w-full overflow-visible">
+        <span className="absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-sky-100/70 blur-[2px] shadow-[0_0_22px_rgba(125,211,252,0.7)]" />
+        <span className="absolute left-2 top-1/2 h-5 w-[75%] -translate-y-1/2 rounded-full bg-gradient-to-r from-sky-300/55 via-sky-300/25 to-transparent blur-lg" />
+        <span className="absolute left-2 top-1/2 h-2 w-[65%] -translate-y-1/2 rounded-full bg-gradient-to-r from-sky-200/45 via-sky-200/20 to-transparent blur-md" />
+        <span className="absolute left-[28%] top-[35%] h-1.5 w-1.5 rounded-full bg-sky-100/60 blur-[1px] shadow-[0_0_12px_rgba(125,211,252,0.6)] animate-twinkle" />
+        <span className="absolute left-[48%] top-[65%] h-1.5 w-1.5 rounded-full bg-sky-200/55 blur-[1px] shadow-[0_0_12px_rgba(125,211,252,0.5)] animate-twinkle-slow" />
+        <span className="absolute left-[62%] top-[45%] h-2 w-2 rounded-full bg-sky-200/55 blur-[1px] shadow-[0_0_14px_rgba(125,211,252,0.55)] animate-twinkle" />
+      </div>
+    </motion.div>
   )
 }
 
@@ -173,7 +180,7 @@ export default function ProblemSection() {
       speed: 70,
       turnRate: 0.8,
       className:
-        'pointer-events-none absolute z-10 h-10 w-56 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[linear-gradient(120deg,rgba(56,189,248,0.55),rgba(14,116,144,0.3),transparent)] blur-lg shadow-[0_0_30px_rgba(56,189,248,0.25)]',
+        'pointer-events-none absolute z-10 h-10 w-56 -translate-x-1/2 -translate-y-1/2',
     },
     {
       id: 1,
@@ -184,7 +191,7 @@ export default function ProblemSection() {
       speed: 62,
       turnRate: 0.7,
       className:
-        'pointer-events-none absolute z-10 h-12 w-44 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[linear-gradient(120deg,rgba(125,211,252,0.5),rgba(56,189,248,0.28),transparent)] blur-lg shadow-[0_0_26px_rgba(125,211,252,0.22)]',
+        'pointer-events-none absolute z-10 h-12 w-44 -translate-x-1/2 -translate-y-1/2',
     },
     {
       id: 2,
@@ -195,7 +202,7 @@ export default function ProblemSection() {
       speed: 58,
       turnRate: 0.75,
       className:
-        'pointer-events-none absolute z-10 h-9 w-64 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[linear-gradient(120deg,rgba(56,189,248,0.5),rgba(14,116,144,0.26),transparent)] blur-lg shadow-[0_0_28px_rgba(56,189,248,0.22)]',
+        'pointer-events-none absolute z-10 h-9 w-64 -translate-x-1/2 -translate-y-1/2',
     },
   ]
 

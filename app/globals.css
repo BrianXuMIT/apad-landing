@@ -37,6 +37,12 @@ body {
   .animate-aurora-reverse {
     animation: aurora 24s ease-in-out infinite reverse;
   }
+  .animate-twinkle {
+    animation: twinkle 2.6s ease-in-out infinite;
+  }
+  .animate-twinkle-slow {
+    animation: twinkle 3.6s ease-in-out infinite;
+  }
   .animate-spin-slow {
     animation: spin-slow 40s linear infinite;
   }
@@ -60,5 +66,17 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
