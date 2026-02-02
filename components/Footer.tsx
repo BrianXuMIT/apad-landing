@@ -12,7 +12,7 @@ export default function Footer() {
             <a href="https://www.apadcode.com" className="hover:text-white transition-colors">
               Website
             </a>
-            <a href="mailto:hello@apadcode.com" className="hover:text-white transition-colors">
+            <a href="mailto:founder@apadcode.com" className="hover:text-white transition-colors">
               Contact
             </a>
           </div>

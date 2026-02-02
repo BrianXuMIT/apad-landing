@@ -18,7 +18,7 @@ export default function Home() {
       <ValuePillars />
       <WhyItMatters />
       <VisionSection />
-      <ClosingSection />
+      {/* <ClosingSection /> */}
       <Footer />
     </main>
   )
