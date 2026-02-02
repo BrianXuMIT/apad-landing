@@ -21,6 +21,7 @@ export default function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      aria-label="Primary"
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors ${
         scrolled ? 'border-white/10 bg-black/90' : 'border-white/5 bg-black/80'
       } backdrop-blur-sm`}

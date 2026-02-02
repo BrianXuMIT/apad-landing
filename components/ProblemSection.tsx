@@ -211,6 +211,9 @@ export default function ProblemSection() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      id="problem"
+      aria-labelledby="problem-section-title"
+      aria-describedby="problem-section-summary"
       className="relative py-32 px-6 overflow-hidden bg-[#04070d]"
     >
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.55),rgba(2,6,23,0.9))]" />
@@ -224,6 +227,7 @@ export default function ProblemSection() {
       ))}
       <div className="relative z-10 mx-auto max-w-4xl">
         <motion.h2
+          id="problem-section-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -232,10 +236,14 @@ export default function ProblemSection() {
         >
           The problem with traditional platforms
         </motion.h2>
+        <p id="problem-section-summary" className="sr-only">
+          Traditional coding platforms use static questions, miss deeper signal, and
+          are easy to game compared to live, adaptive interviews.
+        </p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <ul className="grid md:grid-cols-3 gap-8 list-none p-0 m-0">
           {problems.map((problem, index) => (
-            <motion.div
+            <motion.li
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -250,9 +258,9 @@ export default function ProblemSection() {
               <p className="text-white/60 leading-relaxed">
                 {problem.description}
               </p>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

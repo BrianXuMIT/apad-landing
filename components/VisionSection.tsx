@@ -10,9 +10,15 @@ const visionStatements = [
 
 export default function VisionSection() {
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-black to-black/95">
+    <section
+      id="vision"
+      aria-labelledby="vision-title"
+      aria-describedby="vision-summary"
+      className="py-32 px-6 bg-gradient-to-b from-black to-black/95"
+    >
       <div className="mx-auto max-w-4xl text-center">
         <motion.h2
+          id="vision-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -21,6 +27,10 @@ export default function VisionSection() {
         >
           The future of technical hiring
         </motion.h2>
+        <p id="vision-summary" className="sr-only">
+          The future of hiring focuses on judgment, communication, and real-world
+          reasoning rather than memorized algorithms.
+        </p>
         <div className="space-y-6 text-lg text-white/70 leading-relaxed">
           {visionStatements.map((statement, index) => (
             <motion.p

@@ -6,6 +6,9 @@ import back from '@/assets/back.webp'
 export default function Hero() {
   return (
     <section
+      id="hero"
+      aria-labelledby="hero-title"
+      aria-describedby="hero-summary"
       className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url(${back.src})` }}
     >
@@ -15,6 +18,7 @@ export default function Hero() {
       
       <div className="mx-auto max-w-4xl text-center relative z-10">
         <motion.h1
+          id="hero-title"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -29,6 +33,10 @@ export default function Hero() {
           </span>
           .
         </motion.h1>
+        <p id="hero-summary" className="sr-only">
+          APADCode is a live AI coding interview platform for hiring teams. It evaluates
+          how candidates think, communicate, and reason in real time during live coding.
+        </p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 0.9, y: 0 }}

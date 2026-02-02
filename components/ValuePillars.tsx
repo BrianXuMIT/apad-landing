@@ -19,9 +19,15 @@ export default function ValuePillars() {
   ]
 
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-black/95 to-black">
+    <section
+      id="how-it-works"
+      aria-labelledby="value-pillars-title"
+      aria-describedby="value-pillars-summary"
+      className="py-32 px-6 bg-gradient-to-b from-black/95 to-black"
+    >
       <div className="mx-auto max-w-6xl">
         <motion.h2
+          id="value-pillars-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -30,6 +36,10 @@ export default function ValuePillars() {
         >
           How APADCode works
         </motion.h2>
+        <p id="value-pillars-summary" className="sr-only">
+          Live AI interviewer, adaptive follow-up questions, and holistic evaluation
+          beyond code tests.
+        </p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,9 +50,9 @@ export default function ValuePillars() {
           Three core capabilities that make this fundamentally different from coding tests.
         </motion.p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <ol className="grid md:grid-cols-3 gap-8 list-none p-0 m-0">
           {pillars.map((pillar, index) => (
-            <motion.div
+            <motion.li
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -66,9 +76,9 @@ export default function ValuePillars() {
               <p className="text-white/60 leading-relaxed">
                 {pillar.description}
               </p>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

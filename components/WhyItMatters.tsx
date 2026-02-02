@@ -38,9 +38,15 @@ const hrBenefits = [
 
 export default function WhyItMatters() {
   return (
-    <section className="py-32 px-6 bg-black">
+    <section
+      id="benefits"
+      aria-labelledby="why-it-matters-title"
+      aria-describedby="why-it-matters-summary"
+      className="py-32 px-6 bg-black"
+    >
       <div className="mx-auto max-w-6xl">
         <motion.h2
+          id="why-it-matters-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -49,6 +55,10 @@ export default function WhyItMatters() {
         >
           Why it matters
         </motion.h2>
+        <p id="why-it-matters-summary" className="sr-only">
+          Benefits for founders and recruiting teams, including higher signal quality,
+          consistent interviews, and improved cheating resistance.
+        </p>
         
         <div className="grid md:grid-cols-2 gap-12">
           {/* For Startup Founders */}
@@ -62,9 +72,9 @@ export default function WhyItMatters() {
             <h3 className="text-2xl font-medium text-white">
               For startup founders
             </h3>
-            <div className="space-y-4">
+            <ul className="space-y-4 list-none p-0 m-0">
               {founderBenefits.map((benefit, index) => (
-                <motion.div
+                <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -85,9 +95,9 @@ export default function WhyItMatters() {
                       {benefit.description}
                     </p>
                   </div>
-                </motion.div>
+                </motion.li>
               ))}
-            </div>
+            </ul>
           </motion.div>
           
           {/* For Recruiting / HR Teams */}
@@ -101,9 +111,9 @@ export default function WhyItMatters() {
             <h3 className="text-2xl font-medium text-white">
               For recruiting & HR teams
             </h3>
-            <div className="space-y-4">
+            <ul className="space-y-4 list-none p-0 m-0">
               {hrBenefits.map((benefit, index) => (
-                <motion.div
+                <motion.li
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -124,9 +134,9 @@ export default function WhyItMatters() {
                       {benefit.description}
                     </p>
                   </div>
-                </motion.div>
+                </motion.li>
               ))}
-            </div>
+            </ul>
           </motion.div>
         </div>
       </div>

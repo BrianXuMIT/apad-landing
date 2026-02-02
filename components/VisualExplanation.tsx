@@ -143,7 +143,12 @@ export default function VisualExplanation() {
   ]
 
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-black to-black/95">
+    <section
+      id="live-coding"
+      aria-labelledby="visual-explanation-title"
+      aria-describedby="visual-explanation-summary"
+      className="py-32 px-6 bg-gradient-to-b from-black to-black/95"
+    >
       <div className="mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -153,9 +158,13 @@ export default function VisualExplanation() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold text-white">
+            <h2 id="visual-explanation-title" className="text-3xl md:text-4xl font-semibold text-white">
               Real-time conversation meets Live Coding
             </h2>
+            <p id="visual-explanation-summary" className="sr-only">
+              Live AI interviewer explains problems, listens to candidates, and adapts
+              follow-up questions while they code in a live editor.
+            </p>
             <p className="text-lg text-white/60 leading-relaxed">
               The AI interviewer speaks with candidates through voice, explains problems, 
               listens to their reasoning, and adapts follow-up questions in real time. 
