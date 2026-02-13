@@ -1,5 +1,5 @@
 import React from "react";
-import HighlightBadge from "../HighlightBadge";
+import SectionLayout from "./SectionLayout";
 
 type FeatureItem = {
   title: string;
@@ -148,75 +148,64 @@ const features: FeatureItem[] = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-16">
-      <div className="pointer-events-none absolute left-[-130px] bottom-[10%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/28 blur-[120px]" />
-      <div className="pointer-events-none absolute right-[-130px] top-[28%] h-[340px] w-[340px] rounded-full bg-[#A14DFF]/30 blur-[120px]" />
+    <SectionLayout
+      badgeText="Human-level insight. AI-level scale."
+      title="How It Works"
+      description="Log-in. design skill-based tests, and let AI handle the rest-custom topics, question difficulty, timers, and result tracking - all in one place."
+      decorations={
+        <>
+          <div className="pointer-events-none absolute left-[-130px] bottom-[10%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/28 blur-[120px]" />
+          <div className="pointer-events-none absolute right-[-130px] top-[28%] h-[340px] w-[340px] rounded-full bg-[#A14DFF]/30 blur-[120px]" />
+        </>
+      }
+    >
+      <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2">
+        {features.map((item) => (
+          <article key={item.title} className="flex items-start gap-4 sm:gap-5">
+            <IconShell>{item.icon}</IconShell>
+            <div>
+              <h3 className="font-kanit text-[32px] leading-[1.1] text-[#272A32]">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-lg leading-relaxed text-[#2B2E3A]">
+                {item.description}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
 
-      <div className="relative mx-auto flex w-full max-w-[1140px] flex-col px-4 py-10 sm:px-8 lg:px-12">
-        <div className="mx-auto">
-          <HighlightBadge text="Human-level insight. AI-level scale." />
+      <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
+        <img
+          src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770964008/WhatsappImage20260207At1508021_x0hyqp.png"
+          alt="Candidate engaging in AI interview"
+          className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
+        />
+
+        <div className="absolute inset-0 z-[3] hidden sm:block">
+          <span className="absolute left-[2%] bottom-[8%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
+            Startups to enterprises
+          </span>
+          <span className="absolute left-[12%] bottom-[27%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
+            High-volume hiring
+          </span>
+          <span className="absolute right-[6%] bottom-[16%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
+            Remote &amp; global teams
+          </span>
         </div>
 
-        <h2 className="mt-5 text-center font-kanit text-2xl font-medium text-[#111216] sm:text-3xl">
-          How It Works
-        </h2>
-        <p className="mx-auto mt-3 max-w-[760px] text-center text-sm leading-relaxed text-[#2B2E3A] sm:text-base">
-          Log-in. design skill-based tests, and let AI handle the rest-custom
-          topics, question difficulty, timers, and result tracking - all in one
-          place.
-        </p>
-
-        <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2">
-          {features.map((item) => (
-            <article
-              key={item.title}
-              className="flex items-start gap-4 sm:gap-5"
-            >
-              <IconShell>{item.icon}</IconShell>
-              <div>
-                <h3 className="font-kanit text-[32px] leading-[1.1] text-[#272A32]">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-lg leading-relaxed text-[#2B2E3A]">
-                  {item.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
-          <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770964008/WhatsappImage20260207At1508021_x0hyqp.png"
-            alt="Candidate engaging in AI interview"
-            className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
-          />
-
-          <div className="absolute inset-0 z-[3] hidden sm:block">
-            <span className="absolute left-[2%] bottom-[8%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
-              Startups to enterprises
-            </span>
-            <span className="absolute left-[12%] bottom-[27%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
-              High-volume hiring
-            </span>
-            <span className="absolute right-[6%] bottom-[16%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
-              Remote &amp; global teams
-            </span>
-          </div>
-
-          <div className="relative z-[3] mt-6 flex flex-wrap justify-center gap-3 text-sm sm:hidden">
-            <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
-              Startups to enterprises
-            </span>
-            <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
-              High-volume hiring
-            </span>
-            <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
-              Remote &amp; global teams
-            </span>
-          </div>
+        <div className="relative z-[3] mt-6 flex flex-wrap justify-center gap-3 text-sm sm:hidden">
+          <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
+            Startups to enterprises
+          </span>
+          <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
+            High-volume hiring
+          </span>
+          <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
+            Remote &amp; global teams
+          </span>
         </div>
       </div>
-    </section>
+    </SectionLayout>
   );
 }

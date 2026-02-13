@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-screen bg-white font-kanit overflow-hidden flex items-center pt-24">
+    <section className="relative w-full min-h-screen font-kanit overflow-hidden flex items-center pt-24">
       {/* --- Background Blur Circles --- */}
       {/* Large Purple Glow behind images */}
       {/* Subtle Blue Glow bottom left */}

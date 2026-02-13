@@ -12,42 +12,41 @@ const Header = () => {
   ];
 
   return (
-    <nav className="w-full p-4">
-      {/* Container with gray background and rounded corners */}
-      <div className="mx-auto max-w-7xl bg-[#D1D1D1] rounded-[2rem] px-8 py-3 flex items-center justify-between shadow-sm">
-        {/* Logo Section */}
-        <div className="flex items-center gap-2">
-          <div className="bg-white p-1 rounded-sm">
-            {/* Replace with your <img> tag */}
-            <span className="font-bold text-blue-600 flex items-center">
-              <span className="text-green-600 mr-1">{"<"}</span>
-              <span className="text-slate-800">APADCode</span>
-              <span className="text-green-600 ml-1">{">"}</span>
-            </span>
+    <nav className="absolute z-10 w-full p-4">
+      <div className="mx-auto max-w-7xl rounded-[12px] bg-white px-8 py-3 shadow-[0_5px_10px_rgba(0,0,0,0.25)]">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <img
+              src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
+              alt="APADCode logo"
+              className="h-10 w-auto object-contain"
+            />
           </div>
-        </div>
 
-        {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-gray-800 font-medium hover:text-gray-600 transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
+          <div className="hidden items-center gap-6 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="font-medium text-gray-800 transition-colors hover:text-gray-600"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-4">
-          <button className="px-5 py-2 rounded-xl border border-purple-400 bg-white text-gray-800 font-semibold text-sm hover:bg-gray-50 transition-all">
-            Request Demo
-          </button>
-          <button className="px-6 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold text-sm hover:opacity-90 transition-all">
-            Sign Up
-          </button>
+          <div className="flex items-center gap-4">
+            <button className="group h-[44px] rounded-[10px] border border-[#8C45FF] px-6 py-2 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8C45FF] hover:to-[#2DA8FF] hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]">
+              <span className="bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-sm font-semibold text-transparent transition-colors duration-300 group-hover:text-white">
+                Request Demo
+              </span>
+            </button>
+            <button className="group h-[44px] rounded-[10px] border border-[#8C45FF] px-6 py-2 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8C45FF] hover:to-[#2DA8FF] hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]">
+              <span className="bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-sm font-semibold text-transparent transition-colors duration-300 group-hover:text-white">
+                Sign Up
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

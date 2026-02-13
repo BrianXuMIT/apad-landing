@@ -1,5 +1,5 @@
 import React from "react";
-import HighlightBadge from "../HighlightBadge";
+import SectionLayout from "./SectionLayout";
 
 const firstBlockPoints = [
   "You either choose slow, human-led interviews or fast but surface-level tests.",
@@ -19,19 +19,17 @@ const secondBlockPoints = [
 
 export default function UniqueFeatures() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-16">
-      <div className="pointer-events-none absolute right-[-120px] top-[24%] h-[380px] w-[380px] rounded-full bg-[#9B4BFF]/35 blur-[120px]" />
-      <div className="pointer-events-none absolute left-[-120px] bottom-[20%] h-[360px] w-[360px] rounded-full bg-[#8C45FF]/34 blur-[125px]" />
-
-      <div className="relative mx-auto flex w-full max-w-[1180px] flex-col px-4 py-10 sm:px-8 lg:px-12">
-        <HighlightBadge text="+ Real interviews. Real thinking. Zero compromise." />
-        <h2 className="mt-5 text-center font-kanit text-2xl font-medium text-[#111216] sm:text-3xl">
-          What Makes APADCode Different
-        </h2>
-        <p className="mt-2 text-center text-sm text-[#45485F] sm:text-base">
-          Not just a test, Not just an interview.
-        </p>
-
+    <SectionLayout
+      badgeText="+ Real interviews. Real thinking. Zero compromise."
+      title="What Makes APADCode Different"
+      description="Not just a test, Not just an interview."
+      decorations={
+        <>
+          <div className="pointer-events-none absolute right-[-120px] top-[24%] h-[380px] w-[380px] rounded-full bg-[#9B4BFF]/35 blur-[120px]" />
+          <div className="pointer-events-none absolute left-[-120px] bottom-[20%] h-[360px] w-[360px] rounded-full bg-[#8C45FF]/34 blur-[125px]" />
+        </>
+      }
+    >
         <div className="mt-12 grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
           <div>
             <h3 className="font-kanit text-[30px] leading-tight text-[#111216] sm:text-[36px]">
@@ -83,7 +81,6 @@ export default function UniqueFeatures() {
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+    </SectionLayout>
   );
 }

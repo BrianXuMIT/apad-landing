@@ -1,4 +1,5 @@
 import React from "react";
+import SectionLayout from "./SectionLayout";
 
 type BlogPost = {
   title: string;
@@ -105,69 +106,42 @@ function ArrowButton({ active }: { active?: boolean }) {
   );
 }
 
-function Badge() {
-  return (
-    <div className="inline-flex items-center gap-2 rounded-[16px] border border-[#B39BFF] bg-white px-4 py-2 text-xs text-[#5A5D72] sm:gap-3 sm:px-5 sm:text-sm">
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 14 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          d="M8.77095 5.30554C8.75916 5.27412 8.73438 5.24934 8.70297 5.23755L6.97679 4.59024C6.87626 4.55254 6.87626 4.41026 6.97679 4.37256L8.70297 3.72525C8.73438 3.71346 8.75916 3.68868 8.77095 3.65727L9.41826 1.93109C9.45596 1.83056 9.59824 1.83056 9.63594 1.93109L10.2833 3.65727C10.295 3.68868 10.3198 3.71346 10.3512 3.72525L12.0774 4.37256C12.1779 4.41026 12.1779 4.55254 12.0774 4.59024L10.3512 5.23755C10.3198 5.24934 10.295 5.27412 10.2833 5.30554L9.63594 7.03171C9.59824 7.13225 9.45596 7.13225 9.41826 7.03171L8.77095 5.30554ZM4.63473 9.44175C4.62295 9.41222 4.59953 9.3888 4.57003 9.37702L2.31511 8.47505C2.2182 8.43628 2.2182 8.2991 2.31511 8.26033L4.57003 7.35836C4.59953 7.34658 4.62295 7.32316 4.63473 7.29367L5.5367 5.03874C5.57547 4.94184 5.71265 4.94184 5.75142 5.03874L6.65339 7.29367C6.66517 7.32316 6.68859 7.34658 6.71809 7.35836L8.97301 8.26033C9.06992 8.2991 9.06992 8.43628 8.97301 8.47505L6.71809 9.37702C6.68859 9.3888 6.66517 9.41222 6.65339 9.44175L5.75142 11.6966C5.71265 11.7935 5.57547 11.7935 5.5367 11.6966L4.63473 9.44175Z"
-          fill="#111216"
-        />
-      </svg>
-      <span className="font-kanit">Insights on the Future of Hiring</span>
-    </div>
-  );
-}
-
 export default function Blog() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-16 sm:py-20">
-      <div className="pointer-events-none absolute -left-28 bottom-0 h-[360px] w-[360px] rounded-full bg-[#8C45FF]/35 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-24 top-[24%] h-[320px] w-[320px] rounded-full bg-[#A14DFF]/30 blur-[110px]" />
-
-      <div className="relative mx-auto w-full max-w-[1140px] px-4 sm:px-8 lg:px-10">
-        <div className="flex flex-col items-center">
-          <Badge />
-          <h2 className="mt-6 font-kanit text-4xl font-medium text-[#111216]">
-            Blog
-          </h2>
-          <p className="mt-4 text-center font-kanit text-sm text-[#1F2430] sm:text-base">
-            Deep drive into AI interviews, technical screening, and modern
-            hiring strategies
-          </p>
-        </div>
-
-        <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:gap-y-14">
-          {posts.map((post) => (
-            <article
-              key={post.title}
-              className="flex h-full max-w-[480px] flex-col"
-            >
-              <img
-                src={post.image}
-                alt={post.title}
-                className="h-auto w-full rounded-tr-[32px] object-cover"
-              />
-              <h3 className="mt-4 font-kanit text-[24px] font-light leading-[1.35] text-[#151925] ">
-                {post.title}
-              </h3>
-              <p className="mt-3 font-kanit text-[16px] font-light leading-[1.45] text-[#2B2E3A]">
-                {post.description}
-              </p>
-              <div className="mt-auto pt-6">
-                <ArrowButton />
-              </div>
-            </article>
-          ))}
-        </div>
+    <SectionLayout
+      badgeText="Insights on the Future of Hiring"
+      title="Blog"
+      description="Deep drive into AI interviews, technical screening, and modern hiring strategies"
+      decorations={
+        <>
+          <div className="pointer-events-none absolute left-[-130px] bottom-[10%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/28 blur-[120px]" />
+          <div className="pointer-events-none absolute right-[-130px] top-[28%] h-[340px] w-[340px] rounded-full bg-[#A14DFF]/30 blur-[120px]" />
+        </>
+      }
+    >
+      <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:gap-y-14">
+        {posts.map((post) => (
+          <article
+            key={post.title}
+            className="flex h-full max-w-[480px] flex-col"
+          >
+            <img
+              src={post.image}
+              alt={post.title}
+              className="h-auto w-full rounded-tr-[32px] object-cover"
+            />
+            <h3 className="mt-4 font-kanit text-[24px] font-light leading-[1.35] text-[#151925] ">
+              {post.title}
+            </h3>
+            <p className="mt-3 font-kanit text-[16px] font-light leading-[1.45] text-[#2B2E3A]">
+              {post.description}
+            </p>
+            <div className="mt-auto pt-6">
+              <ArrowButton />
+            </div>
+          </article>
+        ))}
       </div>
-    </section>
+    </SectionLayout>
   );
 }

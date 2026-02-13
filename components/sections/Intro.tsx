@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Intro() {
   return (
-    <section className="relative w-full overflow-hidden bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
+    <section className="relative w-full overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
       <div className="pointer-events-none absolute -bottom-24 right-0 h-[360px] w-[360px] rounded-full bg-[#8C45FF]/35 blur-[120px]" />
 
       <div className="relative mx-auto w-full max-w-[1440px]  px-5 py-10 sm:px-8 sm:py-12 lg:min-h-[1114px] lg:px-16 lg:py-20">

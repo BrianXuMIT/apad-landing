@@ -9,7 +9,6 @@ import Questionaire from "@/components/sections/Questionaire";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
-
 export default function Home() {
   return (
     <>
@@ -22,7 +21,6 @@ export default function Home() {
       <Pricing />
       <Questionaire />
       <Contact />
-      <Footer />
     </>
   );
 }
