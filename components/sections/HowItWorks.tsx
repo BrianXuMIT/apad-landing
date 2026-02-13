@@ -175,37 +175,13 @@ export default function HowItWorks() {
         ))}
       </div>
 
-      <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
-        <img
-          src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770964008/WhatsappImage20260207At1508021_x0hyqp.png"
-          alt="Candidate engaging in AI interview"
-          className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
-        />
-
-        <div className="absolute inset-0 z-[3] hidden sm:block">
-          <span className="absolute left-[2%] bottom-[8%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
-            Startups to enterprises
-          </span>
-          <span className="absolute left-[12%] bottom-[27%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
-            High-volume hiring
-          </span>
-          <span className="absolute right-[6%] bottom-[16%] rounded-[30px] border border-[#2B4A69] bg-[#BAAA93]/95 px-7 py-3 font-kanit text-[22px] font-normal text-[#111216]">
-            Remote &amp; global teams
-          </span>
+        <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
+          <img
+            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004044/New_Project_2_s0muve.png"
+            alt="Candidate engaging in AI interview"
+            className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
+          />
         </div>
-
-        <div className="relative z-[3] mt-6 flex flex-wrap justify-center gap-3 text-sm sm:hidden">
-          <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
-            Startups to enterprises
-          </span>
-          <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
-            High-volume hiring
-          </span>
-          <span className="rounded-[22px] border border-[#2B4A69] bg-[#BAAA93]/95 px-4 py-2 text-[#111216]">
-            Remote &amp; global teams
-          </span>
-        </div>
-      </div>
     </SectionLayout>
   );
 }

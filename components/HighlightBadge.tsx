@@ -20,7 +20,7 @@ export default function HighlightBadge({ text }: HighlightBadgeProps) {
         />
       </svg>
 
-      <p className="font-kanit text-[24px] font-extralight text-black whitespace-nowrap ">
+      <p className="whitespace-nowrap font-kanit text-[16px] font-extralight text-black sm:text-[20px] lg:text-[24px]">
         {text}
       </p>
     </div>

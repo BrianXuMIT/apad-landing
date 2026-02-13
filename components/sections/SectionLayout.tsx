@@ -32,7 +32,7 @@ export default function SectionLayout({
 }: SectionLayoutProps) {
   return (
     <section
-      className={`relative w-full overflow-hidden bg-white py-16 ${sectionClassName}`.trim()}
+      className={`relative w-full overflow-visible bg-transparent py-16 ${sectionClassName}`.trim()}
     >
       {decorations}
 
@@ -42,7 +42,7 @@ export default function SectionLayout({
         <div className={`flex flex-col items-center ${headerClassName}`.trim()}>
           {badge ?? (badgeText ? <HighlightBadge text={badgeText} /> : null)}
           <h2
-            className={`mt-5 text-center font-kanit text-2xl font-medium text-[#111216] sm:text-3xl ${titleClassName}`.trim()}
+            className={`mt-5 text-center font-kanit text-[24px] font-medium text-[#111216] md:text-[32px] ${titleClassName}`.trim()}
           >
             {title}
           </h2>
