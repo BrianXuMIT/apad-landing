@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-const Header = () => {
+const Navbar = () => {
   const navLinks = [
     { name: "About", href: "#" },
     { name: "How it works", href: "#" },
-    { name: "AI Interviewer", href: "#" },
+    { name: "AI Inerviewer", href: "#" },
     { name: "Assessments", href: "#" },
     { name: "Pricing", href: "#" },
     { name: "Blogs", href: "#" },
@@ -54,4 +54,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

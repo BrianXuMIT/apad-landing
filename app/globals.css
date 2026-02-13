@@ -8,10 +8,6 @@
     --foreground: 222.2 84% 4.9%;
   }
 
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-white text-gray-900 antialiased;
   }
@@ -29,8 +25,19 @@
   .heading-gradient {
     @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
   }
+}
 
-  .feature-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
   }
 }

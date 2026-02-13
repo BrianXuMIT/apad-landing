@@ -36,6 +36,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        kanit: ["var(--font-kanit)", "sans-serif"],
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out",
