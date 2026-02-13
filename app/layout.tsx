@@ -25,7 +25,9 @@ export default function RootLayout({
     <html lang="en" className={`${kanit.variable}`}>
       <body className="font-kanit antialiased bg-white">
         <Header />
-        {children}
+        <main className="pt-[86px] md:pt-[92px] min-[1100px]:pt-[96px]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
