@@ -52,65 +52,68 @@ export default function Questionaire() {
         </>
       }
     >
-        <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-[8px] bg-white">
-            {faqItems.map((item, index) => {
-              const isActive = index === activeIndex;
+      <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <motion.div layout className="rounded-[8px] bg-transparent lg:min-h-[640px]">
+          {faqItems.map((item, index) => {
+            const isActive = index === activeIndex;
 
-              return (
-                <div
-                  key={item.question}
-                  className="border-b border-[#1A1D25]/35"
+            return (
+              <motion.div
+                layout
+                key={item.question}
+                className="border-b border-[#1A1D25]/35"
+                transition={{ duration: 0.28, ease: "easeInOut" }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className="flex w-full items-center justify-between gap-6 py-5 text-left"
+                  aria-expanded={isActive}
                 >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveIndex((prev) => (prev === index ? -1 : index))
-                    }
-                    className="flex w-full items-center justify-between gap-6 py-5 text-left"
-                    aria-expanded={isActive}
-                  >
-                    <span className="font-kanit text-[27px] font-light leading-[1.25] text-[#111216]">
-                      {item.question}
-                    </span>
-                    <span className="font-kanit text-[40px] leading-none text-[#111216]">
-                      {isActive ? "-" : "+"}
-                    </span>
-                  </button>
+                  <span className="font-kanit text-[24px] font-light leading-[1.25] text-[#111216] lg:text-[24px]">
+                    {item.question}
+                  </span>
+                  <span className="font-kanit text-[40px] leading-none text-[#111216]">
+                    {isActive ? "-" : "+"}
+                  </span>
+                </button>
 
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.28, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <p className="pb-5 pr-8 font-kanit text-[15px] font-light leading-[1.6] text-[#2C313F]">
-                          {item.answer}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
+                <AnimatePresence initial={false}>
+                  {isActive ? (
+                    <motion.div
+                      layout
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-5 pr-8 font-kanit text-[15px] font-light leading-[1.6] text-[#2C313F]">
+                        {item.answer}
+                      </p>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
-          <div className="relative mx-auto w-full max-w-[520px] pt-8 lg:pt-16">
-            <img
-              src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770987343/Image23_hxww7q.png"
-              alt="APADCode robot assistant"
-              className="relative z-[2] mx-auto w-full max-w-[470px] object-contain"
-            />
-            <img
-              src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770987342/Image24_aqk4k1.png"
-              alt="Question symbol"
-              className="absolute right-1 top-0 z-[3] w-[130px] object-contain sm:w-[150px]"
-            />
-          </div>
+        <div className="relative mx-auto w-full max-w-[520px] pt-8 lg:pt-16">
+          <div className="pointer-events-none absolute left-1/2 top-[56%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
+          <div className="pointer-events-none absolute left-1/2 top-[56%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
+          <img
+            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770987343/Image23_hxww7q.png"
+            alt="APADCode robot assistant"
+            className="relative z-[2] mx-auto w-full max-w-[470px] object-contain"
+          />
+          <img
+            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770987342/Image24_aqk4k1.png"
+            alt="Question symbol"
+            className="absolute right-1 top-0 z-[3] w-[130px] object-contain sm:w-[150px]"
+          />
         </div>
+      </div>
     </SectionLayout>
   );
 }

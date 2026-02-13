@@ -43,7 +43,7 @@ const Header = () => {
             </div>
           </button>
 
-          <div className="rounded-sm bg-white px-2 py-1">
+          <div className="rounded-sm px-2 py-1">
             <img
               src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
               alt="APADCode logo"

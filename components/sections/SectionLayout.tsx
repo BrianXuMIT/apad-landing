@@ -32,23 +32,29 @@ export default function SectionLayout({
 }: SectionLayoutProps) {
   return (
     <section
-      className={`relative w-full overflow-visible bg-transparent py-16 ${sectionClassName}`.trim()}
+      className={`relative w-full overflow-visible bg-transparent pb-16 ${sectionClassName}`.trim()}
     >
-      {decorations}
+      {decorations ? (
+        <div className="pointer-events-none absolute inset-0 z-0">
+          {decorations}
+        </div>
+      ) : null}
 
       <div
-        className={`relative mx-auto flex w-full max-w-[1140px] flex-col px-4 py-10 sm:px-8 lg:px-12 ${containerClassName}`.trim()}
+        className={`relative z-10 mx-auto flex w-full max-w-[1140px] flex-col px-4 sm:px-8 lg:px-12 ${containerClassName}`.trim()}
       >
-        <div className={`flex flex-col items-center ${headerClassName}`.trim()}>
+        <div
+          className={`flex flex-col items-center gap-[16px] ${headerClassName}`.trim()}
+        >
           {badge ?? (badgeText ? <HighlightBadge text={badgeText} /> : null)}
           <h2
-            className={`mt-5 text-center font-kanit text-[24px] font-medium text-[#111216] md:text-[32px] ${titleClassName}`.trim()}
+            className={`mt-5 text-center font-kanit text-[32px] font-medium text-[#111216] lg:text-[48px] ${titleClassName}`.trim()}
           >
             {title}
           </h2>
           {description ? (
             <p
-              className={`mt-2 text-center font-kanit text-sm text-[#45485F] sm:text-base ${descriptionClassName}`.trim()}
+              className={`mt-2 text-center font-kanit lg:text-[24px] text-[#45485F] text-[16px] ${descriptionClassName}`.trim()}
             >
               {description}
             </p>

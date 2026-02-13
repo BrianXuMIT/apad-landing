@@ -11,6 +11,14 @@
   body {
     @apply bg-white text-gray-900 antialiased;
   }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-float-smoothing: grayscale;
+  }
+}
+
+@theme inline {
+  --font-kanit: var(--font-kanit);
 }
 
 @layer components {

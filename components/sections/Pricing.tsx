@@ -145,41 +145,42 @@ export default function Pricing() {
         <div className="pointer-events-none absolute left-1/2 top-[53%] h-[460px] w-[460px] -translate-x-1/2 rounded-full bg-[#9C4EFF]/28 blur-[120px]" />
       }
     >
-          <div className="mt-10 inline-flex items-center gap-4 rounded-[18px] bg-[#F0EEF2] px-4 py-2.5">
-            <span
-              className={`font-kanit text-[22px] transition-colors ${
-                billing === "monthly" ? "text-[#2B3552]" : "text-[#6E7388]"
-              }`}
-            >
-              Monthly
-            </span>
-            <button
-              type="button"
-              aria-label="Toggle billing cycle"
-              aria-pressed={billing === "yearly"}
-              onClick={() =>
-                setBilling((prev) =>
-                  prev === "monthly" ? "yearly" : "monthly",
-                )
-              }
-              className="relative h-[34px] w-[74px] rounded-full bg-gradient-to-r from-[#8C45FF] to-[#0AAFF9] p-[3px] shadow-[0_6px_16px_rgba(114,93,255,0.35)]"
-            >
-              <span
-                className={`absolute top-[3px] h-7 w-7 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.22)] transition-transform duration-300 ${
-                  billing === "yearly" ? "translate-x-0" : "-translate-x-7"
-                }`}
-              />
-            </button>
-            <span
-              className={`font-kanit text-[22px] transition-colors ${
-                billing === "yearly" ? "text-[#2B3552]" : "text-[#6E7388]"
-              }`}
-            >
-              Yearly
-            </span>
-          </div>
+      <div className="mt-10 inline-flex items-center gap-4 rounded-[18px] bg-[#F0EEF2] px-4 py-2.5">
+        <span
+          className={`font-kanit text-[22px] transition-colors ${
+            billing === "monthly" ? "text-[#2B3552]" : "text-[#6E7388]"
+          }`}
+        >
+          Monthly
+        </span>
+        <button
+          type="button"
+          aria-label="Toggle billing cycle"
+          aria-pressed={billing === "yearly"}
+          onClick={() =>
+            setBilling((prev) => (prev === "monthly" ? "yearly" : "monthly"))
+          }
+          className="relative h-[34px] w-[74px] rounded-full bg-gradient-to-r from-[#8C45FF] to-[#0AAFF9] p-[3px] shadow-[0_6px_16px_rgba(114,93,255,0.35)]"
+        >
+          <span
+            className={`absolute top-[3px] h-7 w-7 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.22)] transition-transform duration-300 ${
+              billing === "yearly" ? "translate-x-0" : "-translate-x-7"
+            }`}
+          />
+        </button>
+        <span
+          className={`font-kanit text-[22px] transition-colors ${
+            billing === "yearly" ? "text-[#2B3552]" : "text-[#6E7388]"
+          }`}
+        >
+          Yearly
+        </span>
+      </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <div className="relative mt-12">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[115px] lg:h-[420px] lg:w-[420px] lg:blur-[130px]" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[155px] lg:h-[620px] lg:w-[620px] lg:blur-[175px]" />
+        <div className="relative z-[1] grid grid-cols-1 gap-5 lg:grid-cols-3">
           {plans.map((plan) => {
             return (
               <PlanCard
@@ -191,6 +192,7 @@ export default function Pricing() {
             );
           })}
         </div>
+      </div>
     </SectionLayout>
   );
 }

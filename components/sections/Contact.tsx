@@ -65,7 +65,7 @@ function ScoreRing({
 export default function Contact() {
   return (
     <section className="w-full bg-white py-16 sm:py-20">
-      <div className="mx-auto w-full px-16">
+      <div className="mx-auto w-full px-6 sm:px-16">
         <div className="relative overflow-hidden rounded-[22px] bg-gradient-to-r from-[#8C45FF] to-[#992DFF] p-8 sm:p-10 lg:p-12">
           <div className="pointer-events-none absolute -right-24 top-10 h-[280px] w-[280px] rounded-full bg-[#A86BFF]/35 blur-[110px]" />
           <div className="pointer-events-none absolute right-32 bottom-[-120px] h-[260px] w-[260px] rounded-full bg-[#5B6DFF]/20 blur-[120px]" />

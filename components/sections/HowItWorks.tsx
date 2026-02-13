@@ -164,10 +164,10 @@ export default function HowItWorks() {
           <article key={item.title} className="flex items-start gap-4 sm:gap-5">
             <IconShell>{item.icon}</IconShell>
             <div>
-              <h3 className="font-kanit text-[32px] leading-[1.1] text-[#272A32]">
+              <h3 className="font-kanit text-[24px] leading-[1.1] text-[#272A32] lg:text-[32px]">
                 {item.title}
               </h3>
-              <p className="mt-2 text-lg leading-relaxed text-[#2B2E3A]">
+              <p className="mt-2 text-[16px] leading-relaxed text-[#2B2E3A] lg:text-[24px] font-light">
                 {item.description}
               </p>
             </div>
@@ -175,13 +175,15 @@ export default function HowItWorks() {
         ))}
       </div>
 
-        <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
-          <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004044/New_Project_2_s0muve.png"
-            alt="Candidate engaging in AI interview"
-            className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
-          />
-        </div>
+      <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
+        <div className="pointer-events-none absolute left-1/2 top-[54%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
+        <div className="pointer-events-none absolute left-1/2 top-[54%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
+        <img
+          src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004044/New_Project_2_s0muve.png"
+          alt="Candidate engaging in AI interview"
+          className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
+        />
+      </div>
     </SectionLayout>
   );
 }

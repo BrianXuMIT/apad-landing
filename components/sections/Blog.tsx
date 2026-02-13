@@ -119,7 +119,7 @@ export default function Blog() {
         </>
       }
     >
-      <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:gap-y-14">
+      <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:gap-y-14 items-stretch">
         {posts.map((post) => (
           <article
             key={post.title}
@@ -130,14 +130,17 @@ export default function Blog() {
               alt={post.title}
               className="h-auto w-full rounded-tr-[32px] object-cover"
             />
-            <h3 className="mt-4 font-kanit text-[24px] font-light leading-[1.35] text-[#151925] ">
-              {post.title}
-            </h3>
-            <p className="mt-3 font-kanit text-[16px] font-light leading-[1.45] text-[#2B2E3A]">
-              {post.description}
-            </p>
-            <div className="mt-auto pt-6">
-              <ArrowButton />
+            <div className="flex flex-col flex-1 shadow-[0_0_0_1px_rgba(134,98,255,0.20),0_0_18px_rgba(120,88,255,0.16)] rounded-b-[48px] p-6">
+              <h3 className="mt-4 font-kanit text-[24px] font-light leading-[1.35] text-[#151925] ">
+                {post.title}
+              </h3>
+              <p className="mt-3 font-kanit text-[16px] font-light leading-[1.45] text-[#2B2E3A]">
+                {post.description}
+              </p>
+              <div className="mt-auto pt-6">
+                <ArrowButton />
+              </div>
+              {/*  */}
             </div>
           </article>
         ))}
