@@ -5,12 +5,10 @@ import WhyTeamsChoose from "@/components/sections/WhyTeamsChoose";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Blog from "@/components/sections/Blog";
 import Pricing from "@/components/sections/Pricing";
-// import SmartRecording from '@/components/sections/SmartRecording'
-// import WhatSetUsApart from '@/components/sections/WhatSetUsApart'
-// import HiringSolutions from '@/components/sections/HiringSolutions'
-// import FAQ from '@/components/sections/FAQ'
-// import RevolutionizeHiring from '@/components/sections/RevolutionizeHiring'
-// import AndCloud from '@/components/sections/AndCloud'
+import Questionaire from "@/components/sections/Questionaire";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/layout/Footer";
+
 
 export default function Home() {
   return (
@@ -22,12 +20,9 @@ export default function Home() {
       <WhyTeamsChoose />
       <Blog />
       <Pricing />
-      {/* <SmartRecording />
-      <WhatSetUsApart />
-      <HiringSolutions />
-      <FAQ />
-      <RevolutionizeHiring />
-      <AndCloud /> */}
+      <Questionaire />
+      <Contact />
+      <Footer />
     </>
   );
 }
