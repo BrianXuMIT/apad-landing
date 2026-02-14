@@ -5,7 +5,7 @@ type HighlightBadgeProps = {
 };
 export default function HighlightBadge({ text }: HighlightBadgeProps) {
   return (
-    <div className="inline-flex items-center gap-4 px-8 py-[13px] rounded-[20px] border border-[#8C45FF] bg-white">
+    <div className="inline-flex items-center gap-4 rounded-[20px] border border-[#8C45FF] bg-white px-8 py-[13px]">
       <svg
         width="32"
         height="32"

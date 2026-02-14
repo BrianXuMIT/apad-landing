@@ -40,7 +40,7 @@ export default function UniqueFeatures() {
     >
       <div className="mt-12 grid grid-cols-1 items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-10 min-[1100px]:grid-cols-[1.08fr_0.92fr] min-[1100px]:gap-12">
         <div>
-          <h3 className="font-kanit text-[24px] leading-tight text-[#111216] lg:text-[36px]">
+          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px]">
             Traditional hiring forces a trade-off,
           </h3>
           <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#2A2D3E] sm:text-base">
@@ -78,7 +78,7 @@ export default function UniqueFeatures() {
         </div>
 
         <div className="order-1 md:order-2">
-          <h3 className="font-kanit text-[24px] leading-tight text-[#111216] lg:text-[36px]">
+          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px]">
             APADCode removes the compromise
           </h3>
           <ul className="mt-6 space-y-4 text-[16px] leading-relaxed text-[#2A2D3E] lg:text-[24px]">

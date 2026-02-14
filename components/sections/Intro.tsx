@@ -6,7 +6,7 @@ export default function Intro() {
       <div className="pointer-events-none absolute -bottom-24 right-0 h-[360px] w-[360px] rounded-full bg-[#8C45FF]/35 blur-[120px]" />
 
       <div className="relative mx-auto w-full max-w-[1440px]  px-5 py-10 sm:px-8 sm:py-12 lg:min-h-[1114px] lg:px-16 lg:py-20">
-        <h2 className="mx-auto max-w-[980px] text-center font-kanit text-[36px] font-medium leading-[1.35] text-[#111] sm:text-[34px] lg:text-[48px]">
+        <h2 className="mx-auto max-w-[980px] text-center font-kanit text-[32px] font-medium leading-[1.35] text-[#111] md:text-[36px] lg:text-[48px]">
           APADCode is an AI-driven interview platform enabling faster, deeper,
           and more consistent technical pre-screening.
         </h2>

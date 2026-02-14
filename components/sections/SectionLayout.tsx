@@ -54,7 +54,7 @@ export default function SectionLayout({
           </h2>
           {description ? (
             <p
-              className={`mt-2 text-center font-kanit lg:text-[24px] text-[#45485F] text-[16px] ${descriptionClassName}`.trim()}
+              className={`mt-2 text-center font-kanit lg:text-[24px] text-[#45485F] text-[20px] ${descriptionClassName}`.trim()}
             >
               {description}
             </p>

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import SectionLayout from "./SectionLayout";
 
 type FaqItem = {
@@ -53,51 +52,50 @@ export default function Questionaire() {
       }
     >
       <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <motion.div layout className="rounded-[8px] bg-transparent lg:min-h-[640px]">
+        <div className="rounded-[8px] bg-transparent lg:min-h-[640px]">
           {faqItems.map((item, index) => {
             const isActive = index === activeIndex;
 
             return (
-              <motion.div
-                layout
+              <div
                 key={item.question}
-                className="border-b border-[#1A1D25]/35"
-                transition={{ duration: 0.28, ease: "easeInOut" }}
+                className="border-b border-[#1A1D25]/30 pb-4"
               >
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  className="flex w-full items-center justify-between gap-6 py-5 text-left"
-                  aria-expanded={isActive}
+                <div
+                  className={`rounded-[4px] border px-0 transition-colors duration-200 border-transparent bg-transparent"`}
                 >
-                  <span className="font-kanit text-[24px] font-light leading-[1.25] text-[#111216] lg:text-[24px]">
-                    {item.question}
-                  </span>
-                  <span className="font-kanit text-[40px] leading-none text-[#111216]">
-                    {isActive ? "-" : "+"}
-                  </span>
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className="flex w-full items-center justify-between gap-6 px-0 py-5 text-left"
+                    aria-expanded={isActive}
+                  >
+                    <span className="font-kanit text-[24px] font-light leading-[1.25] text-[#111216] lg:text-[24px]">
+                      {item.question}
+                    </span>
+                    <span className="font-kanit text-[40px] leading-none text-[#111216]">
+                      {isActive ? "-" : "+"}
+                    </span>
+                  </button>
+                </div>
 
-                <AnimatePresence initial={false}>
-                  {isActive ? (
-                    <motion.div
-                      layout
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-5 pr-8 font-kanit text-[15px] font-light leading-[1.6] text-[#2C313F]">
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </motion.div>
+                <div
+                  className={`grid overflow-hidden transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out ${
+                    isActive
+                      ? "mt-2 grid-rows-[1fr] opacity-100"
+                      : "mt-0 grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pr-8 font-kanit text-[15px] font-light leading-[1.6] text-[#2C313F]">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
         <div className="relative mx-auto w-full max-w-[520px] pt-8 lg:pt-16">
           <div className="pointer-events-none absolute left-1/2 top-[56%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />

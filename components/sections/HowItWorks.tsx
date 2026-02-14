@@ -4,38 +4,160 @@ import SectionLayout from "./SectionLayout";
 type FeatureItem = {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: "live" | "ai" | "insights" | "skills";
 };
 
-function IconShell({ children }: { children: React.ReactNode }) {
-  const ringGradientId = React.useId();
+function FeatureIcon({ type }: { type: FeatureItem["icon"] }) {
+  const gradientId = React.useId();
+  const aiPaint0 = React.useId();
+  const aiPaint1 = React.useId();
+  const aiPaint2 = React.useId();
 
-  return (
-    <div className="relative h-[76px] w-[76px] shrink-0">
+  if (type === "ai") {
+    return (
       <svg
-        viewBox="0 0 76 76"
-        className="h-full w-full"
+        width="88"
+        height="92"
+        viewBox="0 0 129 135"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
+        className="shrink-0"
       >
+        <path
+          d="M46.4977 2.9586C45.5406 0.517656 42.7776 -0.699837 40.4066 0.419323C31.7747 4.4937 24.0445 10.2863 17.698 17.4599C10.301 25.8209 4.99525 35.8189 2.21745 46.6312C-0.560359 57.4435 -0.730825 68.7609 1.72008 79.6519C4.17098 90.543 9.17317 100.696 16.315 109.276C23.4568 117.856 32.534 124.618 42.7996 129.004C53.0652 133.39 64.2257 135.276 75.3625 134.506C86.4994 133.736 97.2941 130.332 106.858 124.575C115.064 119.635 122.163 113.084 127.736 105.335C129.267 103.207 128.571 100.268 126.344 98.8844C124.118 97.5003 121.205 98.1964 119.652 100.309C114.888 106.789 108.879 112.276 101.962 116.441C93.6856 121.422 84.3446 124.368 74.7077 125.034C65.0707 125.7 55.4133 124.068 46.5302 120.273C37.6471 116.477 29.7924 110.627 23.6124 103.202C17.4324 95.7776 13.1039 86.9917 10.9831 77.5674C8.86224 68.1431 9.00975 58.3499 11.4135 48.9938C13.8172 39.6377 18.4083 30.9861 24.8091 23.7511C30.1592 17.7038 36.6456 12.7907 43.8827 9.28144C46.2419 8.13749 47.4548 5.39954 46.4977 2.9586Z"
+          fill="#D9D9D9"
+        />
+        <path
+          d="M46.4977 2.9586C45.5406 0.517656 42.7776 -0.699837 40.4066 0.419323C31.7747 4.4937 24.0445 10.2863 17.698 17.4599C10.301 25.8209 4.99525 35.8189 2.21745 46.6312C-0.560359 57.4435 -0.730825 68.7609 1.72008 79.6519C4.17098 90.543 9.17317 100.696 16.315 109.276C23.4568 117.856 32.534 124.618 42.7996 129.004C53.0652 133.39 64.2257 135.276 75.3625 134.506C86.4994 133.736 97.2941 130.332 106.858 124.575C115.064 119.635 122.163 113.084 127.736 105.335C129.267 103.207 128.571 100.268 126.344 98.8844C124.118 97.5003 121.205 98.1964 119.652 100.309C114.888 106.789 108.879 112.276 101.962 116.441C93.6856 121.422 84.3446 124.368 74.7077 125.034C65.0707 125.7 55.4133 124.068 46.5302 120.273C37.6471 116.477 29.7924 110.627 23.6124 103.202C17.4324 95.7776 13.1039 86.9917 10.9831 77.5674C8.86224 68.1431 9.00975 58.3499 11.4135 48.9938C13.8172 39.6377 18.4083 30.9861 24.8091 23.7511C30.1592 17.7038 36.6456 12.7907 43.8827 9.28144C46.2419 8.13749 47.4548 5.39954 46.4977 2.9586Z"
+          fill={`url(#${aiPaint0})`}
+        />
+        <path
+          d="M73.3772 37.9238C72.1309 41.784 72.1556 45.9421 73.4476 49.7872C74.7397 53.6323 77.2309 56.9616 80.5553 59.2859C83.8797 61.6102 87.862 62.807 91.917 62.7003C95.9719 62.5937 99.8858 61.1893 103.083 58.6934V90.4238H38.9138V37.9238H73.3772ZM71.0001 78.7572H91.4167V72.9238H71.0001V78.7572ZM50.3384 57.3751L57.1284 64.1738L50.3384 70.9726L54.4655 75.0938L65.3738 64.1738L54.4626 53.2538L50.3384 57.3751Z"
+          fill="black"
+        />
+        <path
+          d="M73.3772 37.9238C72.1309 41.784 72.1556 45.9421 73.4476 49.7872C74.7397 53.6323 77.2309 56.9616 80.5553 59.2859C83.8797 61.6102 87.862 62.807 91.917 62.7003C95.9719 62.5937 99.8858 61.1893 103.083 58.6934V90.4238H38.9138V37.9238H73.3772ZM71.0001 78.7572H91.4167V72.9238H71.0001V78.7572ZM50.3384 57.3751L57.1284 64.1738L50.3384 70.9726L54.4655 75.0938L65.3738 64.1738L54.4626 53.2538L50.3384 57.3751Z"
+          fill={`url(#${aiPaint1})`}
+        />
+        <path
+          d="M95.6604 39.5108L105.067 43.7574L95.6604 48.0012L91.4166 57.4074L87.1699 48.0012L77.7666 43.7574L87.1699 39.5108L91.4166 30.1074L95.6604 39.5108Z"
+          fill="black"
+        />
+        <path
+          d="M95.6604 39.5108L105.067 43.7574L95.6604 48.0012L91.4166 57.4074L87.1699 48.0012L77.7666 43.7574L87.1699 39.5108L91.4166 30.1074L95.6604 39.5108Z"
+          fill={`url(#${aiPaint2})`}
+        />
         <defs>
-          <linearGradient id={ringGradientId} x1="3" y1="38" x2="73" y2="38">
+          <linearGradient
+            id={aiPaint0}
+            x1="0"
+            y1="64.1738"
+            x2="141"
+            y2="64.1738"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#8C45FF" />
+            <stop offset="1" stopColor="#0AAFF9" />
+          </linearGradient>
+          <linearGradient
+            id={aiPaint1}
+            x1="38.9138"
+            y1="64.1738"
+            x2="103.083"
+            y2="64.1738"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#8C45FF" />
+            <stop offset="1" stopColor="#0AAFF9" />
+          </linearGradient>
+          <linearGradient
+            id={aiPaint2}
+            x1="77.7666"
+            y1="43.7574"
+            x2="105.067"
+            y2="43.7574"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stopColor="#8C45FF" />
             <stop offset="1" stopColor="#0AAFF9" />
           </linearGradient>
         </defs>
-        <path
-          d="M42 6.5C28.3 4.6 14.9 13.2 11.2 26.6C7.4 40 14.3 54.2 27.2 59.2C40 64.2 54.6 58.5 60.8 46.1"
-          stroke={`url(#${ringGradientId})`}
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        {children}
-      </div>
-    </div>
+    );
+  }
+
+  return (
+    <svg
+      width="88"
+      height="92"
+      viewBox="0 0 129 135"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <defs>
+        <linearGradient
+          id={gradientId}
+          x1="0"
+          y1="64.1738"
+          x2="141"
+          y2="64.1738"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#8C45FF" />
+          <stop offset="1" stopColor="#0AAFF9" />
+        </linearGradient>
+      </defs>
+
+      <path
+        d="M46.4977 2.9586C45.5406 0.517656 42.7776 -0.699837 40.4066 0.419323C31.7747 4.4937 24.0445 10.2863 17.698 17.4599C10.301 25.8209 4.99525 35.8189 2.21745 46.6312C-0.560359 57.4435 -0.730825 68.7609 1.72008 79.6519C4.17098 90.543 9.17317 100.696 16.315 109.276C23.4568 117.856 32.534 124.618 42.7996 129.004C53.0652 133.39 64.2257 135.276 75.3625 134.506C86.4993 133.736 97.2941 130.332 106.858 124.575C115.064 119.635 122.163 113.084 127.736 105.335C129.267 103.207 128.571 100.268 126.344 98.8844C124.118 97.5003 121.205 98.1964 119.652 100.309C114.888 106.789 108.879 112.276 101.962 116.441C93.6856 121.422 84.3446 124.368 74.7077 125.034C65.0707 125.7 55.4133 124.068 46.5302 120.273C37.6471 116.477 29.7924 110.627 23.6124 103.202C17.4324 95.7776 13.1039 86.9917 10.9831 77.5674C8.86224 68.1431 9.00975 58.3499 11.4135 48.9938C13.8172 39.6377 18.4083 30.9861 24.8091 23.7511C30.1592 17.7038 36.6456 12.7907 43.8827 9.28144C46.2419 8.13749 47.4548 5.39954 46.4977 2.9586Z"
+        fill={`url(#${gradientId})`}
+      />
+
+      {type === "live" ? (
+        <g fill={`url(#${gradientId})`}>
+          <circle cx="57" cy="58" r="9" />
+          <circle cx="76" cy="61" r="7.5" />
+          <path d="M41 84c0-8.3 6.7-15 15-15h2c8.3 0 15 6.7 15 15v5H41v-5Z" />
+          <path d="M69 84c0-5.9 4.8-10.7 10.8-10.7h1.8c4.7 0 9 3 10.5 7.5L94 86H69v-2Z" />
+          <path d="M88.8 44.2 92 50.7l7 .9-5 4.8 1.1 7-6.3-3.5-6.4 3.5 1.2-7-5.1-4.8 7-.9 3.3-6.5Z" />
+        </g>
+      ) : null}
+
+      {type === "insights" ? (
+        <>
+          <path
+            d="M35 92.5 53.5 69l20 22.5L88.8 74l11.2 10.5"
+            stroke={`url(#${gradientId})`}
+            strokeWidth="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <circle cx="35" cy="92.5" r="6.5" fill={`url(#${gradientId})`} />
+          <circle cx="53.5" cy="69" r="6.5" fill={`url(#${gradientId})`} />
+          <circle cx="73.5" cy="91.5" r="6.5" fill={`url(#${gradientId})`} />
+          <circle cx="88.8" cy="74" r="6.5" fill={`url(#${gradientId})`} />
+          <path
+            d="M35.6 47.2 37.7 51.5l4.8.7-3.4 3.3.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.4-3.3 4.8-.7 2.2-4.3Z"
+            fill={`url(#${gradientId})`}
+          />
+          <path
+            d="M58.4 36.5 61 42l5.9.9-4.2 4 1 5.9-5.3-2.9-5.3 2.9 1-5.9-4.3-4 6-.9 2.6-5.5Z"
+            fill={`url(#${gradientId})`}
+          />
+        </>
+      ) : null}
+
+      {type === "skills" ? (
+        <g fill={`url(#${gradientId})`}>
+          <rect x="41" y="64" width="15" height="28" />
+          <rect x="63" y="52" width="15" height="40" />
+          <rect x="85" y="40" width="15" height="52" />
+        </g>
+      ) : null}
+    </svg>
   );
 }
 
@@ -44,105 +166,25 @@ const features: FeatureItem[] = [
     title: "Live Coding Environment",
     description:
       "Candidates solve real problems in an executable coding sandbox just like a real interview.",
-    icon: (
-      <svg
-        width="38"
-        height="38"
-        viewBox="0 0 38 38"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="iconGradientA" x1="0" y1="19" x2="38" y2="19">
-            <stop stopColor="#8C45FF" />
-            <stop offset="1" stopColor="#0AAFF9" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M14.4 19.5c3.2 0 5.8-2.6 5.8-5.8s-2.6-5.8-5.8-5.8-5.8 2.6-5.8 5.8 2.6 5.8 5.8 5.8Zm11.6-1.9c2.3 0 4.1-1.8 4.1-4.1S28.3 9.4 26 9.4s-4.1 1.8-4.1 4.1 1.8 4.1 4.1 4.1Zm0 1.9c-1.7 0-3.6.5-4.8 1.4 1.8 1.3 2.9 3.3 2.9 5.5v1h8.8v-1c0-3.8-3.4-6.9-6.9-6.9Zm-11.6 1.9C9.2 21.4 4 25.2 4 29.9v1.6h20.8v-1.6c0-4.7-5.2-8.5-10.4-8.5Z"
-          fill="url(#iconGradientA)"
-        />
-      </svg>
-    ),
+    icon: "live",
   },
   {
     title: "AI-Led Interview Flow",
     description:
       "APAD Code asks follow-up questions, explores alternatives, and adapts difficulty based on responses.",
-    icon: (
-      <svg
-        width="38"
-        height="38"
-        viewBox="0 0 38 38"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="iconGradientB" x1="0" y1="19" x2="38" y2="19">
-            <stop stopColor="#8C45FF" />
-            <stop offset="1" stopColor="#0AAFF9" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M5 6h19c2.2 0 4 1.8 4 4v12c0 2.2-1.8 4-4 4H13l-6 6V10c0-2.2 1.8-4 4-4Zm24 5 4 2.1 4-2.1-4-2.1-4 2.1Zm8 3.8-4 2.1-4-2.1V23c0 .7.4 1.4 1.1 1.7l2.1 1.1c.5.3 1.1.3 1.6 0l2.1-1.1c.7-.3 1.1-1 1.1-1.7v-8.2Zm-20.4 8.2 5.2-5.2-2.1-2.1-3.1 3.1-1.4-1.4-2.1 2.1 3.5 3.5Z"
-          fill="url(#iconGradientB)"
-        />
-      </svg>
-    ),
+    icon: "ai",
   },
   {
     title: "Actionable Insights",
     description:
       "Hiring teams receive structured insights not just pass/fail scores.",
-    icon: (
-      <svg
-        width="38"
-        height="38"
-        viewBox="0 0 38 38"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="iconGradientC" x1="0" y1="19" x2="38" y2="19">
-            <stop stopColor="#8C45FF" />
-            <stop offset="1" stopColor="#0AAFF9" />
-          </linearGradient>
-        </defs>
-        <path
-          d="m7 27 7.3-7.2 4.6 4.6L29.7 14l2.3 2.3-13.1 13-4.6-4.6L9.3 29 7 27Zm3.6-12.8 1.9-3.8 3.8-1.9-3.8-1.9-1.9-3.8-1.9 3.8L4.9 8.5l3.8 1.9 1.9 3.8Zm19.2 0 1.2-2.4 2.4-1.2-2.4-1.2-1.2-2.4-1.2 2.4-2.4 1.2 2.4 1.2 1.2 2.4Z"
-          fill="url(#iconGradientC)"
-        />
-      </svg>
-    ),
+    icon: "insights",
   },
   {
     title: "In-Depth Skill Evaluation",
     description:
       "Beyond correctness, it evaluates: Problem-solving approach, code quality, debugging mindset, communication clarity.",
-    icon: (
-      <svg
-        width="38"
-        height="38"
-        viewBox="0 0 38 38"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="iconGradientD" x1="0" y1="19" x2="38" y2="19">
-            <stop stopColor="#8C45FF" />
-            <stop offset="1" stopColor="#0AAFF9" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M4 31V18h7v13H4Zm11 0V9h7v22h-7Zm11 0V4h8v27h-8Z"
-          fill="url(#iconGradientD)"
-        />
-      </svg>
-    ),
+    icon: "skills",
   },
 ];
 
@@ -159,15 +201,18 @@ export default function HowItWorks() {
         </>
       }
     >
-      <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-12 sm:grid-cols-2">
         {features.map((item) => (
-          <article key={item.title} className="flex items-start gap-4 sm:gap-5">
-            <IconShell>{item.icon}</IconShell>
-            <div>
+          <article
+            key={item.title}
+            className="mx-auto flex max-w-[620px] flex-col items-center text-center sm:flex-row sm:items-center sm:gap-5 sm:text-left"
+          >
+            <FeatureIcon type={item.icon} />
+            <div className="mt-6 sm:mt-0">
               <h3 className="font-kanit text-[24px] leading-[1.1] text-[#272A32] lg:text-[32px]">
                 {item.title}
               </h3>
-              <p className="mt-2 text-[16px] leading-relaxed text-[#2B2E3A] lg:text-[24px] font-light">
+              <p className="mt-4 text-[16px] leading-relaxed text-[#2B2E3A] font-light lg:text-[24px]">
                 {item.description}
               </p>
             </div>
