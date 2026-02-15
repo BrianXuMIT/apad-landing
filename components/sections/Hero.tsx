@@ -21,10 +21,27 @@ const Hero = () => {
             interviews without interviewers.
           </p>
           <AnimatedBorderButton
-            className="mt-0 w-fit overflow-visible rounded-[20px] p-0 shadow-[0_12px_28px_rgba(109,86,255,0.28),0_0_14px_rgba(45,168,255,0.14)] transition-all duration-300 hover:shadow-[0_18px_38px_rgba(109,86,255,0.42),0_0_28px_rgba(45,168,255,0.30)] [&>span:nth-child(1)]:hidden [&>span:nth-child(2)]:hidden lg:mt-16"
-            innerClassName="h-[56px] rounded-[19px] border border-[#8C45FF]/55 px-8 font-kanit text-[20px] font-medium tracking-[0.01em] transition-all duration-300 hover:brightness-105 lg:h-[60px] lg:px-10 lg:text-[24px]"
+            rotateBorder={false}
+            className="mt-1 rounded-[18px] shadow-[0_10px_24px_rgba(125,77,255,0.30)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(125,77,255,0.36)] lg:mt-16"
+            innerClassName="h-[54px] rounded-[17px] bg-[linear-gradient(96deg,#8C45FF_5%,#0AAFF9_96%)] px-7 font-kanit text-[18px] font-medium tracking-[0.01em] text-white sm:h-[58px] sm:px-9 sm:text-[20px] lg:h-[62px] lg:px-10 lg:text-[24px]"
           >
-            Request Demo
+            <span className="inline-flex items-center gap-2.5">
+              Request Demo
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                fill="none"
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-5 sm:w-5"
+              >
+                <path
+                  d="M4.167 10h11.666M10.833 4.583 16.25 10l-5.417 5.417"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
           </AnimatedBorderButton>
         </div>
 

@@ -47,17 +47,18 @@ export default function SectionLayout({
         className={`relative z-10 mx-auto flex w-full max-w-[1440px] flex-col px-4 sm:px-8 lg:px-12 ${containerClassName}`.trim()}
       >
         <div
-          className={`flex flex-col items-center gap-[8px] ${headerClassName}`.trim()}
+          className={`relative flex flex-col items-center gap-[8px] ${headerClassName}`.trim()}
         >
+          <div className="pointer-events-none absolute left-1/2 top-[52px] -z-10 h-[120px] w-[min(78vw,560px)] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(144,88,255,0.18)_0%,rgba(144,88,255,0.08)_34%,rgba(144,88,255,0)_72%)] blur-[26px]" />
           {badge ?? (badgeText ? <HighlightBadge text={badgeText} /> : null)}
           <h2
-            className={`mt-5 text-center font-kanit text-[32px] font-medium text-[#111216] lg:text-[48px] ${titleClassName}`.trim()}
+            className={`relative mt-5 bg-[linear-gradient(100deg,#10131F_0%,#2D3144_48%,#7F3EF1_100%)] bg-clip-text text-center font-kanit text-[32px] font-medium leading-[1.08] tracking-[-0.012em] text-transparent lg:text-[48px] ${titleClassName}`.trim()}
           >
             {title}
           </h2>
           {description ? (
             <p
-              className={`mt-2 text-center max-w-[980px] font-kanit lg:text-[24px] text-[#45485F] text-[20px] ${descriptionClassName}`.trim()}
+              className={`mt-2 max-w-[980px] text-center font-kanit text-[20px] text-[#45485F] lg:text-[24px] ${descriptionClassName}`.trim()}
             >
               {description}
             </p>

@@ -5,6 +5,7 @@ type AnimatedBorderButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   innerClassName?: string;
   variant?: "animated" | "neon";
+  rotateBorder?: boolean;
 };
 
 export default function AnimatedBorderButton({
@@ -12,6 +13,7 @@ export default function AnimatedBorderButton({
   className,
   innerClassName,
   variant = "animated",
+  rotateBorder = true,
   type = "button",
   ...props
 }: AnimatedBorderButtonProps) {
@@ -32,7 +34,14 @@ export default function AnimatedBorderButton({
         <span className="pointer-events-none absolute -inset-2 -z-10 rounded-[inherit] bg-[#31DDFF]/90 opacity-0 blur-[16px] transition-all duration-300 group-hover:opacity-100 group-hover:blur-[20px]" />
       ) : (
         <>
-          <span className="pointer-events-none absolute inset-0 z-0 rounded-[inherit] [will-change:transform] animate-[spin_12s_linear_infinite] bg-[conic-gradient(from_270deg,#8C45FF_0deg,#7560FF_90deg,#2DA8FF_180deg,#7560FF_270deg,#8C45FF_360deg)] opacity-90 transition-[filter] duration-300 group-hover:animate-none group-hover:brightness-125" />
+          <span
+            className={cn(
+              "pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[conic-gradient(from_270deg,#8C45FF_0deg,#7560FF_90deg,#2DA8FF_180deg,#7560FF_270deg,#8C45FF_360deg)] opacity-90 transition-[filter] duration-300 group-hover:brightness-125",
+              rotateBorder
+                ? "[will-change:transform] animate-[spin_12s_linear_infinite] group-hover:animate-none"
+                : "",
+            )}
+          />
           <span className="pointer-events-none absolute -inset-3 -z-10 rounded-[inherit] bg-[#D14BFF]/28 opacity-0 blur-[24px] transition-opacity duration-500 ease-out group-hover:opacity-100" />
         </>
       )}

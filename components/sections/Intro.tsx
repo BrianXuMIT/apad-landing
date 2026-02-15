@@ -99,20 +99,28 @@ export default function Intro() {
                 <AnimatedBorderCard
                   className={`h-full w-full rounded-[16px] transition-all duration-300 lg:min-h-[210px] lg:rounded-[20px] ${
                     isActive
-                      ? "shadow-[0_0_0_1px_rgba(140,69,255,0.46),0_0_22px_rgba(120,88,255,0.22)]"
+                      ? "shadow-[0_0_0_2px_rgba(140,69,255,0.65),0_0_28px_rgba(140,69,255,0.35),0_0_40px_rgba(120,88,255,0.20)] scale-[1.02]"
                       : "shadow-[0_0_0_1px_rgba(134,98,255,0.16),0_0_14px_rgba(120,88,255,0.10)] hover:shadow-[0_0_0_1px_rgba(140,69,255,0.30),0_0_20px_rgba(120,88,255,0.18)]"
                   }`}
                   innerClassName={`flex h-full flex-col rounded-[15px] px-3 py-3 sm:px-4 sm:py-4 lg:rounded-[19px] lg:px-5 lg:py-5 ${
                     isActive
-                      ? "bg-[linear-gradient(160deg,#FFFFFF,#F6F1FF)]"
+                      ? "bg-[linear-gradient(160deg,#FFFFFF_0%,#F0E8FF_50%,#E8DFFF_100%)]"
                       : "bg-[linear-gradient(160deg,#FFFFFF,#F9F6FF)]"
                   }`}
                 >
                   <div>
-                    <h3 className="font-kanit text-[clamp(16px,1.65vw,26px)] leading-[1.25] text-[#262732]">
+                    <h3 className={`font-kanit text-[clamp(16px,1.65vw,26px)] leading-[1.25] transition-colors duration-300 ${
+                      isActive 
+                        ? "text-[#6B2FD6] font-semibold" 
+                        : "text-[#262732]"
+                    }`}>
                       {block.heading}
                     </h3>
-                    <p className="mt-3 hidden font-kanit text-[18px] leading-[1.42] text-[#454857] lg:block">
+                    <p className={`mt-3 hidden font-kanit text-[18px] leading-[1.42] transition-colors duration-300 lg:block ${
+                      isActive 
+                        ? "text-[#4A2A7A]" 
+                        : "text-[#454857]"
+                    }`}>
                       {block.blurb}
                     </p>
                   </div>

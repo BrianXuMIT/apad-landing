@@ -11,7 +11,7 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-  title: "APM-AI - AI-Powered Hiring Platform",
+  title: "APADCode - AI-Powered Live Coding Interviewer",
   description:
     "Shaping the next era of AI you can trust. Answer insightful questions, explore fresh perspectives, and discover how AI's evaluation can lead you to the next level.",
 };
