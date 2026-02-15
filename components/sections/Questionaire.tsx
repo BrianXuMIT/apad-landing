@@ -52,7 +52,7 @@ export default function Questionaire() {
         </>
       }
     >
-      <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-12">
         <div className="rounded-[8px] bg-transparent lg:min-h-[640px]">
           {faqItems.map((item, index) => {
             const isActive = index === activeIndex;
@@ -100,13 +100,13 @@ export default function Questionaire() {
           })}
         </div>
 
-        <div className="relative mx-auto w-full max-w-[520px] pt-8 lg:pt-16">
+        <div className="relative mx-auto hidden w-full max-w-[520px] pt-6 sm:pt-8 lg:mx-0 lg:block lg:justify-self-end lg:self-center lg:pt-0">
           <div className="pointer-events-none absolute left-1/2 top-[56%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-[56%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
             src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/question_image_pn060u.png"
             alt="APADCode FAQ visual"
-            className="relative z-[2] mx-auto w-full max-w-[470px] object-contain"
+            className="relative z-[2] ml-auto w-full max-w-[470px] object-contain"
           />
         </div>
       </div>
