@@ -6,6 +6,45 @@ import SectionLayout from "./SectionLayout";
 import AnimatedBorderCard from "../ui/AnimatedBorderCard";
 import { blogPosts } from "@/lib/blog-posts";
 
+type BlogPost = {
+  title: string;
+  description: string;
+  image: string;
+  hovered?: boolean;
+};
+
+const posts: BlogPost[] = [
+  {
+    title: "Why Traditional Live Coding Interview Don't Scale",
+    description:
+      "Human interviews offer depth but become slow, expensive, and inconsistent at scale. Here is why companies are rethinking them.",
+    image:
+      "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/blog_image_01_tkecv0.png",
+    hovered: true,
+  },
+  {
+    title: "Coding Tests vs Real Interviews: What's missing?",
+    description:
+      "Automated assessments filter candidates fast, but often missing reasoning, communication and real-world thinking.",
+    image:
+      "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192578/blog_image_02_a3pzdu.png",
+  },
+  {
+    title: "How AI Is Transforming Technical Hiring",
+    description:
+      "AI powered live interviews combine depth and scalability - rephrasing how modern teams evaluates engineers.",
+    image:
+      "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192571/blog_image_03_cdm2vv.png",
+  },
+  {
+    title: "Reducing Interview Fatigue Without Compromising Quality",
+    description:
+      "Discover how companies cut interview hours while maintaining high hiring standards.",
+    image:
+      "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/blog_image_04_niqcx1.png",
+  },
+];
+
 function ReadMoreButton({ href }: { href: string }) {
   return (
     <Link

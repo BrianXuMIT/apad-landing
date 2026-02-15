@@ -17,11 +17,13 @@ const scaleFeatures = [
 const qualityFeatures = [
   {
     title: "Consistent & unbiased evaluation",
-    description: "Every candidate is assessed with the same depth and fairness.",
+    description:
+      "Every candidate is assessed with the same depth and fairness.",
   },
   {
     title: "Designed for real-world hiring",
-    description: "Not puzzles. Not trick questions. Real skills that matter on the job.",
+    description:
+      "Not puzzles. Not trick questions. Real skills that matter on the job.",
   },
 ];
 
@@ -116,13 +118,7 @@ function FeaturePanel({
   );
 }
 
-function VisualPanel({
-  src,
-  alt,
-}: {
-  src: string;
-  alt: string;
-}) {
+function VisualPanel({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative mx-auto w-full max-w-[clamp(260px,74vw,650px)]">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/76 blur-[108px] lg:h-[390px] lg:w-[390px] lg:blur-[130px]" />
