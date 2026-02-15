@@ -1,15 +1,16 @@
 import React from "react";
+import AnimatedBorderButton from "../ui/AnimatedBorderButton";
 
 const Hero = () => {
   return (
-    <section className="relative z-10 flex min-h-screen w-full items-center overflow-visible font-kanit ">
+    <section className="relative z-10 flex min-h-screen w-full items-center overflow-visible font-kanit max-[1400px]:pt-[100px] ">
       {/* --- Background Blur Circles --- */}
       {/* Large Purple Glow behind images */}
       {/* Subtle Blue Glow bottom left */}
-      <div className="absolute bottom-[-10%] left-[-5%] h-[600px] w-[600px] rounded-full bg-[#3B82F6]/10 blur-[120px] -z-10" />
-      <div className="pointer-events-none absolute -bottom-40 right-[8%] h-[420px] w-[420px] rounded-full bg-[#A855F7]/45 blur-[150px]" />
+      {/* <div className="absolute bottom-[-10%] left-[-5%] h-[600px] w-[600px] rounded-full bg-[#3B82F6]/10 blur-[120px] -z-10" /> */}
+      {/* <div className="pointer-events-none absolute -bottom-40 right-[8%] h-[420px] w-[420px] rounded-full bg-[#A855F7]/45 blur-[150px]" /> */}
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2">
         {/* --- Left Content: Precise Typography --- */}
         <div className="z-10 flex flex-col items-center gap-8 text-center lg:items-start lg:text-left">
           <p className="w-full max-w-[650px] bg-[linear-gradient(97deg,#000_4.98%,#8C45FF_63.11%)] bg-clip-text text-[40px] leading-[1.14] text-transparent [text-stroke:1px_black] [-webkit-text-stroke:1px_black] [paint-order:stroke_fill] sm:text-[52px] lg:text-[68px]">
@@ -19,9 +20,12 @@ const Hero = () => {
             World’s first AI system designed to conduct human-like live coding
             interviews without interviewers.
           </p>
-          <button className="w-fit rounded-[18px] border border-[#8C45FF] bg-gradient-to-r from-[#8C45FF] to-[#0AAFF9] px-9 py-3 text-[22px] font-medium text-white shadow-xl shadow-purple-200 transition-all hover:opacity-90 active:scale-95 lg:px-10 lg:py-2.5 lg:text-[25px]">
+          <AnimatedBorderButton
+            className="mt-2 w-fit rounded-[20px] lg:mt-16"
+            innerClassName="h-[56px] rounded-[19px] px-8 font-kanit text-[20px] font-medium tracking-[0.01em] shadow-[0_10px_24px_rgba(109,86,255,0.30)] transition-all duration-300 hover:brightness-105 lg:h-[60px] lg:px-10 lg:text-[24px]"
+          >
             Request Demo
-          </button>
+          </AnimatedBorderButton>
         </div>
 
         {/* --- Right Content: Image Stack with Connector --- */}

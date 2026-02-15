@@ -38,7 +38,7 @@ const faqItems: FaqItem[] = [
 ];
 
 export default function Questionaire() {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
     <SectionLayout
@@ -66,7 +66,9 @@ export default function Questionaire() {
                 >
                   <button
                     type="button"
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() =>
+                      setActiveIndex((prev) => (prev === index ? null : index))
+                    }
                     className="flex w-full items-center justify-between gap-6 px-0 py-5 text-left"
                     aria-expanded={isActive}
                   >
@@ -101,14 +103,9 @@ export default function Questionaire() {
           <div className="pointer-events-none absolute left-1/2 top-[56%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-[56%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770987343/Image23_hxww7q.png"
-            alt="APADCode robot assistant"
+            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771124450/New_Project_11_ir6vwn.png"
+            alt="APADCode FAQ visual"
             className="relative z-[2] mx-auto w-full max-w-[470px] object-contain"
-          />
-          <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770987342/Image24_aqk4k1.png"
-            alt="Question symbol"
-            className="absolute right-1 top-0 z-[3] w-[130px] object-contain sm:w-[150px]"
           />
         </div>
       </div>

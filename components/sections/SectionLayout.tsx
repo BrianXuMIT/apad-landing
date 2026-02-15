@@ -32,7 +32,7 @@ export default function SectionLayout({
 }: SectionLayoutProps) {
   return (
     <section
-      className={`relative w-full overflow-visible bg-transparent pb-16 ${sectionClassName}`.trim()}
+      className={`relative w-full overflow-visible bg-transparent pt-16 ${sectionClassName}`.trim()}
     >
       {decorations ? (
         <div className="pointer-events-none absolute inset-0 z-0">
@@ -41,10 +41,10 @@ export default function SectionLayout({
       ) : null}
 
       <div
-        className={`relative z-10 mx-auto flex w-full max-w-[1140px] flex-col px-4 sm:px-8 lg:px-12 ${containerClassName}`.trim()}
+        className={`relative z-10 mx-auto flex w-full max-w-[1440px] flex-col px-4 sm:px-8 lg:px-12 ${containerClassName}`.trim()}
       >
         <div
-          className={`flex flex-col items-center gap-[16px] ${headerClassName}`.trim()}
+          className={`flex flex-col items-center gap-[8px] ${headerClassName}`.trim()}
         >
           {badge ?? (badgeText ? <HighlightBadge text={badgeText} /> : null)}
           <h2
@@ -54,7 +54,7 @@ export default function SectionLayout({
           </h2>
           {description ? (
             <p
-              className={`mt-2 text-center font-kanit lg:text-[24px] text-[#45485F] text-[20px] ${descriptionClassName}`.trim()}
+              className={`mt-2 text-center max-w-[980px] font-kanit lg:text-[24px] text-[#45485F] text-[20px] ${descriptionClassName}`.trim()}
             >
               {description}
             </p>

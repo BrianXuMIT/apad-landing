@@ -1,11 +1,15 @@
 import React from "react";
+import AnimatedBorderCard from "./ui/AnimatedBorderCard";
 
 type HighlightBadgeProps = {
   text: string;
 };
 export default function HighlightBadge({ text }: HighlightBadgeProps) {
   return (
-    <div className="inline-flex items-center gap-4 rounded-[20px] border border-[#8C45FF] bg-white px-8 py-[13px]">
+    <AnimatedBorderCard
+      className="inline-block rounded-[20px]"
+      innerClassName="flex items-center gap-2 bg-white px-4 py-2 lg:gap-4 lg:px-8 lg:py-3"
+    >
       <svg
         width="32"
         height="32"
@@ -23,6 +27,6 @@ export default function HighlightBadge({ text }: HighlightBadgeProps) {
       <p className="whitespace-nowrap font-kanit text-[16px] font-light text-black sm:text-[20px] lg:text-[24px]">
         {text}
       </p>
-    </div>
+    </AnimatedBorderCard>
   );
 }

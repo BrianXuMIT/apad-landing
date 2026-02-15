@@ -10,11 +10,11 @@ function Feature({
 }) {
   return (
     <div className="flex items-start gap-4">
-      <span className="mt-[6px] font-kanit text-[40px] leading-none text-[#111216]">
+      <span className="font-kanit text-[40px] leading-none text-[#111216] ">
         ✦
       </span>
       <div>
-        <h3 className="font-kanit text-[24px] leading-[1.18] font-light text-[#262932] lg:text-[32px]">
+        <h3 className="font-kanit text-[24px] leading-[1.18] text-[#262932] lg:text-[32px]">
           {title}
         </h3>
         <p className="mt-3 font-kanit text-[16px] leading-[1.42] text-[#2F3240] lg:text-[24px] font-light">

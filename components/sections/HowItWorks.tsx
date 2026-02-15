@@ -212,7 +212,7 @@ export default function HowItWorks() {
               <h3 className="font-kanit text-[24px] leading-[1.1] text-[#272A32] lg:text-[32px]">
                 {item.title}
               </h3>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#2B2E3A] font-light lg:text-[24px]">
+              <p className="mt-4 text-[16px] leading-relaxed text-[#2B2E3A] lg:text-[24px]">
                 {item.description}
               </p>
             </div>

@@ -33,21 +33,23 @@ function SparkleMarker() {
 export default function UniqueFeatures() {
   return (
     <SectionLayout
-      badgeText="+ Real interviews. Real thinking"
+      badgeText="Real interviews. Real thinking"
       title="What Makes APADCode Different"
       description="Not just a test, Not just an interview."
       decorations={<></>}
     >
-      <div className="mt-12 grid grid-cols-1 items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-10 min-[1100px]:grid-cols-[1.08fr_0.92fr] min-[1100px]:gap-12">
+      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-10 min-[1100px]:grid-cols-[1.08fr_0.92fr] min-[1100px]:gap-12">
         <div>
-          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px]">
+          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px] lg:text-left">
             Traditional hiring forces a trade-off,
           </h3>
           <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#2A2D3E] sm:text-base">
             {firstBlockPoints.map((point) => (
               <li key={point} className="flex items-center gap-3">
-                <SparkleMarker />
-                <span className="font-kanit text-[16px] font-light leading-[1.45] lg:text-[24px] lg:leading-[1.5]">
+                <span className="mt-[6px] font-kanit text-[40px] leading-none text-[#111216]">
+                  ✦
+                </span>
+                <span className="font-kanit text-[16px] leading-[1.45] lg:text-[24px] lg:leading-[1.5]">
                   {point}
                 </span>
               </li>
@@ -66,8 +68,8 @@ export default function UniqueFeatures() {
         </div>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 items-center gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-10 min-[1100px]:mt-16 min-[1100px]:grid-cols-[0.92fr_1.08fr] min-[1100px]:gap-12">
-        <div className="relative order-2 mx-auto w-full max-w-[300px] md:order-1 min-[1100px]:max-w-[420px]">
+      <div className="mt-12 grid grid-cols-1 justify-between gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-10 min-[1100px]:mt-16 min-[1100px]:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+        <div className="justify-self-start relative order-2 mx-auto w-full max-w-[300px] md:order-1 min-[1100px]:max-w-[420px]">
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
@@ -77,15 +79,17 @@ export default function UniqueFeatures() {
           />
         </div>
 
-        <div className="order-1 md:order-2">
-          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px]">
+        <div className="justify-self-end order-1 md:order-2">
+          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px] lg:text-left">
             APADCode removes the compromise
           </h3>
           <ul className="mt-6 space-y-4 text-[16px] leading-relaxed text-[#2A2D3E] lg:text-[24px]">
             {secondBlockPoints.map((point) => (
               <li key={point} className="flex items-center gap-3">
-                <SparkleMarker />
-                <span className="font-kanit text-[16px] font-light leading-[1.45] lg:text-[24px] lg:leading-[1.5]">
+                <span className="mt-[6px] font-kanit text-[40px] leading-none text-[#111216]">
+                  ✦
+                </span>
+                <span className="font-kanit text-[16px] leading-[1.45] lg:text-[24px] lg:leading-[1.5]">
                   {point}
                 </span>
               </li>
