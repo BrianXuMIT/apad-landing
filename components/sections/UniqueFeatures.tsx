@@ -33,6 +33,7 @@ function SparkleMarker() {
 export default function UniqueFeatures() {
   return (
     <SectionLayout
+      sectionId="ai-interviewer"
       badgeText="Real interviews. Real thinking"
       title="What Makes APADCode Different"
       description="Not just a test, Not just an interview."
@@ -40,7 +41,7 @@ export default function UniqueFeatures() {
     >
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-10 min-[1100px]:grid-cols-[1.08fr_0.92fr] min-[1100px]:gap-12">
         <div>
-          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px] lg:text-left">
+          <h3 className="font-kanit text-center text-[24px] leading-tight text-[#111216] lg:text-[36px] lg:text-left mt-6 lg:mt-14">
             Traditional hiring forces a trade-off,
           </h3>
           <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#2A2D3E] sm:text-base">

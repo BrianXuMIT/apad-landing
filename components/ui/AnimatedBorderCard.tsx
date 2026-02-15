@@ -19,7 +19,7 @@ export default function AnimatedBorderCard({
         className,
       )}
     >
-      <div className="pointer-events-none absolute inset-0 [will-change:transform] animate-[spin_12s_linear_infinite] bg-[conic-gradient(from_0deg,#8C45FF,#7560FF,#2DA8FF,#7560FF,#8C45FF)] opacity-90" />
+      <div className="pointer-events-none absolute inset-0 [will-change:transform] animate-[spin_12s_linear_infinite] bg-[conic-gradient(from_270deg,#8C45FF_0deg,#7560FF_90deg,#2DA8FF_180deg,#7560FF_270deg,#8C45FF_360deg)] opacity-90" />
       <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[28px] bg-[#D14BFF]/28 opacity-0 blur-[32px] transition-opacity duration-500 ease-out group-hover:opacity-100" />
       <div className={cn("relative z-[1] h-full rounded-[19px]", innerClassName)}>
         {children}

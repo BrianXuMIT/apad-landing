@@ -17,7 +17,7 @@ function Feature({
         <h3 className="font-kanit text-[24px] leading-[1.18] text-[#262932] lg:text-[32px]">
           {title}
         </h3>
-        <p className="mt-3 font-kanit text-[16px] leading-[1.42] text-[#2F3240] lg:text-[24px] font-light">
+        <p className="mt-3 font-kanit text-[16px] leading-[1.42] text-[#2F3240] lg:text-[24px] ">
           {description}
         </p>
       </div>
@@ -38,8 +38,8 @@ export default function WhyTeamsChoose() {
         </>
       }
     >
-      <div className="mt-16 grid grid-cols-1 items-center gap-10 lg:mt-24 lg:grid-cols-[1fr_1fr] lg:gap-14">
-        <div className="space-y-11">
+      <div className="mt-6 grid grid-cols-1 items-center gap-10 md:mt-12 lg:mt-16 lg:grid-cols-[1fr_1fr] lg:gap-14">
+        <div className="space-y-6 md:space-y-8 lg:space-y-12">
           <Feature
             title="Human-like depth, at machine scale"
             description="Conduct thousands of interviews without interviewer fatigue."
@@ -72,7 +72,7 @@ export default function WhyTeamsChoose() {
           />
         </div>
 
-        <div className="order-1 space-y-11 lg:order-2">
+        <div className="order-1 space-y-6 md:space-y-8 lg:space-y-12 lg:order-2">
           <Feature
             title="Consistent & unbiased evaluation"
             description="Every candidate is assessed with the same depth and fairness."

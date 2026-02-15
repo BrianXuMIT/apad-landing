@@ -86,9 +86,9 @@ function PlanCard({
         {plan.features.map((feature) => (
           <li
             key={feature}
-            className="flex items-start gap-3 font-kanit text-[18px] text-[#1E2330]"
+            className="flex items-start gap-3 font-kanit text-[18px] text-[#1E2330] items-center"
           >
-            <span className="text-[20px] leading-none">✦</span>
+            <span className="text-[20px] leading-none ">✦</span>
             <span>{feature}</span>
           </li>
         ))}
@@ -133,6 +133,7 @@ export default function Pricing() {
 
   return (
     <SectionLayout
+      sectionId="pricing"
       badgeText="Simple Pricing, Serious Impact."
       title="Explore Our Plans"
       description="Scale your interviews without scaling your interviewers."

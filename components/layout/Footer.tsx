@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="self-center grid grid-cols-3 gap-x-6 gap-y-8 sm:gap-x-10 lg:items-start lg:pt-2">
               {footerColumns.map((column) => (
                 <div key={column.title}>
-                  <h3 className="font-kanit text-[16px] font-medium text-[#1E2430] sm:text-[20px]">
+                  <h3 className="font-kanit text-[16px] font-medium text-[#1E2430] lg:text-[20px]">
                     {column.title}
                   </h3>
                   <ul className="mt-3 space-y-2.5">
@@ -47,7 +47,7 @@ export default function Footer() {
                       <li key={link}>
                         <Link
                           href="#"
-                          className="font-kanit text-[16px] text-[#2D3444] transition-opacity hover:opacity-75 sm:text-[20px]"
+                          className="font-kanit text-[16px] text-[#2D3444] transition-opacity hover:opacity-75 lg:text-[20px]"
                         >
                           {link}
                         </Link>
@@ -63,26 +63,26 @@ export default function Footer() {
 
       <div className="bg-gradient-to-r from-[#8C45FF] via-[#8F35FA] to-[#992DFF]">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-2 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
-          <p className="text-center font-kanit text-[16px] text-white sm:text-left lg:text-[20px]">
+          <p className="text-center font-kanit text-[14px] text-white sm:text-left lg:text-[18px]">
             © 2026 APADCode, Inc. All rights reserved.
           </p>
 
           <div className="flex items-center justify-center gap-x-6 sm:justify-end sm:gap-x-8">
             <Link
               href="#"
-              className="font-kanit text-[16px] text-white transition-opacity hover:opacity-85 lg:text-[20px]"
+              className="font-kanit text-[14px] text-white transition-opacity hover:opacity-85 lg:text-[18px]"
             >
               Terms of Service
             </Link>
             <Link
               href="#"
-              className="font-kanit text-[16px] text-white transition-opacity hover:opacity-85 lg:text-[20px]"
+              className="font-kanit text-[14px] text-white transition-opacity hover:opacity-85 lg:text-[18px]"
             >
               Privacy Policy
             </Link>
             <Link
               href="#"
-              className="font-kanit text-[16px] text-white transition-opacity hover:opacity-85 lg:text-[20px]"
+              className="font-kanit text-[14px] text-white transition-opacity hover:opacity-85 lg:text-[18px]"
             >
               Cookies
             </Link>

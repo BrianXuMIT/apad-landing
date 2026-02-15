@@ -191,6 +191,7 @@ const features: FeatureItem[] = [
 export default function HowItWorks() {
   return (
     <SectionLayout
+      sectionId="how-it-works"
       badgeText="Human-level insight. AI-level scale."
       title="How It Works"
       description="Log-in. design skill-based tests, and let AI handle the rest-custom topics, question difficulty, timers, and result tracking - all in one place."
@@ -201,7 +202,7 @@ export default function HowItWorks() {
         </>
       }
     >
-      <div className="mt-10 grid grid-cols-1 gap-12 sm:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-6 md:gap-8 lg:gap-12 sm:grid-cols-2">
         {features.map((item) => (
           <article
             key={item.title}

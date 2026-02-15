@@ -42,6 +42,7 @@ export default function Questionaire() {
 
   return (
     <SectionLayout
+      sectionId="assessments"
       badgeText="Smart answers to common questions"
       title="Your frequently asked questions"
       decorations={

@@ -111,9 +111,11 @@ export default function Blog() {
 
   const canPrev = page > 0;
   const canNext = page < totalPages - 1;
+  const cardGap = 24;
 
   return (
     <SectionLayout
+      sectionId="blogs"
       badgeText="Insights on the Future of Hiring"
       title="Blog"
       description="Deep drive into AI interviews, technical screening, and modern hiring strategies"
@@ -125,26 +127,26 @@ export default function Blog() {
       }
     >
       <div className="mx-auto mt-12 w-full max-w-[1280px] lg:mt-14">
-        <div className="overflow-hidden px-1">
+        <div className="overflow-hidden px-1 pb-2">
           <div
             className="grid auto-cols-[100%] grid-flow-col gap-6 transition-transform duration-500 ease-out"
             style={{
-              gridAutoColumns: `calc((100% - ${(itemsPerView - 1) * 24}px) / ${itemsPerView})`,
-              transform: `translateX(-${page * 100}%)`,
+              gridAutoColumns: `calc((100% - ${(itemsPerView - 1) * cardGap}px) / ${itemsPerView})`,
+              transform: `translateX(calc(-${page} * (100% + ${cardGap}px)))`,
             }}
           >
             {posts.map((post) => (
               <AnimatedBorderCard
                 key={post.title}
                 className="w-full rounded-[34px]"
-                innerClassName="flex h-full flex-col overflow-hidden rounded-[34px] bg-white"
+                innerClassName="flex h-full flex-col overflow-hidden rounded-[33px] bg-white"
               >
                 <img
                   src={post.image}
                   alt={post.title}
                   className="h-[210px] w-full object-cover"
                 />
-                <div className="flex flex-1 flex-col p-5">
+                <div className="flex flex-1 flex-col px-5 pt-5 pb-7">
                   <h3 className="font-kanit text-[22px] font-light leading-[1.25] text-[#151925]">
                     {post.title}
                   </h3>

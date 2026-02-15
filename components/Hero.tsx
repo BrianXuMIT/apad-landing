@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import back from '@/assets/back.webp'
-import { BOOK_DEMO_URL } from '@/lib/links'
+import { motion } from "framer-motion";
+import back from "@/assets/back.webp";
+import { BOOK_DEMO_URL } from "@/lib/links";
 
 export default function Hero() {
   return (
@@ -10,13 +10,13 @@ export default function Hero() {
       id="hero"
       aria-labelledby="hero-title"
       aria-describedby="hero-summary"
-      className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-cover bg-center"
+      className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 bg-cover bg-center"
       style={{ backgroundImage: `url(${back.src})` }}
     >
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-black/70"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 animate-pulse"></div>
-      
+
       <div className="mx-auto max-w-4xl text-center relative z-10">
         <motion.h1
           id="hero-title"
@@ -35,8 +35,9 @@ export default function Hero() {
           .
         </motion.h1>
         <p id="hero-summary" className="sr-only">
-          APADCode is a live AI coding interview platform for hiring teams. It evaluates
-          how candidates think, communicate, and reason in real time during live coding.
+          APADCode is a live AI coding interview platform for hiring teams. It
+          evaluates how candidates think, communicate, and reason in real time
+          during live coding.
         </p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,11 +47,7 @@ export default function Hero() {
         >
           <div className="mb-3 flex w-[120%] max-w-none self-center items-center gap-3 px-2">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-300/70 to-transparent" />
-            <svg
-              viewBox="0 0 40 24"
-              aria-hidden="true"
-              className="h-5 w-10"
-            >
+            <svg viewBox="0 0 40 24" aria-hidden="true" className="h-5 w-10">
               <defs>
                 <linearGradient id="jewelSky" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stopColor="#e0f2fe" stopOpacity="0.95" />
@@ -90,8 +87,20 @@ export default function Hero() {
                   strokeOpacity="0.6"
                   strokeWidth="0.6"
                 />
-                <circle cx="0" cy="-8" r="1.1" fill="#7dd3fc" fillOpacity="0.8" />
-                <circle cx="0" cy="8" r="1.1" fill="#7dd3fc" fillOpacity="0.8" />
+                <circle
+                  cx="0"
+                  cy="-8"
+                  r="1.1"
+                  fill="#7dd3fc"
+                  fillOpacity="0.8"
+                />
+                <circle
+                  cx="0"
+                  cy="8"
+                  r="1.1"
+                  fill="#7dd3fc"
+                  fillOpacity="0.8"
+                />
               </g>
             </svg>
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-300/70 to-transparent" />
@@ -115,7 +124,8 @@ export default function Hero() {
             <span className="bg-gradient-to-r from-sky-200 via-white to-sky-300 bg-clip-text text-transparent">
               Live coding
             </span>{" "}
-            evaluates how candidates think and communicate — not just whether their code passes tests.
+            evaluates how candidates think and communicate — not just whether
+            their code passes tests.
           </span>
         </motion.p>
         <motion.a
@@ -125,7 +135,7 @@ export default function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           href={BOOK_DEMO_URL}
-          className="group relative inline-flex items-center justify-center overflow-hidden rounded-md border border-white/20 bg-white/5 px-8 py-4 text-lg font-semibold text-white/95 backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
+          className="group relative inline-flex items-center justify-center rounded-md border border-white/20 bg-white/5 px-8 py-4 text-lg font-semibold text-white/95 backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
         >
           <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 before:absolute before:inset-0 before:content-[''] before:bg-gradient-to-r before:from-sky-400/20 before:via-transparent before:to-sky-400/20 group-hover:opacity-100" />
           <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/40 opacity-60" />
@@ -133,5 +143,5 @@ export default function Hero() {
         </motion.a>
       </div>
     </section>
-  )
+  );
 }

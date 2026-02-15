@@ -3,7 +3,7 @@ import AnimatedBorderButton from "../ui/AnimatedBorderButton";
 
 const Hero = () => {
   return (
-    <section className="relative z-10 flex min-h-screen w-full items-center overflow-visible font-kanit max-[1400px]:pt-[100px] ">
+    <section className="relative z-10 mb-10 flex min-h-screen w-full items-center overflow-visible font-kanit px-4 max-[484px]:pt-[64px] pt-[100px] sm:px-6 lg:mb-16 lg:px-12">
       {/* --- Background Blur Circles --- */}
       {/* Large Purple Glow behind images */}
       {/* Subtle Blue Glow bottom left */}
@@ -21,8 +21,8 @@ const Hero = () => {
             interviews without interviewers.
           </p>
           <AnimatedBorderButton
-            className="mt-2 w-fit rounded-[20px] lg:mt-16"
-            innerClassName="h-[56px] rounded-[19px] px-8 font-kanit text-[20px] font-medium tracking-[0.01em] shadow-[0_10px_24px_rgba(109,86,255,0.30)] transition-all duration-300 hover:brightness-105 lg:h-[60px] lg:px-10 lg:text-[24px]"
+            className="mt-0 w-fit overflow-visible rounded-[20px] p-0 shadow-[0_12px_28px_rgba(109,86,255,0.28),0_0_14px_rgba(45,168,255,0.14)] transition-all duration-300 hover:shadow-[0_18px_38px_rgba(109,86,255,0.42),0_0_28px_rgba(45,168,255,0.30)] [&>span:nth-child(1)]:hidden [&>span:nth-child(2)]:hidden lg:mt-16"
+            innerClassName="h-[56px] rounded-[19px] border border-[#8C45FF]/55 px-8 font-kanit text-[20px] font-medium tracking-[0.01em] transition-all duration-300 hover:brightness-105 lg:h-[60px] lg:px-10 lg:text-[24px]"
           >
             Request Demo
           </AnimatedBorderButton>

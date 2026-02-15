@@ -2,6 +2,7 @@ import React from "react";
 import HighlightBadge from "../HighlightBadge";
 
 type SectionLayoutProps = {
+  sectionId?: string;
   title: string;
   description?: string;
   badgeText?: string;
@@ -17,6 +18,7 @@ type SectionLayoutProps = {
 };
 
 export default function SectionLayout({
+  sectionId,
   title,
   description,
   badgeText,
@@ -32,7 +34,8 @@ export default function SectionLayout({
 }: SectionLayoutProps) {
   return (
     <section
-      className={`relative w-full overflow-visible bg-transparent pt-16 ${sectionClassName}`.trim()}
+      id={sectionId}
+      className={`relative w-full scroll-mt-4 overflow-visible bg-transparent pt-16 ${sectionClassName}`.trim()}
     >
       {decorations ? (
         <div className="pointer-events-none absolute inset-0 z-0">

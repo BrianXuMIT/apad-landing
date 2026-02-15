@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${kanit.variable}`}>
-      <body className="font-kanit antialiased bg-white">
+      <body className="font-kanit antialiased bg-white ">
         <Header />
         <main className="overflow-x-hidden">{children}</main>
         <Footer />
