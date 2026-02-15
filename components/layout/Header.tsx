@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import AnimatedBorderButton from "../ui/AnimatedBorderButton";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -13,11 +12,48 @@ const navLinks = [
   { name: "Blogs", href: "#blogs" },
 ];
 
-function ActionButton({ label }: { label: string }) {
+function ActionButton({
+  label,
+  primary = false,
+  showIcon = true,
+}: {
+  label: string;
+  primary?: boolean;
+  showIcon?: boolean;
+}) {
   return (
-    <button className="group h-[40px] rounded-[10px] border border-[#8C45FF] px-6 py-2 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8C45FF] hover:to-[#2DA8FF] hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]">
-      <span className="text-[16px] bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text font-light text-transparent transition-colors duration-300 group-hover:text-white">
+    <button
+      className={`inline-flex items-center justify-center rounded-[12px] font-kanit transition-all duration-300 ${
+        primary
+          ? "h-[42px] bg-[linear-gradient(96deg,#8C45FF_2%,#0AAFF9_96%)] px-5 text-[15px] font-medium text-white shadow-[0_10px_22px_rgba(117,83,255,0.32)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(117,83,255,0.4)]"
+          : "h-[42px] border border-[#8C45FF]/30 bg-white/65 px-5 text-[15px] font-medium text-[#2C3143] hover:border-[#8C45FF]/50 hover:bg-white/90"
+      }`}
+      type="button"
+    >
+      <span
+        className={
+          primary
+            ? "inline-flex items-center gap-1.5"
+            : "bg-[linear-gradient(98deg,#3B3F52_0%,#61439E_100%)] bg-clip-text text-transparent"
+        }
+      >
         {label}
+        {primary && showIcon ? (
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 20 20"
+            fill="none"
+            className="h-4 w-4"
+          >
+            <path
+              d="M4.167 10h11.666M10.833 4.583 16.25 10l-5.417 5.417"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        ) : null}
       </span>
     </button>
   );
@@ -27,24 +63,24 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 w-full px-2 pt-2 sm:px-4 sm:pt-3 lg:pt-4">
+    <header className="fixed left-0 right-0 top-0 z-50 w-full px-3 pt-3 sm:px-5 sm:pt-4">
       {menuOpen ? (
         <button
           type="button"
           aria-label="Close menu"
           onClick={() => setMenuOpen(false)}
-          className="fixed inset-0 z-40 lg:hidden"
+          className="fixed inset-0 z-40 bg-[#111216]/15 backdrop-blur-[1px] lg:hidden"
         />
       ) : null}
 
-      <nav className="relative z-50 mx-auto w-full max-w-[1440px] rounded-[16px] bg-[#D1D1D1]/96 px-3 py-2 shadow-[0_8px_20px_rgba(16,24,40,0.14)] backdrop-blur-sm sm:px-4 sm:py-2.5 lg:rounded-[20px] lg:px-6 lg:py-3">
+      <nav className="relative z-50 mx-auto w-full max-w-[1440px] rounded-[18px] border border-white/70 bg-[linear-gradient(124deg,rgba(255,255,255,0.86)_0%,rgba(247,241,255,0.84)_48%,rgba(236,245,255,0.88)_100%)] px-3 py-2 shadow-[0_12px_28px_rgba(35,33,56,0.14)] backdrop-blur-xl sm:px-4 sm:py-2.5 lg:rounded-[22px] lg:px-6 lg:py-3">
         <div className="flex items-center gap-2 lg:hidden">
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#1E2430] transition-colors hover:bg-white/50 sm:h-10 sm:w-10"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#1E2430] transition-colors hover:bg-white/65 sm:h-10 sm:w-10"
           >
             <div className="flex flex-col gap-1 sm:gap-[5px]">
               <span className="h-[3px] w-6 rounded-full bg-[#1A1E28] sm:w-7" />
@@ -61,52 +97,52 @@ const Header = () => {
             />
           </div>
 
-          <button className="group h-[34px] shrink-0 rounded-[10px] border border-[#8C45FF] px-3 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8C45FF] hover:to-[#2DA8FF] hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)] sm:h-[38px] sm:px-4">
-            <span className="bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[13px] font-light text-transparent transition-colors duration-300 group-hover:text-white sm:text-[15px]">
-              Sign Up
-            </span>
-          </button>
+          <ActionButton label="Request Demo" primary showIcon={false} />
         </div>
 
-        <div className="hidden items-center justify-between lg:flex">
+        <div className="hidden items-center justify-between gap-6 lg:flex">
           <img
             src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
             alt="APADCode logo"
-            className="h-10 w-auto object-contain"
+            className="h-10 w-auto shrink-0 object-contain"
           />
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-1 rounded-full border border-white/70 bg-white/58 px-2 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-kanit font-medium text-gray-800 transition-colors hover:text-gray-600"
+                className="rounded-full px-2.5 py-1.5 font-kanit text-[14px] font-medium text-[#383D4E] transition-all duration-300 hover:bg-white/80 hover:text-[#111216]"
               >
                 {link.name}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
-            <ActionButton label="Request Demo" />
+          <div className="flex shrink-0 items-center gap-3">
             <ActionButton label="Sign Up" />
+            <ActionButton label="Request Demo" primary />
           </div>
         </div>
 
         {menuOpen ? (
           <div className="absolute left-0 right-0 top-full mt-2 lg:hidden">
-            <div className="rounded-[14px] bg-white p-3 shadow-[0_14px_28px_rgba(16,24,40,0.14)]">
-              <div className="flex flex-col gap-1">
+            <div className="rounded-[16px] border border-white/70 bg-[linear-gradient(118deg,rgba(255,255,255,0.96)_0%,rgba(247,241,255,0.94)_52%,rgba(241,249,255,0.95)_100%)] p-3 shadow-[0_16px_32px_rgba(16,24,40,0.14)]">
+              <div className="flex flex-col gap-1.5">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="rounded-lg px-3 py-2.5 font-kanit font-light text-[#2D3444] transition-colors hover:bg-[#F3F3F8]"
+                    className="rounded-xl px-3 py-2.5 font-kanit text-[15px] font-medium text-[#2D3444] transition-colors hover:bg-white/85"
                   >
                     {link.name}
                   </Link>
                 ))}
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <ActionButton label="Sign Up" />
+                <ActionButton label="Request Demo" primary showIcon={false} />
               </div>
             </div>
           </div>

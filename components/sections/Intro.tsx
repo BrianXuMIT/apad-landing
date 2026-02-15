@@ -80,10 +80,6 @@ export default function Intro() {
       <div className="pointer-events-none absolute right-[-130px] top-[28%] h-[340px] w-[340px] rounded-full bg-[#A14DFF]/30 blur-[120px]" />
 
       <div className="relative mx-auto w-full max-w-[1440px] px-1 py-6 sm:px-3 lg:px-8">
-        <h2 className="mx-auto max-w-[980px] text-center font-kanit text-[24px] font-medium leading-[1.35] text-[#111216] sm:text-[28px] lg:text-[36px]">
-          APADCode is an AI-driven interview platform enabling faster, deeper,
-          and more consistent technical pre-screening.
-        </h2>
 
         <div className="mx-auto mt-8 grid w-full max-w-[860px] grid-cols-2 gap-2 md:max-w-[1240px] md:grid-cols-4 lg:mt-10 lg:gap-4">
           {blocks.map((block) => {

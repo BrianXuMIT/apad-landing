@@ -1,32 +1,43 @@
 import React from "react";
-import AnimatedBorderButton from "../ui/AnimatedBorderButton";
 
 const Hero = () => {
   return (
-    <section className="relative z-10 mb-10 flex min-h-screen w-full items-center overflow-visible font-kanit px-4 pt-16 sm:px-6 sm:pt-[100px] lg:mb-16 lg:px-12">
-      {/* --- Background Blur Circles --- */}
-      {/* Large Purple Glow behind images */}
-      {/* Subtle Blue Glow bottom left */}
-      {/* <div className="absolute bottom-[-10%] left-[-5%] h-[600px] w-[600px] rounded-full bg-[#3B82F6]/10 blur-[120px] -z-10" /> */}
-      {/* <div className="pointer-events-none absolute -bottom-40 right-[8%] h-[420px] w-[420px] rounded-full bg-[#A855F7]/45 blur-[150px]" /> */}
+    <section className="relative z-10 flex min-h-screen w-full items-center overflow-hidden px-4 pb-12 pt-24 font-kanit sm:px-6 sm:pt-[124px] lg:px-12 lg:pb-16 lg:pt-[146px]">
+      <div className="pointer-events-none absolute left-[-160px] top-[-220px] h-[460px] w-[460px] rounded-full bg-[#9A4DFF]/26 blur-[120px]" />
+      <div className="pointer-events-none absolute right-[-180px] top-[14%] h-[520px] w-[520px] rounded-full bg-[#5FA9FF]/24 blur-[132px]" />
+      <div className="pointer-events-none absolute bottom-[-230px] left-[12%] h-[420px] w-[420px] rounded-full bg-[#A855F7]/20 blur-[130px]" />
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2">
-        {/* --- Left Content: Precise Typography --- */}
-        <div className="z-10 flex flex-col items-center gap-8 text-center lg:items-start lg:text-left">
-          <p className="w-full max-w-[650px] bg-[linear-gradient(97deg,#000_4.98%,#8C45FF_63.11%)] bg-clip-text text-[40px] leading-[1.14] text-transparent [text-stroke:1px_black] [-webkit-text-stroke:1px_black] [paint-order:stroke_fill] sm:text-[52px] lg:text-[68px]">
-            AI-powered Interactive Coding Evaluation
+      <div className="relative mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:gap-8">
+        <div className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#8C45FF]/22 bg-white/70 px-4 py-2 shadow-[0_8px_18px_rgba(114,87,182,0.14)] backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-[#F59E0B] shadow-[0_0_0_3px_rgba(251,191,36,0.28)]" />
+            <span className="bg-[linear-gradient(92deg,#3A3F53_0%,#6544A8_100%)] bg-clip-text text-[13px] font-medium tracking-[0.04em] text-transparent sm:text-[14px]">
+              AI Interview Intelligence
+            </span>
+          </div>
+
+          <h1 className="mt-6 max-w-[760px] text-[36px] font-medium leading-[1.1] tracking-[-0.01em] text-[#171A25] sm:text-[50px] lg:text-[62px]">
+            AI-Powered{" "}
+            <span className="bg-[linear-gradient(98deg,#5B38C9_0%,#0F89E5_100%)] bg-clip-text text-transparent">
+              Interactive Coding
+            </span>{" "}
+            Evaluation
+          </h1>
+          <p className="mt-5 max-w-[690px] text-[18px] leading-[1.62] text-[#34394C] sm:text-[20px] lg:text-[23px]">
+            Built as the{" "}
+            <span className="bg-[linear-gradient(95deg,#5F3CCF_0%,#198DE8_100%)] bg-clip-text font-semibold text-transparent">
+              World&apos;s First AI Interviewer
+            </span>{" "}
+            for human-like live coding interviews, APADCode delivers deep
+            technical screening without interviewer bottlenecks.
           </p>
-          <p className="h-auto w-full max-w-[656px] leading-[1.55] text-[#000] text-[24px] lg:text-[32px]">
-            World’s first AI system designed to conduct human-like live coding
-            interviews without interviewers.
-          </p>
-          <AnimatedBorderButton
-            rotateBorder={false}
-            className="mt-1 rounded-[18px] shadow-[0_10px_24px_rgba(125,77,255,0.30)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(125,77,255,0.36)] lg:mt-16"
-            innerClassName="h-[54px] rounded-[17px] bg-[linear-gradient(96deg,#8C45FF_5%,#0AAFF9_96%)] px-7 font-kanit text-[18px] font-medium tracking-[0.01em] text-white sm:h-[58px] sm:px-9 sm:text-[20px] lg:h-[62px] lg:px-10 lg:text-[24px]"
-          >
-            <span className="inline-flex items-center gap-2.5">
-              Request Demo
+
+          <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-3 lg:mt-10 lg:justify-start">
+            <button
+              type="button"
+              className="group inline-flex h-[54px] items-center justify-center gap-2 rounded-[16px] border border-white/35 bg-[linear-gradient(98deg,#7D49EF_0%,#298DEA_100%)] px-7 font-kanit text-[17px] font-medium tracking-[0.01em] text-white shadow-[0_12px_28px_rgba(99,73,220,0.34)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-[1.03] hover:shadow-[0_18px_34px_rgba(99,73,220,0.42)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C45FF]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:h-[58px] sm:px-9 sm:text-[18px] lg:h-[62px] lg:px-10 lg:text-[20px]"
+            >
+              <span>Request Demo</span>
               <svg
                 aria-hidden="true"
                 viewBox="0 0 20 20"
@@ -41,18 +52,41 @@ const Hero = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </span>
-          </AnimatedBorderButton>
+            </button>
+          </div>
+
+          <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-3 lg:justify-start">
+            <div className="rounded-[14px] border border-white/75 bg-[linear-gradient(120deg,#FFFFFF_0%,#F8F2FF_64%,#F1F7FF_100%)] px-4 py-3 shadow-[0_9px_20px_rgba(77,63,123,0.12)]">
+              <p className="text-[11px] uppercase tracking-[0.1em] text-[#6C7290]">
+                Interview Quality
+              </p>
+              <p className="mt-1 text-[22px] font-medium leading-none text-[#1D2131]">
+                97% consistency
+              </p>
+            </div>
+            <div className="rounded-[14px] border border-white/75 bg-[linear-gradient(120deg,#FFFFFF_0%,#F8F2FF_64%,#F1F7FF_100%)] px-4 py-3 shadow-[0_9px_20px_rgba(77,63,123,0.12)]">
+              <p className="text-[11px] uppercase tracking-[0.1em] text-[#6C7290]">
+                Decision Speed
+              </p>
+              <p className="mt-1 text-[22px] font-medium leading-none text-[#1D2131]">
+                3x faster hiring
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* --- Right Content: Image Stack with Connector --- */}
-        <div className="relative mx-auto h-[380px] w-full max-w-[620px] sm:h-[500px] lg:h-[650px]">
-          <div className="absolute right-[-12%] top-[14%] h-[500px] w-[500px] rounded-full bg-[#A855F788] blur-[130px]" />
-          <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771003668/New_Project_1_in65ne.png"
-            alt="APADCode interview visual"
-            className="relative z-10 mx-auto h-full w-full object-contain"
-          />
+        <div className="relative mx-auto w-full max-w-[700px]">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8F46FF]/34 blur-[125px]" />
+          <div className="relative rounded-[30px] border border-white/70 bg-[linear-gradient(128deg,rgba(255,255,255,0.85)_0%,rgba(247,238,255,0.82)_52%,rgba(241,248,255,0.86)_100%)] p-3 shadow-[0_26px_48px_rgba(59,42,118,0.18)]">
+            <div className="relative overflow-hidden rounded-[24px] border border-white/75 bg-[linear-gradient(140deg,#FFFFFF_0%,#F8F2FF_60%,#F2F7FF_100%)]">
+              <div className="pointer-events-none absolute -right-10 top-[-38px] h-[220px] w-[220px] rounded-full bg-[#A855F7]/18 blur-[65px]" />
+              <img
+                src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771003668/New_Project_1_in65ne.png"
+                alt="APADCode interview visual"
+                className="relative z-10 mx-auto h-full max-h-[640px] w-full object-contain"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
