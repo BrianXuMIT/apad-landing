@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
 import SectionLayout from "./SectionLayout";
 
 type FeatureItem = {
   title: string;
   description: string;
+  outcome: string;
   icon: "live" | "ai" | "insights" | "skills";
 };
 
@@ -22,7 +25,7 @@ function FeatureIcon({ type }: { type: FeatureItem["icon"] }) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
-        className="shrink-0"
+        className="h-[66px] w-[62px] shrink-0 lg:h-[72px] lg:w-[68px]"
       >
         <path
           d="M46.4977 2.9586C45.5406 0.517656 42.7776 -0.699837 40.4066 0.419323C31.7747 4.4937 24.0445 10.2863 17.698 17.4599C10.301 25.8209 4.99525 35.8189 2.21745 46.6312C-0.560359 57.4435 -0.730825 68.7609 1.72008 79.6519C4.17098 90.543 9.17317 100.696 16.315 109.276C23.4568 117.856 32.534 124.618 42.7996 129.004C53.0652 133.39 64.2257 135.276 75.3625 134.506C86.4994 133.736 97.2941 130.332 106.858 124.575C115.064 119.635 122.163 113.084 127.736 105.335C129.267 103.207 128.571 100.268 126.344 98.8844C124.118 97.5003 121.205 98.1964 119.652 100.309C114.888 106.789 108.879 112.276 101.962 116.441C93.6856 121.422 84.3446 124.368 74.7077 125.034C65.0707 125.7 55.4133 124.068 46.5302 120.273C37.6471 116.477 29.7924 110.627 23.6124 103.202C17.4324 95.7776 13.1039 86.9917 10.9831 77.5674C8.86224 68.1431 9.00975 58.3499 11.4135 48.9938C13.8172 39.6377 18.4083 30.9861 24.8091 23.7511C30.1592 17.7038 36.6456 12.7907 43.8827 9.28144C46.2419 8.13749 47.4548 5.39954 46.4977 2.9586Z"
@@ -95,7 +98,7 @@ function FeatureIcon({ type }: { type: FeatureItem["icon"] }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className="shrink-0"
+      className="h-[66px] w-[62px] shrink-0 lg:h-[72px] lg:w-[68px]"
     >
       <defs>
         <linearGradient
@@ -166,68 +169,192 @@ const features: FeatureItem[] = [
     title: "Live Coding Environment",
     description:
       "Candidates solve real problems in an executable coding sandbox just like a real interview.",
+    outcome: "Evaluate practical coding behavior instead of puzzle memorization.",
     icon: "live",
   },
   {
     title: "AI-Led Interview Flow",
     description:
       "APAD Code asks follow-up questions, explores alternatives, and adapts difficulty based on responses.",
+    outcome: "Conversations stay adaptive, role-relevant, and deeply technical.",
     icon: "ai",
   },
   {
     title: "Actionable Insights",
     description:
       "Hiring teams receive structured insights not just pass/fail scores.",
+    outcome: "Teams get decision-ready evidence they can align on quickly.",
     icon: "insights",
   },
   {
     title: "In-Depth Skill Evaluation",
     description:
       "Beyond correctness, it evaluates: Problem-solving approach, code quality, debugging mindset, communication clarity.",
+    outcome: "Final recommendations reflect real engineering readiness.",
     icon: "skills",
   },
 ];
 
 export default function HowItWorks() {
+  const sectionRef = React.useRef<HTMLElement | null>(null);
+  const floatingWrapRef = React.useRef<HTMLDivElement>(null);
+  const floatingImageRef = React.useRef<HTMLDivElement>(null);
+  const [floatingHeight, setFloatingHeight] = React.useState(560);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    sectionRef.current = document.getElementById(
+      "how-it-works",
+    ) as HTMLElement | null;
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const startTop = 96;
+    const bottomOffset = 16;
+    let rafId = 0;
+
+    const updatePosition = () => {
+      rafId = 0;
+      const section = sectionRef.current;
+      const floatingWrap = floatingWrapRef.current;
+      const floatingImage = floatingImageRef.current;
+      if (!section || !floatingWrap || !floatingImage) return;
+
+      if (!mq.matches) {
+        floatingWrap.style.transform = `translate3d(-50%, ${startTop}px, 0)`;
+        return;
+      }
+
+      const sectionRect = section.getBoundingClientRect();
+      const sectionTopInDoc = window.scrollY + sectionRect.top;
+      const sectionHeight = sectionRect.height;
+      const imageHeight = floatingImage.offsetHeight;
+      setFloatingHeight((prev) =>
+        Math.abs(prev - imageHeight) > 1 ? imageHeight : prev,
+      );
+
+      const pinnedTopInSection =
+        window.scrollY +
+        window.innerHeight -
+        imageHeight -
+        bottomOffset -
+        sectionTopInDoc;
+      const endTop = Math.max(startTop, sectionHeight - imageHeight - 8);
+      const nextTop = Math.min(
+        endTop,
+        Math.max(startTop, pinnedTopInSection),
+      );
+
+      floatingWrap.style.transform = `translate3d(-50%, ${nextTop.toFixed(2)}px, 0)`;
+    };
+
+    const requestUpdate = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(updatePosition);
+    };
+
+    const onMediaChange = () => requestUpdate();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    mq.addEventListener("change", onMediaChange);
+
+    const imageEl = floatingImageRef.current?.querySelector("img");
+    imageEl?.addEventListener("load", requestUpdate);
+    requestUpdate();
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      mq.removeEventListener("change", onMediaChange);
+      imageEl?.removeEventListener("load", requestUpdate);
+    };
+  }, []);
+
   return (
     <SectionLayout
       sectionId="how-it-works"
       badgeText="Human-level insight. AI-level scale."
       title="How It Works"
-      description="Log-in. design skill-based tests, and let AI handle the rest-custom topics, question difficulty, timers, and result tracking - all in one place."
+      description="Log in, design skill-based tests, and let AI handle the rest: custom topics, adaptive difficulty, timers, and result tracking in one place."
       decorations={
         <>
           <div className="pointer-events-none absolute left-[-130px] bottom-[10%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/28 blur-[120px]" />
           <div className="pointer-events-none absolute right-[-130px] top-[28%] h-[340px] w-[340px] rounded-full bg-[#A14DFF]/30 blur-[120px]" />
+          <div className="pointer-events-none absolute inset-0 hidden lg:block">
+            <div
+              ref={floatingWrapRef}
+              className="absolute left-1/2 top-0 z-[1] w-full max-w-[680px] will-change-transform"
+              style={{ transform: "translate3d(-50%, 96px, 0)" }}
+            >
+              <div ref={floatingImageRef} className="relative">
+                <div className="pointer-events-none absolute left-1/2 top-[54%] h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/80 blur-[125px]" />
+                <div className="pointer-events-none absolute left-1/2 top-[54%] h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/58 blur-[165px]" />
+                <img
+                  src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004044/New_Project_2_s0muve.png"
+                  alt="Candidate engaging in AI interview"
+                  className="relative z-[1] mx-auto h-auto w-full max-w-[620px] object-contain lg:max-h-[35rem]"
+                />
+              </div>
+            </div>
+          </div>
         </>
       }
     >
-      <div className="mt-10 grid grid-cols-1 gap-6 md:gap-8 lg:gap-12 sm:grid-cols-2">
-        {features.map((item) => (
-          <article
-            key={item.title}
-            className="mx-auto flex max-w-[620px] flex-col items-center text-center sm:flex-row sm:items-center sm:gap-5 sm:text-left"
-          >
-            <FeatureIcon type={item.icon} />
-            <div className="mt-6 sm:mt-0">
-              <h3 className="font-kanit text-[24px] leading-[1.1] text-[#272A32] lg:text-[32px]">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#2B2E3A] lg:text-[24px]">
+      <div className="relative mx-auto mt-10 w-full max-w-[1280px] lg:mt-12">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[1px] w-[66%] -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(90deg,rgba(167,124,255,0)_0%,rgba(167,124,255,0.42)_18%,rgba(105,189,255,0.40)_82%,rgba(105,189,255,0)_100%)] lg:block" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[56%] w-[1px] -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(180deg,rgba(167,124,255,0)_0%,rgba(167,124,255,0.36)_22%,rgba(105,189,255,0.34)_78%,rgba(105,189,255,0)_100%)] lg:block" />
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:gap-7">
+          {features.map((item, idx) => (
+            <article
+              key={item.title}
+              style={{ animationDelay: `${idx * 70}ms` }}
+              className="group relative z-10 mx-auto flex h-full w-full max-w-[660px] flex-col rounded-[24px] border border-[#D9CBFF]/45 bg-[linear-gradient(130deg,rgba(255,255,255,0.82)_0%,rgba(247,241,255,0.74)_56%,rgba(238,247,255,0.70)_100%)] px-6 py-7 text-left shadow-[0_10px_24px_rgba(116,88,188,0.12)] backdrop-blur-[1.5px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(116,88,188,0.18)] animate-fade-in sm:px-7 lg:px-8 lg:py-8"
+            >
+              <div className="pointer-events-none absolute inset-0 rounded-[24px] bg-[radial-gradient(120%_120%_at_85%_0%,rgba(158,104,255,0.14)_0%,rgba(158,104,255,0)_55%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+              <div className="relative z-10 flex items-start gap-4">
+                <FeatureIcon type={item.icon} />
+                <div className="min-w-0 pt-0.5">
+                  <span className="inline-flex rounded-full border border-[#C9B3FF]/65 bg-white/72 px-3 py-1 font-kanit text-[10px] font-medium uppercase tracking-[0.1em] text-[#6A5A96]">
+                    Step {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 font-kanit text-[22px] leading-[1.2] tracking-[-0.006em] text-[#252838] lg:text-[27px]">
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p className="relative z-10 mt-4 font-kanit text-[15px] leading-[1.58] text-[#2D3142] lg:text-[17px]">
                 {item.description}
               </p>
-            </div>
-          </article>
-        ))}
-      </div>
 
-      <div className="relative mx-auto mt-12 w-full max-w-[980px] pt-6 sm:mt-16">
+              <div className="relative z-10 mt-5 border-t border-[#D8CBF8]/70 pt-3">
+                <p className="font-kanit text-[11px] uppercase tracking-[0.09em] text-[#6A5A96]">
+                  Why It Matters
+                </p>
+                <p className="mt-1 font-kanit text-[14px] leading-[1.5] text-[#2B3042] lg:text-[15px]">
+                  {item.outcome}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        className="hidden lg:block"
+        style={{ height: `${floatingHeight + 24}px` }}
+      />
+
+      <div className="relative mx-auto mt-14 w-full max-w-[900px] pt-6 sm:mt-16 lg:hidden">
         <div className="pointer-events-none absolute left-1/2 top-[54%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
         <div className="pointer-events-none absolute left-1/2 top-[54%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
         <img
           src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004044/New_Project_2_s0muve.png"
           alt="Candidate engaging in AI interview"
-          className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
+          className="relative z-[2] mx-auto h-auto w-full max-w-[620px] object-contain"
         />
       </div>
     </SectionLayout>
