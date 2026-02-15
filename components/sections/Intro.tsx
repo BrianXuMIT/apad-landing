@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import AnimatedBorderCard from "../ui/AnimatedBorderCard";
-import AnimatedBorderButton from "../ui/AnimatedBorderButton";
 
 type IntroBlock = {
   id: string;
@@ -130,37 +130,46 @@ export default function Intro() {
           className="relative mx-auto mt-4 w-full max-w-[1240px] rounded-[24px] shadow-[0_14px_30px_rgba(130,102,174,0.10)] lg:mt-6"
           innerClassName="relative overflow-hidden rounded-[23px] bg-[linear-gradient(140deg,#FFFFFF_0%,#F9F3FF_56%,#F0F2FF_100%)]"
         >
-          <div className="relative z-[1] grid grid-cols-1 gap-8 px-6 py-7 lg:grid-cols-[1.06fr_0.94fr] lg:items-start lg:px-10 lg:py-9">
-            <div className="max-w-[640px]">
-              <h3 className="font-kanit text-[44px] font-medium leading-[1.2] text-[#1F2130]">
-                {active.detailTitle}
-              </h3>
-              <p className="mt-4 font-kanit text-[20px] leading-[1.5] text-[#303447]">
-                {active.detailCopy[0]}
-              </p>
-              <p className="mt-4 font-kanit text-[20px] leading-[1.5] text-[#303447]">
-                {active.detailCopy[1]}
-              </p>
-            </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+              className="relative z-[1] grid grid-cols-1 gap-8 px-6 py-7 lg:grid-cols-[1.06fr_0.94fr] lg:items-start lg:px-10 lg:py-9"
+            >
+              <div className="max-w-[640px]">
+                <h3 className="font-kanit text-[44px] font-medium leading-[1.2] text-[#1F2130]">
+                  {active.detailTitle}
+                </h3>
+                <p className="mt-4 font-kanit text-[20px] leading-[1.5] text-[#303447]">
+                  {active.detailCopy[0]}
+                </p>
+                <p className="mt-4 font-kanit text-[20px] leading-[1.5] text-[#303447]">
+                  {active.detailCopy[1]}
+                </p>
+              </div>
 
-            <div className="relative flex min-h-[250px] flex-col justify-center gap-5 pb-1 lg:min-h-[300px]">
-              {active.signals.map((signal, idx) => (
-                <div
-                  key={signal}
-                  className="relative max-w-[360px] lg:max-w-[400px]"
-                >
-                  <div className="inline-flex h-[48px] items-center rounded-full border border-white/65 bg-[linear-gradient(145deg,rgba(255,255,255,0.76),rgba(245,239,255,0.72))] px-6 font-kanit text-[18px] text-[#363A4A] shadow-[0_8px_18px_rgba(255,255,255,0.26)] backdrop-blur-sm lg:h-[52px] lg:text-[20px]">
-                    {signal}
+              <div className="relative flex min-h-[250px] flex-col justify-center gap-5 pb-1 lg:min-h-[300px]">
+                {active.signals.map((signal, idx) => (
+                  <div
+                    key={signal}
+                    className="relative max-w-[360px] lg:max-w-[400px]"
+                  >
+                    <div className="inline-flex h-[48px] items-center rounded-full border border-white/65 bg-[linear-gradient(145deg,rgba(255,255,255,0.76),rgba(245,239,255,0.72))] px-6 font-kanit text-[18px] text-[#363A4A] shadow-[0_8px_18px_rgba(255,255,255,0.26)] backdrop-blur-sm lg:h-[52px] lg:text-[20px]">
+                      {signal}
+                    </div>
+                    <span className="pointer-events-none absolute right-[-92px] top-1/2 hidden h-[2px] w-[80px] -translate-y-1/2 bg-[linear-gradient(to_right,rgba(255,255,255,0.68),rgba(255,255,255,0.18))] lg:block" />
+                    <span className="pointer-events-none absolute right-[-98px] top-1/2 hidden h-[12px] w-[12px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)] lg:block" />
+                    {idx < active.signals.length - 1 ? (
+                      <span className="pointer-events-none absolute -bottom-5 left-7 hidden h-3 w-[1px] bg-white/35 lg:block" />
+                    ) : null}
                   </div>
-                  <span className="pointer-events-none absolute right-[-92px] top-1/2 hidden h-[2px] w-[80px] -translate-y-1/2 bg-[linear-gradient(to_right,rgba(255,255,255,0.68),rgba(255,255,255,0.18))] lg:block" />
-                  <span className="pointer-events-none absolute right-[-98px] top-1/2 hidden h-[12px] w-[12px] -translate-y-1/2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)] lg:block" />
-                  {idx < active.signals.length - 1 ? (
-                    <span className="pointer-events-none absolute -bottom-5 left-7 hidden h-3 w-[1px] bg-white/35 lg:block" />
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </AnimatedBorderCard>
       </div>
     </section>
