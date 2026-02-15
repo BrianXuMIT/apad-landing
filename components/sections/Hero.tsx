@@ -3,7 +3,7 @@ import AnimatedBorderButton from "../ui/AnimatedBorderButton";
 
 const Hero = () => {
   return (
-    <section className="relative z-10 mb-10 flex min-h-screen w-full items-center overflow-visible font-kanit px-4 max-[484px]:pt-[64px] pt-[100px] sm:px-6 lg:mb-16 lg:px-12">
+    <section className="relative z-10 mb-10 flex min-h-screen w-full items-center overflow-visible font-kanit px-4 pt-16 sm:px-6 sm:pt-[100px] lg:mb-16 lg:px-12">
       {/* --- Background Blur Circles --- */}
       {/* Large Purple Glow behind images */}
       {/* Subtle Blue Glow bottom left */}

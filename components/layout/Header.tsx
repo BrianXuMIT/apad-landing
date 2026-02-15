@@ -27,48 +27,48 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 w-full px-2 pt-3 max-[480px]:pt-2 sm:px-4 sm:pt-4">
+    <header className="fixed left-0 right-0 top-0 z-50 w-full px-2 pt-2 sm:px-4 sm:pt-3 lg:pt-4">
       {menuOpen ? (
         <button
           type="button"
           aria-label="Close menu"
           onClick={() => setMenuOpen(false)}
-          className="fixed inset-0 z-40 min-[1100px]:hidden"
+          className="fixed inset-0 z-40 lg:hidden"
         />
       ) : null}
 
-      <nav className="relative z-50 mx-auto w-full max-w-[1440px] rounded-[20px] bg-[#D1D1D1]/96 px-4 py-3 shadow-[0_8px_20px_rgba(16,24,40,0.14)] backdrop-blur-sm max-[480px]:rounded-[16px] max-[480px]:px-3 max-[480px]:py-2 sm:px-6 md:max-[880px]:px-3 md:max-[880px]:py-2.5">
-        <div className="flex items-center gap-2 min-[1100px]:hidden">
+      <nav className="relative z-50 mx-auto w-full max-w-[1440px] rounded-[16px] bg-[#D1D1D1]/96 px-3 py-2 shadow-[0_8px_20px_rgba(16,24,40,0.14)] backdrop-blur-sm sm:px-4 sm:py-2.5 lg:rounded-[20px] lg:px-6 lg:py-3">
+        <div className="flex items-center gap-2 lg:hidden">
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="shrink-0 flex h-10 w-10 items-center justify-center rounded-lg text-[#1E2430] transition-colors hover:bg-white/50 max-[480px]:h-9 max-[480px]:w-9"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#1E2430] transition-colors hover:bg-white/50 sm:h-10 sm:w-10"
           >
-            <div className="flex flex-col gap-[5px] max-[480px]:gap-1">
-              <span className="h-[3px] w-7 rounded-full bg-[#1A1E28] max-[480px]:w-6" />
-              <span className="h-[3px] w-7 rounded-full bg-[#1A1E28] max-[480px]:w-6" />
-              <span className="h-[3px] w-7 rounded-full bg-[#1A1E28] max-[480px]:w-6" />
+            <div className="flex flex-col gap-1 sm:gap-[5px]">
+              <span className="h-[3px] w-6 rounded-full bg-[#1A1E28] sm:w-7" />
+              <span className="h-[3px] w-6 rounded-full bg-[#1A1E28] sm:w-7" />
+              <span className="h-[3px] w-6 rounded-full bg-[#1A1E28] sm:w-7" />
             </div>
           </button>
 
-          <div className="min-w-0 flex-1 rounded-sm px-2 max-[480px]:px-1.5 max-[480px]:py-0.5">
+          <div className="min-w-0 flex-1 rounded-sm px-1.5 py-0.5 sm:px-2 sm:py-0">
             <img
               src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
               alt="APADCode logo"
-              className="mx-auto w-auto max-w-full object-contain h-10"
+              className="mx-auto h-10 w-auto max-w-full object-contain"
             />
           </div>
 
-          <button className="group shrink-0 h-[38px] rounded-[10px] border border-[#8C45FF] px-4 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8C45FF] hover:to-[#2DA8FF] hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)] max-[480px]:h-[34px] max-[480px]:px-3">
-            <span className="text-[15px] bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text font-light text-transparent transition-colors duration-300 group-hover:text-white max-[480px]:text-[13px]">
+          <button className="group h-[34px] shrink-0 rounded-[10px] border border-[#8C45FF] px-3 transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8C45FF] hover:to-[#2DA8FF] hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)] sm:h-[38px] sm:px-4">
+            <span className="bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[13px] font-light text-transparent transition-colors duration-300 group-hover:text-white sm:text-[15px]">
               Sign Up
             </span>
           </button>
         </div>
 
-        <div className="hidden items-center justify-between min-[1100px]:flex">
+        <div className="hidden items-center justify-between lg:flex">
           <img
             src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
             alt="APADCode logo"
@@ -94,7 +94,7 @@ const Header = () => {
         </div>
 
         {menuOpen ? (
-          <div className="absolute left-0 right-0 top-full mt-2 min-[1100px]:hidden">
+          <div className="absolute left-0 right-0 top-full mt-2 lg:hidden">
             <div className="rounded-[14px] bg-white p-3 shadow-[0_14px_28px_rgba(16,24,40,0.14)]">
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => (
