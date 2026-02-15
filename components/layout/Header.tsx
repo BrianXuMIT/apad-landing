@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "How it works", href: "#how-it-works" },
-  { name: "AI Interviewer", href: "#ai-interviewer" },
-  { name: "Assessments", href: "#assessments" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Blogs", href: "#blogs" },
+  { name: "About", href: "/#about" },
+  { name: "How it works", href: "/#how-it-works" },
+  { name: "AI Interviewer", href: "/#ai-interviewer" },
+  { name: "Assessments", href: "/#assessments" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "Blogs", href: "/#blogs" },
 ];
 
 function ActionButton({

@@ -3,6 +3,7 @@ import { Kanit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { siteUrl } from "@/lib/blog-posts";
 
 const kanit = Kanit({
   subsets: ["latin"],
@@ -11,6 +12,7 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "APADCode - AI-Powered Live Coding Interviewer",
   description:
     "Shaping the next era of AI you can trust. Answer insightful questions, explore fresh perspectives, and discover how AI's evaluation can lead you to the next level.",
