@@ -40,6 +40,48 @@ html {
 }
 
 @layer utilities {
+  @keyframes border-spin-compensated {
+    0% {
+      transform: rotate(0deg);
+    }
+    8% {
+      transform: rotate(4deg);
+    }
+    16% {
+      transform: rotate(22deg);
+    }
+    28% {
+      transform: rotate(84deg);
+    }
+    40% {
+      transform: rotate(150deg);
+    }
+    48% {
+      transform: rotate(176deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    52% {
+      transform: rotate(184deg);
+    }
+    60% {
+      transform: rotate(210deg);
+    }
+    72% {
+      transform: rotate(276deg);
+    }
+    84% {
+      transform: rotate(338deg);
+    }
+    92% {
+      transform: rotate(356deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }

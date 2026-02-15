@@ -54,7 +54,7 @@ export default function WhyTeamsChoose() {
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004164/New_Project_3_ijix7k.png"
+            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192571/feature_image_01_zziu4i.png"
             alt="AI robot with interview panels"
             className="relative z-[1] w-full rounded-[22px] object-cover"
           />
@@ -66,7 +66,7 @@ export default function WhyTeamsChoose() {
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004241/New_Project_4_gpukv2.png"
+            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/feature_image_02_fabi5l.png"
             alt="AI robot with skill signals"
             className="relative z-[1] w-full rounded-[22px] object-cover"
           />

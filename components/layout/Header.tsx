@@ -91,7 +91,7 @@ const Header = () => {
 
           <div className="min-w-0 flex-1 rounded-sm px-1.5 py-0.5 sm:px-2 sm:py-0">
             <img
-              src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
+              src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/logo-g_f3acaf_uwyuck.png"
               alt="APADCode logo"
               className="mx-auto h-10 w-auto max-w-full object-contain"
             />
@@ -102,7 +102,7 @@ const Header = () => {
 
         <div className="hidden items-center justify-between gap-6 lg:flex">
           <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
+            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/logo-g_f3acaf_uwyuck.png"
             alt="APADCode logo"
             className="h-10 w-auto shrink-0 object-contain"
           />

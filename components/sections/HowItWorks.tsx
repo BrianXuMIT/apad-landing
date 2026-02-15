@@ -225,7 +225,7 @@ export default function HowItWorks() {
         <div className="pointer-events-none absolute left-1/2 top-[54%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
         <div className="pointer-events-none absolute left-1/2 top-[54%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
         <img
-          src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771004044/New_Project_2_s0muve.png"
+          src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192578/woman_image_02_boetv9.png"
           alt="Candidate engaging in AI interview"
           className="relative z-[2] mx-auto h-auto w-full max-w-[760px] object-contain"
         />

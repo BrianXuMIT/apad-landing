@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div className="max-w-[520px]">
               <img
-                src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770946710/logo-g_f3acaf.png"
+                src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/logo-g_f3acaf_uwyuck.png"
                 alt="APADCode logo"
                 className="mx-auto h-8 w-auto object-contain sm:mx-0 sm:h-9"
               />
