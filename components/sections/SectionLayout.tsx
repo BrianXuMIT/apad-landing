@@ -35,7 +35,7 @@ export default function SectionLayout({
   return (
     <section
       id={sectionId}
-      className={`relative w-full scroll-mt-4 overflow-visible bg-transparent pt-16 ${sectionClassName}`.trim()}
+      className={`relative w-full scroll-mt-5 overflow-visible bg-transparent pt-16 ${sectionClassName}`.trim()}
     >
       {decorations ? (
         <div className="pointer-events-none absolute inset-0 z-0">

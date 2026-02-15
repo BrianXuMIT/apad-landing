@@ -75,34 +75,36 @@ function PlanCard({
   return (
     <AnimatedBorderCard
       className="h-full w-full max-w-[400px] cursor-pointer"
-      innerClassName={`flex min-h-[520px] flex-col p-7 transition-all duration-500 ease-out
+      innerClassName={`flex min-h-[460px] flex-col p-6 transition-all duration-500 ease-out
     ${"bg-white shadow-[inset_0_0_0_1px_rgba(45,168,255,0.22)] hover:bg-[#F6F1FF] hover:shadow-[inset_0_0_0_1px_rgba(140,69,255,0.30)]"}`}
     >
-      <h3 className="font-kanit text-[42px] font-light text-[#111216]">
+      <h3 className="font-kanit text-[34px] font-light text-[#111216]">
         {plan.name}
       </h3>
 
-      <ul className="mt-7 space-y-3">
+      <ul className="mt-5 space-y-2.5">
         {plan.features.map((feature) => (
           <li
             key={feature}
-            className="flex items-start gap-3 font-kanit text-[18px] text-[#1E2330] items-center"
+            className="flex items-center gap-3 font-kanit text-[16px] text-[#1E2330]"
           >
-            <span className="text-[20px] leading-none ">✦</span>
+            <span className="text-[18px] leading-none">✦</span>
             <span>{feature}</span>
           </li>
         ))}
       </ul>
 
-      <div className="mt-auto pt-10">
+      <div className="mt-auto pt-7">
         <div className="flex items-start gap-1 font-kanit">
           <span
             key={`${plan.name}-${billing}`}
-            className="text-[40px] leading-none text-[#111216] transition-all duration-300"
+            className="text-[34px] leading-none text-[#111216] transition-all duration-300"
           >
             ${price}
           </span>
-          <span className="pt-3 text-[14px] text-[#32374A]">{priceSuffix}</span>
+          <span className="pt-2.5 text-[13px] text-[#32374A]">
+            {priceSuffix}
+          </span>
         </div>
         <p className="mt-2 font-kanit text-sm text-[#2D3140]">
           {plan.description}
@@ -110,11 +112,11 @@ function PlanCard({
 
         <button
           type="button"
-          className="group/button relative mt-7 inline-flex h-[56px] w-[170px] items-center justify-center rounded-[20px] border border-[#8C45FF] overflow-hidden px-4 py-2 transition-shadow duration-300 hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]"
+          className="group/button relative mt-5 inline-flex h-[50px] w-[160px] items-center justify-center rounded-[18px] border border-[#8C45FF] overflow-hidden px-4 py-2 transition-shadow duration-300 hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]"
         >
           <span className="absolute inset-0 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] opacity-0 transition-opacity duration-300 ease-out group-hover/button:opacity-100" />
 
-          <span className="relative z-10 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[20px] font-medium text-transparent transition-colors duration-300 group-hover/button:text-white">
+          <span className="relative z-10 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[18px] font-medium text-transparent transition-colors duration-300 group-hover/button:text-white">
             Purchase
           </span>
         </button>
@@ -134,6 +136,7 @@ export default function Pricing() {
   return (
     <SectionLayout
       sectionId="pricing"
+      sectionClassName="min-h-screen"
       badgeText="Simple Pricing, Serious Impact."
       title="Explore Our Plans"
       description="Scale your interviews without scaling your interviewers."
@@ -141,7 +144,7 @@ export default function Pricing() {
         <div className="pointer-events-none absolute left-1/2 top-[53%] h-[460px] w-[460px] -translate-x-1/2 rounded-full bg-[#9C4EFF]/28 blur-[120px]" />
       }
     >
-      <div className="mt-4 flex justify-center">
+      <div className="mt-6 md:mt-8 lg:mt-12 flex justify-center h-fit">
         <div className="inline-flex items-center gap-3 rounded-[18px] bg-[#F0EEF2] px-3 py-2 sm:gap-4 sm:px-4 sm:py-2.5">
           <span
             className={`font-kanit text-[16px] transition-colors sm:text-[22px] ${
@@ -177,7 +180,7 @@ export default function Pricing() {
         </div>
       </div>
 
-      <div className="relative mt-4 max-w-[1400px] ">
+      <div className="relative mt-6 max-w-[1400px] md:mt-8 lg:mt-12">
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[115px] lg:h-[420px] lg:w-[420px] lg:blur-[130px]" />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[155px] lg:h-[620px] lg:w-[620px] lg:blur-[175px]" />
         <div className="relative z-[1] grid w-full grid-cols-1 justify-items-center gap-5 md:grid-cols-3 md:items-stretch">

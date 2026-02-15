@@ -74,7 +74,7 @@ export default function Intro() {
   return (
     <section
       id="about"
-      className="relative w-full scroll-mt-20 overflow-hidden bg-transparent px-4 sm:px-6 lg:px-10"
+      className="relative w-full scroll-mt-[84px] overflow-hidden bg-transparent px-4 sm:px-6 lg:px-10"
     >
       <div className="pointer-events-none absolute left-[-130px] bottom-[10%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/28 blur-[120px]" />
       <div className="pointer-events-none absolute right-[-130px] top-[28%] h-[340px] w-[340px] rounded-full bg-[#A14DFF]/30 blur-[120px]" />
