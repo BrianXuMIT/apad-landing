@@ -9,6 +9,7 @@ import Pricing from "@/components/sections/Pricing";
 import Questionnaire from "@/components/sections/Questionnaire";
 import Contact from "@/components/sections/Contact";
 import JsonLd from "@/components/seo/JsonLd";
+import { getBlogPostPreviews } from "@/lib/blog-posts";
 import { faqItems } from "@/lib/faq-items";
 import {
   absoluteUrl,
@@ -19,6 +20,9 @@ import {
   buildWebSiteSchema,
   siteConfig,
 } from "@/lib/seo";
+
+export const revalidate = 900;
+export const fetchCache = "force-cache";
 
 export const metadata: Metadata = {
   title: "AI-Powered Live Coding Interviews",
@@ -47,7 +51,9 @@ const homeSchemas = [
   ),
 ];
 
-export default function Home() {
+export default async function Home() {
+  const blogPosts = await getBlogPostPreviews();
+
   return (
     <>
       {homeSchemas.map((schema, index) => (
@@ -58,7 +64,7 @@ export default function Home() {
       <UniqueFeatures />
       <HowItWorks />
       <WhyTeamsChoose />
-      <Blog />
+      <Blog posts={blogPosts} />
       <Pricing />
       <Questionnaire />
       <Contact />

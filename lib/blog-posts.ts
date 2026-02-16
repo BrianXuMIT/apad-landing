@@ -1,85 +1,222 @@
-import { imageMaps } from "@/lib/image_maps";
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 
-export const siteUrl = "https://www.apadcode.com";
-
-export type BlogPost = {
+type BlogPostBase = {
   slug: string;
   title: string;
   description: string;
   metaDescription: string;
   image: string;
   publishedAt: string;
+  publishedAtISO: string;
+  updatedAtISO?: string;
   readTime: string;
+};
+
+export type BlogPostPreview = BlogPostBase;
+
+export type BlogPost = BlogPostBase & {
   content: string[];
 };
 
-export const blogPosts: BlogPost[] = [
-  {
-    slug: "why-traditional-live-coding-interviews-dont-scale",
-    title: "Why Traditional Live Coding Interviews Don't Scale",
-    description:
-      "Human interviews offer depth but become slow, expensive, and inconsistent at scale. Here is why companies are rethinking them.",
-    metaDescription:
-      "Learn why traditional live coding interviews create hiring bottlenecks at scale and how AI-supported interview flows improve consistency and throughput.",
-    image: imageMaps.blog.traditionalScale,
-    publishedAt: "February 14, 2026",
-    readTime: "4 min read",
-    content: [
-      "Live coding interviews were designed for depth, but they rely heavily on limited interviewer capacity. As hiring volume grows, scheduling overhead and interviewer fatigue quickly become bottlenecks.",
-      "Even experienced interviewers can vary in questioning style, depth, and scoring calibration. That creates uneven candidate experiences and makes it harder for teams to compare signals fairly across a pipeline.",
-      "Modern hiring teams are shifting toward structured AI-supported interview flows that preserve technical depth while removing coordination drag. The result is faster pre-screening, more consistent scoring, and better use of senior engineering time.",
-    ],
-  },
-  {
-    slug: "coding-tests-vs-real-interviews-whats-missing",
-    title: "Coding Tests vs Real Interviews: What's Missing?",
-    description:
-      "Automated assessments filter candidates fast, but often miss reasoning, communication and real-world thinking.",
-    metaDescription:
-      "Explore the gap between coding tests and real interviews, and why modern hiring requires evaluating reasoning, communication, and engineering judgment.",
-    image: imageMaps.blog.codingTestsVsInterviews,
-    publishedAt: "February 14, 2026",
-    readTime: "5 min read",
-    content: [
-      "Coding tests are excellent at quickly filtering for syntax fluency and baseline problem solving. But a final score alone rarely explains how a candidate reached the answer or whether they can communicate tradeoffs under pressure.",
-      "In real interview settings, teams care about reasoning quality, debugging approach, and collaboration clarity. Those dimensions are often underrepresented in fixed-format assessments.",
-      "A stronger process combines automated scale with interview-like dialogue. Candidates should explain decisions, respond to follow-up prompts, and show practical judgment in context.",
-    ],
-  },
-  {
-    slug: "how-ai-is-transforming-technical-hiring",
-    title: "How AI Is Transforming Technical Hiring",
-    description:
-      "AI powered live interviews combine depth and scalability - rephrasing how modern teams evaluates engineers.",
-    metaDescription:
-      "See how AI-powered live interviews are transforming technical hiring with adaptive questioning, scalable execution, and structured decision-ready insights.",
-    image: imageMaps.blog.aiTransformingHiring,
-    publishedAt: "February 14, 2026",
-    readTime: "4 min read",
-    content: [
-      "AI is changing technical hiring by making interview depth programmable. Instead of static question sets, systems can adapt follow-ups based on candidate responses and solution paths.",
-      "This approach improves both throughput and signal quality. Teams can evaluate more candidates without sacrificing consistency, while still capturing communication style and engineering judgment.",
-      "The most effective implementations pair adaptive interviews with structured summaries, so hiring teams can make decisions quickly with evidence they can align on.",
-    ],
-  },
-  {
-    slug: "reducing-interview-fatigue-without-compromising-quality",
-    title: "Reducing Interview Fatigue Without Compromising Quality",
-    description:
-      "Discover how companies cut interview hours while maintaining high hiring standards.",
-    metaDescription:
-      "Understand practical strategies for reducing interviewer fatigue while maintaining high quality signals and fairness in engineering hiring.",
-    image: imageMaps.blog.reducingInterviewFatigue,
-    publishedAt: "February 14, 2026",
-    readTime: "3 min read",
-    content: [
-      "Interview fatigue appears when a small group of engineers repeatedly conducts high-stakes evaluations. Over time, consistency declines and candidate experience can become uneven.",
-      "Teams are reducing fatigue by moving repetitive screening tasks into automated interview workflows while reserving human interviews for high-context final rounds.",
-      "This layered process improves focus for interviewers, shortens time-to-hire, and keeps quality bars high across the funnel.",
-    ],
-  },
-];
+type BlogPostPreviewRow = {
+  slug: string;
+  title: string;
+  description: string;
+  meta_description: string;
+  image_url: string;
+  published_at: string;
+  updated_at: string | null;
+  read_time: string;
+};
 
-export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.slug === slug);
+type BlogPostRow = BlogPostPreviewRow & {
+  content: unknown;
+};
+
+const BLOG_REVALIDATE_SECONDS = 900;
+const PREVIEW_SELECT =
+  "slug,title,description,meta_description,image_url,published_at,updated_at,read_time";
+const FULL_SELECT = `${PREVIEW_SELECT},content`;
+
+function getSupabaseConfig() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
+
+  if (!url || !anonKey) return null;
+
+  return {
+    url: url.replace(/\/+$/, ""),
+    anonKey,
+  };
 }
+
+function getAuthHeaders(anonKey: string): HeadersInit {
+  return {
+    apikey: anonKey,
+    Authorization: `Bearer ${anonKey}`,
+    "Content-Type": "application/json",
+  };
+}
+
+function normalizeIsoDate(value: string | null | undefined): string {
+  if (!value) return new Date().toISOString();
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return new Date().toISOString();
+  return date.toISOString();
+}
+
+function formatPublishedDate(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+}
+
+function normalizeContent(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+
+  return value
+    .map((paragraph) => (typeof paragraph === "string" ? paragraph.trim() : ""))
+    .filter(Boolean);
+}
+
+function mapRowToPreview(row: BlogPostPreviewRow): BlogPostPreview {
+  const publishedAtISO = normalizeIsoDate(row.published_at);
+  const updatedAtISO = normalizeIsoDate(row.updated_at ?? row.published_at);
+
+  return {
+    slug: row.slug,
+    title: row.title,
+    description: row.description,
+    metaDescription: row.meta_description,
+    image: row.image_url,
+    publishedAt: formatPublishedDate(publishedAtISO),
+    publishedAtISO,
+    updatedAtISO,
+    readTime: row.read_time,
+  };
+}
+
+function mapRowToPost(row: BlogPostRow): BlogPost {
+  return {
+    ...mapRowToPreview(row),
+    content: normalizeContent(row.content),
+  };
+}
+
+const fetchBlogPreviewRows = unstable_cache(
+  async (): Promise<BlogPostPreviewRow[]> => {
+    const config = getSupabaseConfig();
+    if (!config) return [];
+
+    const params = new URLSearchParams({
+      select: PREVIEW_SELECT,
+      is_published: "eq.true",
+      order: "published_at.desc",
+    });
+
+    const response = await fetch(
+      `${config.url}/rest/v1/blog_posts?${params.toString()}`,
+      {
+        method: "GET",
+        headers: getAuthHeaders(config.anonKey),
+        cache: "force-cache",
+        next: {
+          revalidate: BLOG_REVALIDATE_SECONDS,
+          tags: ["blog-posts"],
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch blog previews: ${response.status}`);
+    }
+
+    const rows = (await response.json()) as BlogPostPreviewRow[];
+    return Array.isArray(rows) ? rows : [];
+  },
+  ["blog-posts-preview"],
+  { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog-posts"] }
+);
+
+const fetchBlogRowsWithContent = unstable_cache(
+  async (): Promise<BlogPostRow[]> => {
+    const config = getSupabaseConfig();
+    if (!config) return [];
+
+    const params = new URLSearchParams({
+      select: FULL_SELECT,
+      is_published: "eq.true",
+      order: "published_at.desc",
+    });
+
+    const response = await fetch(
+      `${config.url}/rest/v1/blog_posts?${params.toString()}`,
+      {
+        method: "GET",
+        headers: getAuthHeaders(config.anonKey),
+        cache: "force-cache",
+        next: {
+          revalidate: BLOG_REVALIDATE_SECONDS,
+          tags: ["blog-posts"],
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch blog posts with content: ${response.status}`);
+    }
+
+    const rows = (await response.json()) as BlogPostRow[];
+    return Array.isArray(rows) ? rows : [];
+  },
+  ["blog-posts-with-content"],
+  { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog-posts"] }
+);
+
+export const getBlogPostPreviews = cache(
+  async (): Promise<BlogPostPreview[]> => {
+    try {
+      const rows = await fetchBlogPreviewRows();
+      return rows.map(mapRowToPreview);
+    } catch {
+      return [];
+    }
+  }
+);
+
+const getBlogPostsBySlugMap = cache(async (): Promise<Map<string, BlogPost>> => {
+  try {
+    const rows = await fetchBlogRowsWithContent();
+    return new Map(rows.map((row) => [row.slug, mapRowToPost(row)]));
+  } catch {
+    return new Map();
+  }
+});
+
+export const getBlogPostBySlug = cache(
+  async (slug: string): Promise<BlogPost | null> => {
+    if (!slug) return null;
+
+    try {
+      const postsBySlug = await getBlogPostsBySlugMap();
+      return postsBySlug.get(slug) ?? null;
+    } catch {
+      return null;
+    }
+  }
+);
+
+export const getBlogSlugs = cache(async (): Promise<string[]> => {
+  try {
+    const posts = await getBlogPostPreviews();
+    return posts.map((post) => post.slug);
+  } catch {
+    return [];
+  }
+});

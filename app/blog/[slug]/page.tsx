@@ -2,31 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
-import { blogPosts, getBlogPostBySlug } from "@/lib/blog-posts";
+import { getBlogPostBySlug } from "@/lib/blog-posts";
 import {
   absoluteUrl,
   buildBlogPostingSchema,
   buildBreadcrumbSchema,
   buildWebPageSchema,
   siteConfig,
-  toIsoDate,
 } from "@/lib/seo";
 
 type BlogPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
+export const revalidate = 900;
+export const fetchCache = "force-cache";
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
 }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -54,7 +51,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       title: `${post.title} | ${siteConfig.name} Blog`,
       description: post.metaDescription,
-      publishedTime: toIsoDate(post.publishedAt),
+      publishedTime: post.publishedAtISO,
       authors: [siteConfig.name],
       images: [{ url: post.image, alt: post.title }],
     },
@@ -69,11 +66,11 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) notFound();
 
-  const publishedAtIso = toIsoDate(post.publishedAt);
+  const publishedAtIso = post.publishedAtISO;
 
   return (
     <section className="relative w-full overflow-hidden bg-transparent pb-24 pt-28 sm:pb-28 sm:pt-32">
@@ -135,14 +132,16 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             <img
               src={post.image}
               alt={post.title}
+              loading="eager"
+              decoding="async"
               className="h-auto w-full object-cover"
             />
           </div>
 
           <div className="mt-8 space-y-5">
-            {post.content.map((paragraph) => (
+            {post.content.map((paragraph, index) => (
               <p
-                key={paragraph}
+                key={`${post.slug}-paragraph-${index}`}
                 className="font-kanit text-[17px] leading-[1.65] text-[#202635] lg:text-[21px]"
               >
                 {paragraph}

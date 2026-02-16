@@ -167,8 +167,8 @@ export function buildBlogPostingSchema(post: BlogPost) {
     headline: post.title,
     description: post.metaDescription,
     image: [post.image],
-    datePublished: toIsoDate(post.publishedAt),
-    dateModified: toIsoDate(post.publishedAt),
+    datePublished: post.publishedAtISO,
+    dateModified: post.updatedAtISO ?? post.publishedAtISO,
     mainEntityOfPage: canonicalUrl,
     url: canonicalUrl,
     author: {

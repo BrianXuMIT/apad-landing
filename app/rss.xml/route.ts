@@ -1,5 +1,5 @@
-import { blogPosts } from "@/lib/blog-posts";
-import { absoluteUrl, siteConfig, toIsoDate } from "@/lib/seo";
+import { getBlogPostPreviews } from "@/lib/blog-posts";
+import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 function escapeXml(value: string): string {
   return value
@@ -10,11 +10,12 @@ function escapeXml(value: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export function GET() {
+export async function GET() {
+  const blogPosts = await getBlogPostPreviews();
+
   const items = blogPosts
     .map((post) => {
       const url = absoluteUrl(`/blog/${post.slug}`);
-      const published = toIsoDate(post.publishedAt);
       const summary = post.metaDescription || post.description;
 
       return `
@@ -22,7 +23,7 @@ export function GET() {
           <title>${escapeXml(post.title)}</title>
           <link>${escapeXml(url)}</link>
           <guid>${escapeXml(url)}</guid>
-          <pubDate>${new Date(published).toUTCString()}</pubDate>
+          <pubDate>${new Date(post.publishedAtISO).toUTCString()}</pubDate>
           <description>${escapeXml(summary)}</description>
         </item>
       `.trim();
