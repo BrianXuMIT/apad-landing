@@ -11,6 +11,7 @@ const navLinks = [
   { name: "About", href: "/#about" },
   { name: "AI Interviewer", href: "/#ai-interviewer" },
   { name: "How It Works", href: "/#how-it-works" },
+  // { name: "Why Teams", href: "/#why-teams" },
   { name: "Blog", href: "/#blogs" },
   { name: "Pricing", href: "/#pricing" },
   { name: "FAQ", href: "/#assessments" },
@@ -93,8 +94,11 @@ const Header = () => {
   const isContactRoute = pathname === "/contact" || pathname.startsWith("/contact/");
 
   useEffect(() => {
+    const onContactRoute =
+      pathname === "/contact" || pathname.startsWith("/contact/");
+
     if (pathname !== "/") {
-      if (isContactRoute) {
+      if (onContactRoute) {
         setActiveSectionId("contact");
         return;
       }
@@ -163,7 +167,7 @@ const Header = () => {
       window.removeEventListener("resize", requestUpdate);
       window.removeEventListener("hashchange", requestUpdate);
     };
-  }, [isContactRoute, pathname]);
+  }, [pathname]);
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 w-full px-3 pt-3 sm:px-5 sm:pt-4">

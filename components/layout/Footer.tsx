@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-const legalLinks = [
-  { label: "Terms of Service", href: "#" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Cookies", href: "#" },
+const siteLinks = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/#blogs" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -15,17 +15,20 @@ export default function Footer() {
             © 2026 APADCode, Inc. All rights reserved.
           </p>
 
-          {/* <div className="flex items-center justify-center gap-x-6 sm:justify-end sm:gap-x-8">
-            {legalLinks.map((item) => (
+          <div
+            className="flex items-center justify-center gap-x-5 sm:justify-end sm:gap-x-6"
+            aria-label="Footer links"
+          >
+            {siteLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="font-kanit text-[14px] text-white transition-opacity hover:opacity-85 lg:text-[18px]"
+                className="font-kanit text-[13px] text-white/95 transition-opacity hover:opacity-85 sm:text-[14px]"
               >
                 {item.label}
               </Link>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </footer>

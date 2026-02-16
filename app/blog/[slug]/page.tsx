@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts, getBlogPostBySlug, siteUrl } from "@/lib/blog-posts";
+import JsonLd from "@/components/seo/JsonLd";
+import { blogPosts, getBlogPostBySlug } from "@/lib/blog-posts";
+import {
+  absoluteUrl,
+  buildBlogPostingSchema,
+  buildBreadcrumbSchema,
+  buildWebPageSchema,
+  siteConfig,
+  toIsoDate,
+} from "@/lib/seo";
 
 type BlogPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -26,24 +37,30 @@ export async function generateMetadata({
   }
 
   const canonicalPath = `/blog/${post.slug}`;
-  const canonicalUrl = `${siteUrl}${canonicalPath}`;
+  const canonicalUrl = absoluteUrl(canonicalPath);
 
   return {
-    title: `${post.title} | APADCode Blog`,
+    title: post.title,
     description: post.metaDescription,
     alternates: {
       canonical: canonicalPath,
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       type: "article",
       url: canonicalUrl,
-      title: `${post.title} | APADCode Blog`,
+      title: `${post.title} | ${siteConfig.name} Blog`,
       description: post.metaDescription,
-      images: [{ url: post.image }],
+      publishedTime: toIsoDate(post.publishedAt),
+      authors: [siteConfig.name],
+      images: [{ url: post.image, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | APADCode Blog`,
+      title: `${post.title} | ${siteConfig.name} Blog`,
       description: post.metaDescription,
       images: [post.image],
     },
@@ -56,8 +73,25 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
   if (!post) notFound();
 
+  const publishedAtIso = toIsoDate(post.publishedAt);
+
   return (
     <section className="relative w-full overflow-hidden bg-transparent pb-24 pt-28 sm:pb-28 sm:pt-32">
+      <JsonLd data={buildBlogPostingSchema(post)} />
+      <JsonLd
+        data={buildWebPageSchema({
+          name: post.title,
+          path: `/blog/${post.slug}`,
+          description: post.metaDescription,
+        })}
+      />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       <div className="pointer-events-none absolute left-[-160px] top-[12%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/24 blur-[120px]" />
       <div className="pointer-events-none absolute right-[-170px] bottom-[8%] h-[350px] w-[350px] rounded-full bg-[#2A9CE8]/18 blur-[128px]" />
 
@@ -85,7 +119,8 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
         <article className="mt-6 overflow-hidden rounded-[28px] border border-[#DACBFF]/62 bg-[linear-gradient(136deg,rgba(255,255,255,0.92)_0%,rgba(247,241,255,0.86)_54%,rgba(237,247,255,0.86)_100%)] p-5 shadow-[0_14px_30px_rgba(94,74,167,0.14)] sm:p-7 lg:p-10">
           <p className="font-kanit text-[13px] uppercase tracking-[0.1em] text-[#665A93]">
-            {post.publishedAt} · {post.readTime}
+            <time dateTime={publishedAtIso}>{post.publishedAt}</time> ·{" "}
+            {post.readTime}
           </p>
 
           <h1 className="mt-3 font-kanit text-[32px] leading-[1.08] tracking-[-0.015em] text-[#171B27] sm:text-[40px] lg:text-[50px]">
