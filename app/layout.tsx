@@ -1,131 +1,103 @@
-import type { Metadata, Viewport } from 'next'
-import './globals.css'
+import type { Metadata } from "next";
+import { Kanit } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { absoluteUrl, siteConfig } from "@/lib/seo";
 
-const siteUrl = 'https://www.apadcode.com'
+const kanit = Kanit({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700"], // Added weights for headers
+  variable: "--font-kanit",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'APADCode - Live AI Coding Interviews',
-    template: '%s | APADCode',
+    default: siteConfig.defaultTitle,
+    template: "%s | APADCode",
   },
-  description:
-    'A live, AI-led coding interview platform for B2B hiring. Evaluate how candidates think, communicate, and reason—not just whether their code passes tests.',
-  applicationName: 'APADCode',
-  creator: 'APADCode',
-  publisher: 'APADCode',
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
   keywords: [
-    'live coding interview',
-    'AI interviewer',
-    'technical interviews',
-    'coding assessment',
-    'developer hiring',
-    'B2B SaaS recruiting',
-    'candidate evaluation',
-    'code interview platform',
+    "AI coding interview platform",
+    "technical hiring",
+    "live coding interviews",
+    "engineering assessment",
+    "AI interviewer",
+    "developer screening",
   ],
-  icons: {
-    icon: '/favicon.png',
-  },
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
   alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    url: siteUrl,
-    title: 'APADCode - Live AI Coding Interviews',
-    description:
-      'A live, AI-led coding interview platform that evaluates how candidates think, communicate, and reason—not just whether their code passes tests.',
-    siteName: 'APADCode',
-    locale: 'en_US',
-    images: [
-      {
-        url: '/og.svg',
-        width: 1200,
-        height: 630,
-        alt: 'APADCode',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'APADCode - Live AI Coding Interviews',
-    description:
-      'A live, AI-led coding interview platform that evaluates how candidates think, communicate, and reason—not just whether their code passes tests.',
-    images: ['/og.svg'],
+    canonical: "/",
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
-}
-
-export const viewport: Viewport = {
-  themeColor: '#0a0a0a',
-  colorScheme: 'dark',
-}
+  openGraph: {
+    type: "website",
+    locale: siteConfig.defaultLocale,
+    url: absoluteUrl("/"),
+    siteName: siteConfig.name,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "APADCode AI-powered live coding interview platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-        name: 'APADCode',
-        url: siteUrl,
-        logo: `${siteUrl}/favicon.png`,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        url: siteUrl,
-        name: 'APADCode',
-        publisher: {
-          '@id': `${siteUrl}/#organization`,
-        },
-      },
-      {
-        '@type': 'WebPage',
-        '@id': `${siteUrl}/#webpage`,
-        url: siteUrl,
-        name: 'APADCode - Live AI Coding Interviews',
-        isPartOf: {
-          '@id': `${siteUrl}/#website`,
-        },
-        about: {
-          '@id': `${siteUrl}/#software`,
-        },
-      },
-      {
-        '@type': 'SoftwareApplication',
-        '@id': `${siteUrl}/#software`,
-        name: 'APADCode',
-        applicationCategory: 'BusinessApplication',
-        operatingSystem: 'Web',
-        url: siteUrl,
-        description:
-          'A live, AI-led coding interview platform that evaluates how candidates think, communicate, and reason—not just whether their code passes tests.',
-        publisher: {
-          '@id': `${siteUrl}/#organization`,
-        },
-      },
-    ],
-  }
-
   return (
-    <html lang="en">
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        {children}
+    <html lang="en" className={`${kanit.variable}`}>
+      <body className="bg-white font-kanit antialiased">
+        <a
+          href="#main-content"
+          className="sr-only z-[999] rounded-md bg-white px-3 py-2 text-sm text-[#111216] focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main-content" className="overflow-x-hidden">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
-  )
+  );
 }

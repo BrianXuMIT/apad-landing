@@ -1,62 +1,86 @@
-import Hero from '@/components/Hero'
-import VisualExplanation from '@/components/VisualExplanation'
-import ProblemSection from '@/components/ProblemSection'
-import ValuePillars from '@/components/ValuePillars'
-import WhyItMatters from '@/components/WhyItMatters'
-import VisionSection from '@/components/VisionSection'
-import ClosingSection from '@/components/ClosingSection'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
+import type { Metadata } from "next";
+import Hero from "@/components/sections/Hero";
+import Intro from "@/components/sections/Intro";
+import UniqueFeatures from "@/components/sections/UniqueFeatures";
+import WhyTeamsChoose from "@/components/sections/WhyTeamsChoose";
+import HowItWorks from "@/components/sections/HowItWorks";
+import Blog from "@/components/sections/Blog";
+import Pricing from "@/components/sections/Pricing";
+import Questionnaire from "@/components/sections/Questionnaire";
+import Contact from "@/components/sections/Contact";
+import JsonLd from "@/components/seo/JsonLd";
+import { getBlogPostPreviews } from "@/lib/blog-posts";
+import { getFaqItems } from "@/lib/faqs";
+import {
+  absoluteUrl,
+  buildFaqPageSchema,
+  buildOrganizationSchema,
+  buildSoftwareApplicationSchema,
+  buildWebPageSchema,
+  buildWebSiteSchema,
+  siteConfig,
+} from "@/lib/seo";
 
-export default function Home() {
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is APADCode?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'APADCode is a live, AI-led coding interview platform that evaluates how candidates think, communicate, and reason during live coding interviews.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How does the live AI interviewer work?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'The AI interviewer explains problems, listens to candidates in real time, and adapts follow-up questions while they code in a live editor.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What do hiring teams receive after an interview?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Hiring teams receive a richer signal of reasoning, communication, and code quality, not just pass/fail results.',
-        },
-      },
-    ],
-  }
+export const revalidate = 900;
+export const fetchCache = "force-cache";
+
+export const metadata: Metadata = {
+  title: "AI-Powered Live Coding Interviews",
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: absoluteUrl("/"),
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+  },
+};
+
+const baseHomeSchemas = [
+  buildOrganizationSchema(),
+  buildWebSiteSchema(),
+  buildWebPageSchema({
+    name: "APADCode Home",
+    path: "/",
+    description: siteConfig.description,
+  }),
+  buildSoftwareApplicationSchema(),
+];
+
+export default async function Home() {
+  const [blogPosts, faqItems] = await Promise.all([
+    getBlogPostPreviews(),
+    getFaqItems(),
+  ]);
+
+  const homeSchemas =
+    faqItems.length > 0
+      ? [
+          ...baseHomeSchemas,
+          buildFaqPageSchema(
+            faqItems.map((item) => ({
+              question: item.question,
+              answer: item.answer,
+            }))
+          ),
+        ]
+      : baseHomeSchemas;
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
-      <main id="main-content" className="min-h-screen">
-        <Navigation />
-        <Hero />
-        <VisualExplanation />
-        <ProblemSection />
-        <ValuePillars />
-        <WhyItMatters />
-        <VisionSection />
-        {/* <ClosingSection /> */}
-        <Footer />
-      </main>
+      {homeSchemas.map((schema, index) => (
+        <JsonLd key={`home-schema-${index}`} data={schema} />
+      ))}
+      <Hero />
+      <Intro />
+      <UniqueFeatures />
+      <HowItWorks />
+      <WhyTeamsChoose />
+      <Blog posts={blogPosts} />
+      <Pricing />
+      <Questionnaire faqItems={faqItems} />
+      <Contact />
     </>
-  )
+  );
 }
