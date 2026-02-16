@@ -81,7 +81,7 @@ const Hero = () => {
             <div className="relative overflow-hidden rounded-[24px] border border-white/75 bg-[linear-gradient(140deg,#FFFFFF_0%,#F8F2FF_60%,#F2F7FF_100%)]">
               <div className="pointer-events-none absolute -right-10 top-[-38px] h-[220px] w-[220px] rounded-full bg-[#A855F7]/18 blur-[65px]" />
               <img
-                src="https://res.cloudinary.com/dxboqivs9/image/upload/v1771003668/New_Project_1_in65ne.png"
+                src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192574/landing_image_tudbbp.png"
                 alt="APADCode interview visual"
                 className="relative z-10 mx-auto h-full max-h-[640px] w-full object-contain"
               />

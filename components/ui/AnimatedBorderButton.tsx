@@ -38,7 +38,7 @@ export default function AnimatedBorderButton({
             className={cn(
               "pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[conic-gradient(from_270deg,#8C45FF_0deg,#7560FF_90deg,#2DA8FF_180deg,#7560FF_270deg,#8C45FF_360deg)] opacity-90 transition-[filter] duration-300 group-hover:brightness-125",
               rotateBorder
-                ? "[will-change:transform] animate-[spin_12s_linear_infinite] group-hover:animate-none"
+                ? "[will-change:transform] animate-[border-spin-compensated_12s_linear_infinite] group-hover:animate-none"
                 : "",
             )}
           />

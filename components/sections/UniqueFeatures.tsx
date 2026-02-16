@@ -101,7 +101,7 @@ export default function UniqueFeatures() {
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770961039/Bluecyborgtoydanceswithfuturisticjoygeneratedbyai1_vjw9eb.png"
+            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192574/robot_image_01_gjf6v5.png"
             alt="Futuristic APADCode robot"
             className="relative z-[1] h-auto w-full object-contain"
           />
@@ -113,7 +113,7 @@ export default function UniqueFeatures() {
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
           <img
-            src="https://res.cloudinary.com/dxboqivs9/image/upload/v1770961062/91359885_ul767n.png"
+            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192576/robot_image_02_t3jyz8.png"
             alt="APADCode assistant robot"
             className="relative z-[1] h-auto w-full object-contain"
           />

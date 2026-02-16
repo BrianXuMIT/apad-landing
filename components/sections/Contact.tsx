@@ -1,7 +1,7 @@
 import React from "react";
 
 const speakerImageUrl =
-  "https://res.cloudinary.com/dxboqivs9/image/upload/v1771026880/New_Project_8_folxvk.png";
+  "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/footer_woman_image_ijpdcu.png";
 
 export default function Contact() {
   return (
