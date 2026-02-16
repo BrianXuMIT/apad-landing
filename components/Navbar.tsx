@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { BOOK_DEMO_URL, REGISTER_URL } from "@/lib/links";
 
 const Navbar = () => {
   const navLinks = [
@@ -42,12 +43,22 @@ const Navbar = () => {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-4">
-          <button className="px-5 py-2 rounded-xl border border-purple-400 bg-white text-gray-800 font-semibold text-sm hover:bg-gray-50 transition-all">
+          <a
+            href={BOOK_DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2 rounded-xl border border-purple-400 bg-white text-gray-800 font-semibold text-sm hover:bg-gray-50 transition-all"
+          >
             Request Demo
-          </button>
-          <button className="px-6 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold text-sm hover:opacity-90 transition-all">
+          </a>
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold text-sm hover:opacity-90 transition-all"
+          >
             Sign Up
-          </button>
+          </a>
         </div>
       </div>
     </nav>

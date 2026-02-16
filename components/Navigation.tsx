@@ -51,6 +51,8 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <motion.a
               href={BOOK_DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center border border-white/40 bg-white/15 px-5 py-2 text-sm font-semibold text-white/90 backdrop-blur-md transition-colors hover:border-white/70 hover:bg-white/25 hover:text-white"
@@ -59,6 +61,8 @@ export default function Navigation() {
             </motion.a>
             <motion.a
               href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center border border-white/25 bg-white/5 px-5 py-2 text-sm font-medium text-white/80 backdrop-blur-md transition-colors hover:border-white/60 hover:bg-white/15 hover:text-white"

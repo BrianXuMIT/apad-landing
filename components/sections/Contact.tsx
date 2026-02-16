@@ -3,6 +3,7 @@ import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import CalendarOutlineIcon from "@/assets/icons/CalendarOutlineIcon";
 import ContactActionButton from "@/components/ui/ContactActionButton";
 import { imageMaps } from "@/lib/image_maps";
+import { BOOK_DEMO_URL } from "@/lib/links";
 
 export default function Contact() {
   return (
@@ -80,6 +81,8 @@ export default function Contact() {
                   <ContactActionButton
                     variant="secondary"
                     icon={<CalendarOutlineIcon className="h-4 w-4 shrink-0" />}
+                    href={BOOK_DEMO_URL}
+                    openInNewTab
                   >
                     Schedule a Meeting
                   </ContactActionButton>

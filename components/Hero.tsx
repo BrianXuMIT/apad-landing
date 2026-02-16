@@ -135,6 +135,8 @@ export default function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           href={BOOK_DEMO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group relative inline-flex items-center justify-center rounded-md border border-white/20 bg-white/5 px-8 py-4 text-lg font-semibold text-white/95 backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
         >
           <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 before:absolute before:inset-0 before:content-[''] before:bg-gradient-to-r before:from-sky-400/20 before:via-transparent before:to-sky-400/20 group-hover:opacity-100" />

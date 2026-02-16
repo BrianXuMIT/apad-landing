@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { imageMaps } from "@/lib/image_maps";
+import { BOOK_DEMO_URL, REGISTER_URL } from "@/lib/links";
 
 const navLinks = [
   { name: "About", href: "/#about" },
@@ -26,37 +27,60 @@ function ActionButton({
   primary = false,
   showIcon = true,
   compact = false,
+  href,
+  openInNewTab = false,
 }: {
   label: string;
   primary?: boolean;
   showIcon?: boolean;
   compact?: boolean;
+  href?: string;
+  openInNewTab?: boolean;
 }) {
+  const buttonClass = `inline-flex items-center justify-center rounded-[12px] font-kanit transition-all duration-300 ${
+    primary
+      ? compact
+        ? "h-[36px] bg-[linear-gradient(96deg,#8C45FF_2%,#0AAFF9_96%)] px-3.5 text-[13px] font-medium text-white shadow-[0_7px_16px_rgba(117,83,255,0.28)] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(117,83,255,0.36)]"
+        : "h-[42px] bg-[linear-gradient(96deg,#8C45FF_2%,#0AAFF9_96%)] px-5 text-[15px] font-medium text-white shadow-[0_10px_22px_rgba(117,83,255,0.32)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(117,83,255,0.4)]"
+      : compact
+        ? "h-[36px] border border-[#8C45FF]/34 bg-white/75 px-3.5 text-[13px] font-medium text-[#2C3143] hover:border-[#8C45FF]/50 hover:bg-white/90"
+        : "h-[42px] border border-[#8C45FF]/30 bg-white/65 px-5 text-[15px] font-medium text-[#2C3143] hover:border-[#8C45FF]/50 hover:bg-white/90"
+  }`;
+
+  const content = (
+    <span
+      className={
+        primary
+          ? "inline-flex items-center gap-1.5"
+          : "bg-[linear-gradient(98deg,#3B3F52_0%,#61439E_100%)] bg-clip-text text-transparent"
+      }
+    >
+      {label}
+      {primary && showIcon ? (
+        <ArrowRightIcon className="h-4 w-4" />
+      ) : null}
+    </span>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={buttonClass}
+        target={openInNewTab ? "_blank" : undefined}
+        rel={openInNewTab ? "noopener noreferrer" : undefined}
+      >
+        {content}
+      </Link>
+    );
+  }
+
   return (
     <button
-      className={`inline-flex items-center justify-center rounded-[12px] font-kanit transition-all duration-300 ${
-        primary
-          ? compact
-            ? "h-[36px] bg-[linear-gradient(96deg,#8C45FF_2%,#0AAFF9_96%)] px-3.5 text-[13px] font-medium text-white shadow-[0_7px_16px_rgba(117,83,255,0.28)] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(117,83,255,0.36)]"
-            : "h-[42px] bg-[linear-gradient(96deg,#8C45FF_2%,#0AAFF9_96%)] px-5 text-[15px] font-medium text-white shadow-[0_10px_22px_rgba(117,83,255,0.32)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(117,83,255,0.4)]"
-          : compact
-            ? "h-[36px] border border-[#8C45FF]/34 bg-white/75 px-3.5 text-[13px] font-medium text-[#2C3143] hover:border-[#8C45FF]/50 hover:bg-white/90"
-            : "h-[42px] border border-[#8C45FF]/30 bg-white/65 px-5 text-[15px] font-medium text-[#2C3143] hover:border-[#8C45FF]/50 hover:bg-white/90"
-      }`}
+      className={buttonClass}
       type="button"
     >
-      <span
-        className={
-          primary
-            ? "inline-flex items-center gap-1.5"
-            : "bg-[linear-gradient(98deg,#3B3F52_0%,#61439E_100%)] bg-clip-text text-transparent"
-        }
-      >
-        {label}
-        {primary && showIcon ? (
-          <ArrowRightIcon className="h-4 w-4" />
-        ) : null}
-      </span>
+      {content}
     </button>
   );
 }
@@ -163,7 +187,13 @@ const Header = () => {
             />
           </div>
 
-          <ActionButton label="Sign Up" showIcon={false} compact />
+          <ActionButton
+            label="Sign Up"
+            showIcon={false}
+            compact
+            href={REGISTER_URL}
+            openInNewTab
+          />
         </div>
 
         <div className="hidden items-center justify-between gap-6 lg:flex">
@@ -197,8 +227,13 @@ const Header = () => {
           </div>
 
           <div className="flex shrink-0 items-center gap-3">
-            <ActionButton label="Sign Up" />
-            <ActionButton label="Request Demo" primary />
+            <ActionButton label="Sign Up" href={REGISTER_URL} openInNewTab />
+            <ActionButton
+              label="Request Demo"
+              primary
+              href={BOOK_DEMO_URL}
+              openInNewTab
+            />
           </div>
         </div>
 
