@@ -1,5 +1,5 @@
 import React from "react";
-import HighlightBadge from "../HighlightBadge";
+import HighlightBadge from "@/components/ui/HighlightBadge";
 
 type SectionLayoutProps = {
   sectionId?: string;

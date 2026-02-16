@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedBorderCard from "./ui/AnimatedBorderCard";
+import AnimatedBorderCard from "./AnimatedBorderCard";
 
 type HighlightBadgeProps = {
   text: string;
