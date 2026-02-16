@@ -1,3 +1,5 @@
+import { imageMaps } from "@/lib/image_maps";
+
 export const siteUrl = "https://www.apadcode.com";
 
 export type BlogPost = {
@@ -19,8 +21,7 @@ export const blogPosts: BlogPost[] = [
       "Human interviews offer depth but become slow, expensive, and inconsistent at scale. Here is why companies are rethinking them.",
     metaDescription:
       "Learn why traditional live coding interviews create hiring bottlenecks at scale and how AI-supported interview flows improve consistency and throughput.",
-    image:
-      "https://res.cloudinary.com/dxboqivs9/image/upload/v1771131459/ChatGPT_Image_Feb_14_2026_08_56_55_PM_h9bdkl.png",
+    image: imageMaps.blog.traditionalScale,
     publishedAt: "February 14, 2026",
     readTime: "4 min read",
     content: [
@@ -36,8 +37,7 @@ export const blogPosts: BlogPost[] = [
       "Automated assessments filter candidates fast, but often miss reasoning, communication and real-world thinking.",
     metaDescription:
       "Explore the gap between coding tests and real interviews, and why modern hiring requires evaluating reasoning, communication, and engineering judgment.",
-    image:
-      "https://res.cloudinary.com/dxboqivs9/image/upload/v1771131459/ChatGPT_Image_Feb_14_2026_08_57_07_PM_ei7cue.png",
+    image: imageMaps.blog.codingTestsVsInterviews,
     publishedAt: "February 14, 2026",
     readTime: "5 min read",
     content: [
@@ -53,8 +53,7 @@ export const blogPosts: BlogPost[] = [
       "AI powered live interviews combine depth and scalability - rephrasing how modern teams evaluates engineers.",
     metaDescription:
       "See how AI-powered live interviews are transforming technical hiring with adaptive questioning, scalable execution, and structured decision-ready insights.",
-    image:
-      "https://res.cloudinary.com/dxboqivs9/image/upload/v1771131459/ChatGPT_Image_Feb_14_2026_08_57_19_PM_ivbxpu.png",
+    image: imageMaps.blog.aiTransformingHiring,
     publishedAt: "February 14, 2026",
     readTime: "4 min read",
     content: [
@@ -70,8 +69,7 @@ export const blogPosts: BlogPost[] = [
       "Discover how companies cut interview hours while maintaining high hiring standards.",
     metaDescription:
       "Understand practical strategies for reducing interviewer fatigue while maintaining high quality signals and fairness in engineering hiring.",
-    image:
-      "https://res.cloudinary.com/dxboqivs9/image/upload/v1771131459/ChatGPT_Image_Feb_14_2026_08_57_16_PM_ok3tfc.png",
+    image: imageMaps.blog.reducingInterviewFatigue,
     publishedAt: "February 14, 2026",
     readTime: "3 min read",
     content: [

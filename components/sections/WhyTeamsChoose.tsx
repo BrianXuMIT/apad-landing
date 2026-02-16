@@ -1,31 +1,13 @@
 import React from "react";
 import SectionLayout from "./SectionLayout";
+import GlowImage from "@/components/ui/GlowImage";
+import { imageMaps } from "@/lib/image_maps";
+import {
+  whyTeamsQualityItems,
+  whyTeamsScaleItems,
+} from "@/lib/why-teams-content";
 
 type Tone = "violet" | "cyan";
-
-const scaleFeatures = [
-  {
-    title: "Human-like depth, at machine scale",
-    description: "Conduct thousands of interviews without interviewer fatigue.",
-  },
-  {
-    title: "Faster, smarter pre-screening",
-    description: "Spend human time only on candidates who truly deserve it.",
-  },
-];
-
-const qualityFeatures = [
-  {
-    title: "Consistent & unbiased evaluation",
-    description:
-      "Every candidate is assessed with the same depth and fairness.",
-  },
-  {
-    title: "Designed for real-world hiring",
-    description:
-      "Not puzzles. Not trick questions. Real skills that matter on the job.",
-  },
-];
 
 function Feature({
   title,
@@ -120,15 +102,14 @@ function FeaturePanel({
 
 function VisualPanel({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative mx-auto w-full max-w-[clamp(260px,74vw,650px)]">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/76 blur-[108px] lg:h-[390px] lg:w-[390px] lg:blur-[130px]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/52 blur-[150px] lg:h-[590px] lg:w-[590px] lg:blur-[175px]" />
-      <img
-        src={src}
-        alt={alt}
-        className="relative z-[1] w-full rounded-[22px] object-cover"
-      />
-    </div>
+    <GlowImage
+      src={src}
+      alt={alt}
+      containerClassName="mx-auto w-full max-w-[clamp(260px,74vw,650px)]"
+      imageClassName="relative z-[1] w-full rounded-[22px] object-cover"
+      primaryGlowClassName="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/76 blur-[108px] lg:h-[390px] lg:w-[390px] lg:blur-[130px]"
+      secondaryGlowClassName="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/52 blur-[150px] lg:h-[590px] lg:w-[590px] lg:blur-[175px]"
+    />
   );
 }
 
@@ -150,12 +131,12 @@ export default function WhyTeamsChoose() {
           <FeaturePanel
             heading="Scale without sacrificing depth"
             tone="violet"
-            items={scaleFeatures}
+            items={whyTeamsScaleItems}
           />
         </div>
         <div className="order-1 lg:order-2">
           <VisualPanel
-            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192571/feature_image_01_zziu4i.png"
+            src={imageMaps.sections.whyTeamsChoose.scaleVisual}
             alt="AI robot with interview panels"
           />
         </div>
@@ -164,7 +145,7 @@ export default function WhyTeamsChoose() {
       <div className="mt-12 grid grid-cols-1 items-center gap-8 lg:mt-14 lg:grid-cols-[1fr_1fr] lg:gap-12">
         <div className="order-1">
           <VisualPanel
-            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/feature_image_02_fabi5l.png"
+            src={imageMaps.sections.whyTeamsChoose.qualityVisual}
             alt="AI robot with skill signals"
           />
         </div>
@@ -172,7 +153,7 @@ export default function WhyTeamsChoose() {
           <FeaturePanel
             heading="Decision quality teams can trust"
             tone="cyan"
-            items={qualityFeatures}
+            items={whyTeamsQualityItems}
           />
         </div>
       </div>

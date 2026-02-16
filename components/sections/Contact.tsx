@@ -1,7 +1,8 @@
 import React from "react";
-
-const speakerImageUrl =
-  "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/footer_woman_image_ijpdcu.png";
+import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import CalendarOutlineIcon from "@/assets/icons/CalendarOutlineIcon";
+import ContactActionButton from "@/components/ui/ContactActionButton";
+import { imageMaps } from "@/lib/image_maps";
 
 export default function Contact() {
   return (
@@ -9,7 +10,7 @@ export default function Contact() {
       <div className="mx-auto w-full max-w-[1400px]">
         <div className="relative overflow-visible rounded-[24px] bg-gradient-to-r from-[#8C45FF] to-[#992DFF] pl-6 pr-10 pt-7 sm:pl-10 sm:pr-14 sm:pt-10 lg:px-12 lg:pt-11 lg:pb-0">
           <img
-            src={speakerImageUrl}
+            src={imageMaps.sections.contact.specialist}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute bottom-0 right-5 z-[1] h-auto w-[67%] max-w-[190px] object-contain opacity-12 sm:right-8 sm:w-[35%] sm:max-w-[210px] md:hidden"
@@ -70,53 +71,25 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center justify-between gap-3 pb-3 pt-1 max-[430px]:flex-col max-[430px]:items-stretch sm:pb-4">
-                  <button
-                    type="button"
-                    className="inline-flex h-[42px] items-center gap-2 whitespace-nowrap rounded-[13px] border border-[#2B1B72] bg-[linear-gradient(145deg,#2A1A70_0%,#3A258A_100%)] px-4 font-kanit text-[13px] font-medium text-white shadow-[0_8px_16px_rgba(20,12,52,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3A2790] hover:shadow-[0_10px_20px_rgba(20,12,52,0.36)] max-[430px]:w-full max-[430px]:justify-center sm:h-[44px] sm:px-5 sm:text-[14px] lg:h-[46px] lg:text-[15px]"
+                  <ContactActionButton
+                    variant="primary"
+                    icon={<ArrowRightIcon className="h-4 w-4 shrink-0" strokeWidth={1.7} />}
                   >
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      className="h-4 w-4 shrink-0"
-                    >
-                      <path
-                        d="M4 10h11M11 4l6 6-6 6"
-                        stroke="currentColor"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
                     Request Demo
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex h-[42px] items-center gap-2 whitespace-nowrap rounded-[13px] border border-white/85 bg-white px-4 font-kanit text-[13px] font-medium text-[#5D36CF] shadow-[0_8px_16px_rgba(40,24,95,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-[0_10px_20px_rgba(40,24,95,0.26)] max-[430px]:w-full max-[430px]:justify-center sm:h-[44px] sm:px-5 sm:text-[14px] lg:h-[46px] lg:text-[15px]"
+                  </ContactActionButton>
+                  <ContactActionButton
+                    variant="secondary"
+                    icon={<CalendarOutlineIcon className="h-4 w-4 shrink-0" />}
                   >
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      className="h-4 w-4 shrink-0"
-                    >
-                      <path
-                        d="M6 2.75v2.5M14 2.75v2.5M3.5 8.25h13M5.5 4.75h9A1.75 1.75 0 0 1 16.25 6.5v8A1.75 1.75 0 0 1 14.5 16.25h-9A1.75 1.75 0 0 1 3.75 14.5v-8A1.75 1.75 0 0 1 5.5 4.75Z"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
                     Schedule a Meeting
-                  </button>
+                  </ContactActionButton>
                 </div>
               </form>
             </div>
 
             <div className="relative z-[20] mx-auto mt-2 hidden w-full max-w-[700px] md:mt-0 md:block md:h-full md:self-stretch md:justify-self-end">
               <img
-                src={speakerImageUrl}
+                src={imageMaps.sections.contact.specialist}
                 alt="Interview specialist"
                 className="pointer-events-none relative z-[30] ml-auto w-[88%] object-contain sm:w-[84%] md:absolute md:bottom-0 md:right-[-24px] md:h-[126%] md:w-auto md:max-w-none lg:right-[-54px] lg:h-[170%]"
               />

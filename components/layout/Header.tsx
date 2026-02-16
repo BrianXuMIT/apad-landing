@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import { imageMaps } from "@/lib/image_maps";
 
 const navLinks = [
   { name: "About", href: "/#about" },
@@ -52,20 +54,7 @@ function ActionButton({
       >
         {label}
         {primary && showIcon ? (
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 20 20"
-            fill="none"
-            className="h-4 w-4"
-          >
-            <path
-              d="M4.167 10h11.666M10.833 4.583 16.25 10l-5.417 5.417"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowRightIcon className="h-4 w-4" />
         ) : null}
       </span>
     </button>
@@ -168,7 +157,7 @@ const Header = () => {
 
           <div className="min-w-0 flex-1 rounded-sm px-1.5 py-0.5 sm:px-2 sm:py-0">
             <img
-              src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/logo-g_f3acaf_uwyuck.png"
+              src={imageMaps.brand.logo}
               alt="APADCode logo"
               className="mx-auto h-10 w-auto max-w-full object-contain"
             />
@@ -179,7 +168,7 @@ const Header = () => {
 
         <div className="hidden items-center justify-between gap-6 lg:flex">
           <img
-            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/logo-g_f3acaf_uwyuck.png"
+            src={imageMaps.brand.logo}
             alt="APADCode logo"
             className="h-10 w-auto shrink-0 object-contain"
           />

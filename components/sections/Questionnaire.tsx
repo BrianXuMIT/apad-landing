@@ -2,42 +2,11 @@
 
 import React, { useState } from "react";
 import SectionLayout from "./SectionLayout";
+import GlowImage from "@/components/ui/GlowImage";
+import { faqItems } from "@/lib/faq-items";
+import { imageMaps } from "@/lib/image_maps";
 
-type FaqItem = {
-  question: string;
-  answer: string;
-};
-
-const faqItems: FaqItem[] = [
-  {
-    question: "What is APAD Code and how does it work?",
-    answer:
-      "APAD Code is an AI-powered technical assessment platform designed to help teams evaluate real-world software engineering skills with accuracy and consistency. Instead of focusing only on language syntax or puzzle-style problems, APAD Code simulates practical development scenarios that reflect how engineers actually work.",
-  },
-  {
-    question: "Who can benefit from using APAD Code?",
-    answer:
-      "Recruiters, hiring managers, and engineering teams can all benefit by reducing interview load while still evaluating problem-solving depth, communication, and implementation quality.",
-  },
-  {
-    question: "How does APAD Code compare to other code test platforms?",
-    answer:
-      "APAD Code focuses on realistic interview behavior, adaptive questioning, and structured insights rather than static pass/fail coding tasks alone.",
-  },
-  {
-    question:
-      "What happens if a challenge is cancelled or expires before the candidate starts the challenge?",
-    answer:
-      "Challenges can be reset or re-issued so candidates can continue the hiring process with a valid assessment window.",
-  },
-  {
-    question: "Why are coding assessments an essential hiring tool?",
-    answer:
-      "They help teams evaluate practical engineering ability early, improve consistency, and make better hiring decisions with less bias and less interviewer fatigue.",
-  },
-];
-
-export default function Questionaire() {
+export default function Questionnaire() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
@@ -52,7 +21,7 @@ export default function Questionaire() {
         </>
       }
     >
-      <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-12">
         <div className="rounded-[8px] bg-transparent lg:min-h-[640px]">
           {faqItems.map((item, index) => {
             const isActive = index === activeIndex;
@@ -62,9 +31,7 @@ export default function Questionaire() {
                 key={item.question}
                 className="border-b border-[#1A1D25]/30 pb-4"
               >
-                <div
-                  className={`rounded-[4px] border px-0 transition-colors duration-200 border-transparent bg-transparent"`}
-                >
+                <div className="rounded-[4px] border border-transparent bg-transparent px-0 transition-colors duration-200">
                   <button
                     type="button"
                     onClick={() =>
@@ -100,15 +67,14 @@ export default function Questionaire() {
           })}
         </div>
 
-        <div className="relative mx-auto w-full max-w-[520px] pt-8 lg:pt-16">
-          <div className="pointer-events-none absolute left-1/2 top-[56%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]" />
-          <div className="pointer-events-none absolute left-1/2 top-[56%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]" />
-          <img
-            src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/question_image_pn060u.png"
-            alt="APADCode FAQ visual"
-            className="relative z-[2] mx-auto w-full max-w-[470px] object-contain"
-          />
-        </div>
+        <GlowImage
+          src={imageMaps.sections.faq.visual}
+          alt="APADCode FAQ visual"
+          containerClassName="mx-auto hidden w-full max-w-[520px] pt-6 sm:pt-8 lg:mx-0 lg:block lg:justify-self-end lg:self-center lg:pt-0"
+          imageClassName="relative z-[2] ml-auto w-full max-w-[470px] object-contain"
+          primaryGlowClassName="pointer-events-none absolute left-1/2 top-[56%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[105px] lg:h-[380px] lg:w-[380px] lg:blur-[125px]"
+          secondaryGlowClassName="pointer-events-none absolute left-1/2 top-[56%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[145px] lg:h-[560px] lg:w-[560px] lg:blur-[165px]"
+        />
       </div>
     </SectionLayout>
   );

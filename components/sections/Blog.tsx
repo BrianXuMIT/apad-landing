@@ -1,40 +1,10 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import SectionLayout from "./SectionLayout";
 import AnimatedBorderCard from "../ui/AnimatedBorderCard";
 import { blogPosts } from "@/lib/blog-posts";
-
-function ReadMoreButton({ href }: { href: string }) {
-  return (
-    <Link
-      href={href}
-      className="group inline-flex h-[46px] items-center gap-2 rounded-full border border-[#D7DBEA] bg-white px-4 font-kanit shadow-[0_6px_16px_rgba(33,42,66,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#B9C2DD] hover:shadow-[0_10px_22px_rgba(33,42,66,0.12)]"
-      aria-label="Read article"
-    >
-      <span className="text-[16px] font-medium leading-none tracking-[-0.005em] text-[#252A39]">
-        Read More
-      </span>
-      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#D6DCEE] bg-[#F7F9FF] text-[#3A415A] transition-all duration-300 group-hover:translate-x-0.5 group-hover:border-[#BEC8E2] group-hover:bg-[#EEF3FF]">
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 20 20"
-          className="h-3.5 w-3.5 shrink-0"
-          fill="none"
-        >
-          <path
-            d="M4 10h11M11 4l6 6-6 6"
-            stroke="currentColor"
-            strokeWidth="1.9"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
-    </Link>
-  );
-}
+import ReadMoreLink from "@/components/ui/ReadMoreLink";
 
 export default function Blog() {
   const [itemsPerView, setItemsPerView] = useState(3);
@@ -117,7 +87,7 @@ export default function Blog() {
                     {post.description}
                   </p>
                   <div className="mt-auto pt-4">
-                    <ReadMoreButton href={`/blog/${post.slug}`} />
+                    <ReadMoreLink href={`/blog/${post.slug}`} />
                   </div>
                 </div>
               </AnimatedBorderCard>

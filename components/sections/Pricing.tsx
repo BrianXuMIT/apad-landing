@@ -3,70 +3,18 @@
 import React, { useMemo, useState } from "react";
 import SectionLayout from "./SectionLayout";
 import AnimatedBorderCard from "../ui/AnimatedBorderCard";
-
-type BillingCycle = "monthly" | "yearly";
-
-type Plan = {
-  name: string;
-  monthly: number;
-  yearly: number;
-  description: string;
-  features: string[];
-  highlighted?: boolean;
-};
-
-const plans: Plan[] = [
-  {
-    name: "Starter",
-    monthly: 29,
-    yearly: 290,
-    description: "Best for: Pre-screening technical candidates efficiently",
-    features: [
-      "AI-powered live coding interviews",
-      "Real-time code execution sandbox",
-      "Automated scoring & feedback",
-      "Standard question library",
-      "Candidate performance report",
-      "Email support",
-    ],
-    highlighted: true,
-  },
-  {
-    name: "Growth",
-    monthly: 79,
-    yearly: 790,
-    description: "Best for: Scaling hiring without interviewer fatigue.",
-    features: [
-      "Custom interview workflows",
-      "Role-based question sets",
-      "Communication & reasoning evaluation",
-      "Anti-cheating & monitoring tools",
-      "Team collaboration dashboard",
-      "Priority support",
-    ],
-  },
-  {
-    name: "Enterprise",
-    monthly: 119,
-    yearly: 1190,
-    description: "Best for: Large organizations hiring scale.",
-    features: [
-      "Unlimited parallel interviews",
-      "Advanced AI evaluation models",
-      "ATS integration",
-      "Custom scoring frameworks",
-      "Dedicated account manager",
-      "SLA & Security compliance",
-    ],
-  },
-];
+import {
+  BillingCycle,
+  PricingPlan,
+  pricingPlans,
+} from "@/lib/pricing-plans";
 
 function PlanCard({
   plan,
   billing,
   priceSuffix,
 }: {
-  plan: Plan;
+  plan: PricingPlan;
   billing: BillingCycle;
   priceSuffix: string;
 }) {
@@ -184,7 +132,7 @@ export default function Pricing() {
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/85 blur-[115px] lg:h-[420px] lg:w-[420px] lg:blur-[130px]" />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/65 blur-[155px] lg:h-[620px] lg:w-[620px] lg:blur-[175px]" />
         <div className="relative z-[1] grid w-full grid-cols-1 justify-items-center gap-5 md:grid-cols-3 md:items-stretch">
-          {plans.map((plan) => {
+          {pricingPlans.map((plan) => {
             return (
               <PlanCard
                 key={plan.name}

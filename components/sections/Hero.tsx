@@ -1,4 +1,6 @@
 import React from "react";
+import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import { imageMaps } from "@/lib/image_maps";
 
 const Hero = () => {
   return (
@@ -38,20 +40,7 @@ const Hero = () => {
               className="group inline-flex h-[54px] items-center justify-center gap-2 rounded-[16px] border border-white/35 bg-[linear-gradient(98deg,#7D49EF_0%,#298DEA_100%)] px-7 font-kanit text-[17px] font-medium tracking-[0.01em] text-white shadow-[0_12px_28px_rgba(99,73,220,0.34)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-[1.03] hover:shadow-[0_18px_34px_rgba(99,73,220,0.42)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C45FF]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:h-[58px] sm:px-9 sm:text-[18px] lg:h-[62px] lg:px-10 lg:text-[20px]"
             >
               <span>Request Demo</span>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                fill="none"
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-5 sm:w-5"
-              >
-                <path
-                  d="M4.167 10h11.666M10.833 4.583 16.25 10l-5.417 5.417"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-5 sm:w-5" />
             </button>
           </div>
 
@@ -81,7 +70,7 @@ const Hero = () => {
             <div className="relative overflow-hidden rounded-[24px] border border-white/75 bg-[linear-gradient(140deg,#FFFFFF_0%,#F8F2FF_60%,#F2F7FF_100%)]">
               <div className="pointer-events-none absolute -right-10 top-[-38px] h-[220px] w-[220px] rounded-full bg-[#A855F7]/18 blur-[65px]" />
               <img
-                src="https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192574/landing_image_tudbbp.png"
+                src={imageMaps.sections.hero.main}
                 alt="APADCode interview visual"
                 className="relative z-10 mx-auto h-full max-h-[640px] w-full object-contain"
               />
