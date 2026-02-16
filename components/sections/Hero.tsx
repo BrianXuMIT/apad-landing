@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { imageMaps } from "@/lib/image_maps";
 
@@ -35,13 +36,13 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-3 lg:mt-10 lg:justify-start">
-            <button
-              type="button"
+            <Link
+              href="/contact"
               className="group inline-flex h-[54px] items-center justify-center gap-2 rounded-[16px] border border-white/35 bg-[linear-gradient(98deg,#7D49EF_0%,#298DEA_100%)] px-7 font-kanit text-[17px] font-medium tracking-[0.01em] text-white shadow-[0_12px_28px_rgba(99,73,220,0.34)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-[1.03] hover:shadow-[0_18px_34px_rgba(99,73,220,0.42)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C45FF]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:h-[58px] sm:px-9 sm:text-[18px] lg:h-[62px] lg:px-10 lg:text-[20px]"
             >
               <span>Request Demo</span>
               <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-5 sm:w-5" />
-            </button>
+            </Link>
           </div>
 
           <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-3 lg:justify-start">

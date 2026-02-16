@@ -116,6 +116,7 @@ function VisualPanel({ src, alt }: { src: string; alt: string }) {
 export default function WhyTeamsChoose() {
   return (
     <SectionLayout
+      sectionId="why-teams"
       badgeText="Human-level evaluation, delivered by AI"
       title="Why Teams Choose APADCode"
       description="Everything hiring teams need to interview better, faster, and fairer without trade-offs."

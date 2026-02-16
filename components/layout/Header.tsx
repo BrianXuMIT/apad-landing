@@ -5,15 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { imageMaps } from "@/lib/image_maps";
-import { BOOK_DEMO_URL, REGISTER_URL } from "@/lib/links";
+import { REGISTER_URL } from "@/lib/links";
 
 const navLinks = [
   { name: "About", href: "/#about" },
-  { name: "How it works", href: "/#how-it-works" },
   { name: "AI Interviewer", href: "/#ai-interviewer" },
-  { name: "Assessments", href: "/#assessments" },
+  { name: "How It Works", href: "/#how-it-works" },
+  { name: "Blog", href: "/#blogs" },
   { name: "Pricing", href: "/#pricing" },
-  { name: "Blogs", href: "/#blogs" },
+  { name: "FAQ", href: "/#assessments" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 function getHashFromHref(href: string): string | null {
@@ -89,9 +90,14 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const pathname = usePathname();
+  const isContactRoute = pathname === "/contact" || pathname.startsWith("/contact/");
 
   useEffect(() => {
     if (pathname !== "/") {
+      if (isContactRoute) {
+        setActiveSectionId("contact");
+        return;
+      }
       setActiveSectionId(null);
       return;
     }
@@ -126,6 +132,13 @@ const Header = () => {
         }
       }
 
+      const isAtPageBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 2;
+      if (isAtPageBottom) {
+        nextActiveId = sections[sections.length - 1].id;
+      }
+
       setActiveSectionId((prev) => (prev === nextActiveId ? prev : nextActiveId));
     };
 
@@ -150,7 +163,7 @@ const Header = () => {
       window.removeEventListener("resize", requestUpdate);
       window.removeEventListener("hashchange", requestUpdate);
     };
-  }, [pathname]);
+  }, [isContactRoute, pathname]);
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 w-full px-3 pt-3 sm:px-5 sm:pt-4">
@@ -206,7 +219,10 @@ const Header = () => {
           <div className="flex items-center gap-1 rounded-full border border-white/70 bg-white/58 px-2 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
             {navLinks.map((link) => {
               const hash = getHashFromHref(link.href);
-              const isActive = hash !== null && activeSectionId === hash;
+              const isActive =
+                hash !== null &&
+                (activeSectionId === hash ||
+                  (isContactRoute && hash === "contact"));
 
               return (
                 <Link
@@ -231,8 +247,7 @@ const Header = () => {
             <ActionButton
               label="Request Demo"
               primary
-              href={BOOK_DEMO_URL}
-              openInNewTab
+              href="/contact"
             />
           </div>
         </div>
@@ -243,7 +258,10 @@ const Header = () => {
               <div className="flex flex-col gap-1.5">
                 {navLinks.map((link) => {
                   const hash = getHashFromHref(link.href);
-                  const isActive = hash !== null && activeSectionId === hash;
+                  const isActive =
+                    hash !== null &&
+                    (activeSectionId === hash ||
+                      (isContactRoute && hash === "contact"));
 
                   return (
                     <Link

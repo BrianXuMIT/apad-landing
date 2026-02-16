@@ -1,13 +1,68 @@
-import React from "react";
+"use client";
+
+import React, { FormEvent, useState } from "react";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import CalendarOutlineIcon from "@/assets/icons/CalendarOutlineIcon";
 import ContactActionButton from "@/components/ui/ContactActionButton";
 import { imageMaps } from "@/lib/image_maps";
 import { BOOK_DEMO_URL } from "@/lib/links";
 
+type RequestStatus = "idle" | "submitting" | "success" | "error";
+
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState<RequestStatus>("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const isSubmitting = status === "submitting";
+  const isError = status === "error";
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    setStatus("submitting");
+    setFeedback("");
+
+    try {
+      const response = await fetch("/api/request-demo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, phone }),
+      });
+
+      const data = (await response
+        .json()
+        .catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Unable to send request right now.");
+      }
+
+      setStatus("success");
+      setFeedback("Request sent. We will contact you soon.");
+      setName("");
+      setEmail("");
+      setPhone("");
+    } catch (error) {
+      setStatus("error");
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "Unable to send request right now."
+      );
+    }
+  };
+
   return (
-    <section className="relative isolate z-[40] mt-8 w-full overflow-visible p-4 sm:mt-10 sm:px-6 sm:pb-20 lg:mt-44 lg:px-10 lg:py-16">
+    <section
+      id="contact"
+      className="relative isolate z-[40] mt-8 w-full overflow-visible p-4 sm:mt-10 sm:px-6 sm:pb-20 lg:mt-44 lg:px-10 lg:py-16"
+    >
       <div className="mx-auto w-full max-w-[1400px]">
         <div className="relative overflow-visible rounded-[24px] bg-gradient-to-r from-[#8C45FF] to-[#992DFF] pl-6 pr-10 pt-7 sm:pl-10 sm:pr-14 sm:pt-10 lg:px-12 lg:pt-11 lg:pb-0">
           <img
@@ -27,7 +82,7 @@ export default function Contact() {
                 level of efficiency, fairness, and insights.
               </p>
 
-              <form className="mt-5 max-w-[540px] space-y-3.5">
+              <form onSubmit={handleSubmit} className="mt-5 max-w-[540px] space-y-3.5">
                 <div className="group flex items-center gap-3 border-b border-white/38 pb-2.5">
                   <label
                     htmlFor="contact-name"
@@ -39,6 +94,10 @@ export default function Contact() {
                     id="contact-name"
                     type="text"
                     placeholder="Your full name"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    required
+                    autoComplete="name"
                     className="h-8 w-full border-0 bg-transparent p-0 font-kanit text-[14px] text-white placeholder:text-white/74 focus:outline-none"
                   />
                 </div>
@@ -53,6 +112,10 @@ export default function Contact() {
                     id="contact-email"
                     type="email"
                     placeholder="Type your email address"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    required
+                    autoComplete="email"
                     className="h-8 w-full border-0 bg-transparent p-0 font-kanit text-[14px] text-white placeholder:text-white/74 focus:outline-none"
                   />
                 </div>
@@ -67,6 +130,10 @@ export default function Contact() {
                     id="contact-phone"
                     type="tel"
                     placeholder="xxx-xxx-xxxx"
+                    value={phone}
+                    onChange={(event) => setPhone(event.target.value)}
+                    required
+                    autoComplete="tel"
                     className="h-8 w-full border-0 bg-transparent p-0 font-kanit text-[14px] text-white placeholder:text-white/74 focus:outline-none"
                   />
                 </div>
@@ -74,9 +141,11 @@ export default function Contact() {
                 <div className="flex items-center justify-between gap-3 pb-3 pt-1 max-[430px]:flex-col max-[430px]:items-stretch sm:pb-4">
                   <ContactActionButton
                     variant="primary"
+                    type="submit"
+                    disabled={isSubmitting}
                     icon={<ArrowRightIcon className="h-4 w-4 shrink-0" strokeWidth={1.7} />}
                   >
-                    Request Demo
+                    {isSubmitting ? "Sending..." : "Request Demo"}
                   </ContactActionButton>
                   <ContactActionButton
                     variant="secondary"
@@ -87,6 +156,18 @@ export default function Contact() {
                     Schedule a Meeting
                   </ContactActionButton>
                 </div>
+
+                {feedback ? (
+                  <p
+                    aria-live="polite"
+                    role={isError ? "alert" : "status"}
+                    className={`pb-2 text-[13px] font-medium sm:text-[14px] ${
+                      isError ? "text-[#FFE7E7]" : "text-[#E8FFEE]"
+                    }`}
+                  >
+                    {feedback}
+                  </p>
+                ) : null}
               </form>
             </div>
 
