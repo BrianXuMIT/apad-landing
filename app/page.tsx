@@ -10,7 +10,7 @@ import Questionnaire from "@/components/sections/Questionnaire";
 import Contact from "@/components/sections/Contact";
 import JsonLd from "@/components/seo/JsonLd";
 import { getBlogPostPreviews } from "@/lib/blog-posts";
-import { faqItems } from "@/lib/faq-items";
+import { getFaqItems } from "@/lib/faqs";
 import {
   absoluteUrl,
   buildFaqPageSchema,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-const homeSchemas = [
+const baseHomeSchemas = [
   buildOrganizationSchema(),
   buildWebSiteSchema(),
   buildWebPageSchema({
@@ -46,13 +46,26 @@ const homeSchemas = [
     description: siteConfig.description,
   }),
   buildSoftwareApplicationSchema(),
-  buildFaqPageSchema(
-    faqItems.map((item) => ({ question: item.question, answer: item.answer }))
-  ),
 ];
 
 export default async function Home() {
-  const blogPosts = await getBlogPostPreviews();
+  const [blogPosts, faqItems] = await Promise.all([
+    getBlogPostPreviews(),
+    getFaqItems(),
+  ]);
+
+  const homeSchemas =
+    faqItems.length > 0
+      ? [
+          ...baseHomeSchemas,
+          buildFaqPageSchema(
+            faqItems.map((item) => ({
+              question: item.question,
+              answer: item.answer,
+            }))
+          ),
+        ]
+      : baseHomeSchemas;
 
   return (
     <>
@@ -66,7 +79,7 @@ export default async function Home() {
       <WhyTeamsChoose />
       <Blog posts={blogPosts} />
       <Pricing />
-      <Questionnaire />
+      <Questionnaire faqItems={faqItems} />
       <Contact />
     </>
   );
