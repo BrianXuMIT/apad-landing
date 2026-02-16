@@ -54,6 +54,7 @@ export default function HowItWorks() {
 
       if (!mq.matches) {
         floatingWrap.style.transform = `translate3d(-50%, ${startTop}px, 0)`;
+        floatingImage.style.opacity = "1";
         return;
       }
 
@@ -76,8 +77,15 @@ export default function HowItWorks() {
         endTop,
         Math.max(startTop, pinnedTopInSection),
       );
+      const travelDistance = Math.max(1, endTop - startTop);
+      const progress = Math.min(
+        1,
+        Math.max(0, (nextTop - startTop) / travelDistance),
+      );
+      const nextOpacity = 0.2 + progress * 0.8;
 
       floatingWrap.style.transform = `translate3d(-50%, ${nextTop.toFixed(2)}px, 0)`;
+      floatingImage.style.opacity = nextOpacity.toFixed(3);
     };
 
     const requestUpdate = () => {
@@ -119,7 +127,11 @@ export default function HowItWorks() {
               className="absolute left-1/2 top-0 z-[1] w-full max-w-[680px] will-change-transform"
               style={{ transform: "translate3d(-50%, 96px, 0)" }}
             >
-              <div ref={floatingImageRef} className="relative">
+              <div
+                ref={floatingImageRef}
+                className="relative"
+                style={{ opacity: 0.2 }}
+              >
                 <div className="pointer-events-none absolute left-1/2 top-[54%] h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D84DFF]/80 blur-[125px]" />
                 <div className="pointer-events-none absolute left-1/2 top-[54%] h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#A14DFF]/58 blur-[165px]" />
                 <img
