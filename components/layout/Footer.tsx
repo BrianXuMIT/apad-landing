@@ -18,7 +18,7 @@ const footerColumns = [
 export default function Footer() {
   return (
     <footer className="w-full">
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="w-full max-w-[1440px] px-8 py-12 sm:px-10 sm:py-12 lg:px-16 lg:py-16">
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div className="max-w-[520px]">
@@ -59,11 +59,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="bg-gradient-to-r from-[#8C45FF] via-[#8F35FA] to-[#992DFF]">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-2 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
-          <p className="text-center font-kanit text-[14px] text-white sm:text-left lg:text-[18px]">
+          {/* <p className="text-center font-kanit text-[14px] text-white sm:text-left lg:text-[18px]">
             © 2026 APADCode, Inc. All rights reserved.
           </p>
 
@@ -86,7 +86,7 @@ export default function Footer() {
             >
               Cookies
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
