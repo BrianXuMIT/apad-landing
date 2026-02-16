@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "APADCode - AI-Powered Live Coding Interviewer",
   description:
     "Shaping the next era of AI you can trust. Answer insightful questions, explore fresh perspectives, and discover how AI's evaluation can lead you to the next level.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

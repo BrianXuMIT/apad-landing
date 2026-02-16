@@ -1,7 +1,7 @@
 export const imageMaps = {
   brand: {
     logo:
-      "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192573/logo-g_f3acaf_uwyuck.png",
+      "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771009713/logo-footer-left_zkvqat.png",
   },
   sections: {
     hero: {
