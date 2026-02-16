@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 import SectionLayout from "./SectionLayout";
 import AnimatedBorderCard from "../ui/AnimatedBorderCard";
 import {
@@ -13,12 +14,16 @@ function PlanCard({
   plan,
   billing,
   priceSuffix,
+  demoMode,
 }: {
   plan: PricingPlan;
   billing: BillingCycle;
   priceSuffix: string;
+  demoMode: boolean;
 }) {
   const price = billing === "monthly" ? plan.monthly : plan.yearly;
+  const priceText = demoMode ? "Not yet set" : `$${price}`;
+  const hasNumericPrice = !demoMode;
 
   return (
     <AnimatedBorderCard
@@ -46,28 +51,45 @@ function PlanCard({
         <div className="flex items-start gap-1 font-kanit">
           <span
             key={`${plan.name}-${billing}`}
-            className="text-[34px] leading-none text-[#111216] transition-all duration-300"
+            className={`leading-none text-[#111216] transition-all duration-300 ${
+              hasNumericPrice ? "text-[34px]" : "text-[30px] sm:text-[32px]"
+            }`}
           >
-            ${price}
+            {priceText}
           </span>
-          <span className="pt-2.5 text-[13px] text-[#32374A]">
-            {priceSuffix}
-          </span>
+          {hasNumericPrice ? (
+            <span className="pt-2.5 text-[13px] text-[#32374A]">
+              {priceSuffix}
+            </span>
+          ) : null}
         </div>
         <p className="mt-2 font-kanit text-sm text-[#2D3140]">
           {plan.description}
         </p>
 
-        <button
-          type="button"
-          className="group/button relative mt-5 inline-flex h-[50px] w-[160px] items-center justify-center rounded-[18px] border border-[#8C45FF] overflow-hidden px-4 py-2 transition-shadow duration-300 hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]"
-        >
-          <span className="absolute inset-0 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] opacity-0 transition-opacity duration-300 ease-out group-hover/button:opacity-100" />
+        {demoMode ? (
+          <Link
+            href="/#contact"
+            className="group/button relative mt-5 inline-flex h-[50px] w-[160px] items-center justify-center overflow-hidden rounded-[18px] border border-[#8C45FF] px-4 py-2 transition-shadow duration-300 hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] opacity-0 transition-opacity duration-300 ease-out group-hover/button:opacity-100" />
 
-          <span className="relative z-10 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[18px] font-medium text-transparent transition-colors duration-300 group-hover/button:text-white">
-            Purchase
-          </span>
-        </button>
+            <span className="relative z-10 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[18px] font-medium text-transparent transition-colors duration-300 group-hover/button:text-white">
+              Contact
+            </span>
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="group/button relative mt-5 inline-flex h-[50px] w-[160px] items-center justify-center overflow-hidden rounded-[18px] border border-[#8C45FF] px-4 py-2 transition-shadow duration-300 hover:shadow-[0_10px_24px_rgba(109,86,255,0.24)]"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] opacity-0 transition-opacity duration-300 ease-out group-hover/button:opacity-100" />
+
+            <span className="relative z-10 bg-gradient-to-r from-[#8C45FF] to-[#2DA8FF] bg-clip-text text-[18px] font-medium text-transparent transition-colors duration-300 group-hover/button:text-white">
+              Purchase
+            </span>
+          </button>
+        )}
       </div>
     </AnimatedBorderCard>
   );
@@ -75,6 +97,7 @@ function PlanCard({
 
 export default function Pricing() {
   const [billing, setBilling] = useState<BillingCycle>("monthly");
+  const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE?.toLowerCase() !== "false";
 
   const priceSuffix = useMemo(
     () => (billing === "monthly" ? "/month" : "/year"),
@@ -139,6 +162,7 @@ export default function Pricing() {
                 plan={plan}
                 billing={billing}
                 priceSuffix={priceSuffix}
+                demoMode={demoMode}
               />
             );
           })}
