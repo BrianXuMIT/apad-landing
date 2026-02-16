@@ -33,6 +33,10 @@ npm run build
 npm start
 ```
 
+### Analytics (GTM + GA4)
+
+Set `GTM_ID` in your environment (for example, `GTM-XXXXXXX`) to load the GTM container on all pages.
+
 ## Project Structure
 
 ```
@@ -72,4 +76,3 @@ The landing page is designed to be easily customizable:
 ## License
 
 Private - APADCode
-
