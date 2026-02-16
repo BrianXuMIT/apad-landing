@@ -175,7 +175,7 @@ export default function Contact() {
               <img
                 src={imageMaps.sections.contact.specialist}
                 alt="Interview specialist"
-                className="pointer-events-none relative z-[30] ml-auto w-[88%] object-contain sm:w-[84%] md:absolute md:bottom-0 md:right-[-24px] md:h-[126%] md:w-auto md:max-w-none lg:right-[-54px] lg:h-[170%]"
+                className="pointer-events-none relative z-[30] ml-auto w-[88%] object-contain sm:w-[84%] md:absolute md:bottom-0 md:right-[-24px] md:h-[120%] md:w-auto md:max-w-none lg:right-[-54px] lg:h-[150%]"
               />
             </div>
           </div>

@@ -32,7 +32,7 @@ export const imageMaps = {
     },
     contact: {
       specialist:
-        "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192572/footer_woman_image_ijpdcu.png",
+        "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771224658/footer_woman_image_upscale_dh7w5d.png",
     },
   },
   blog: {
