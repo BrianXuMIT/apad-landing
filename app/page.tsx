@@ -5,6 +5,7 @@ import UniqueFeatures from "@/components/sections/UniqueFeatures";
 import WhyTeamsChoose from "@/components/sections/WhyTeamsChoose";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Blog from "@/components/sections/Blog";
+import HomeTestimonials from "@/components/sections/HomeTestimonials";
 import Pricing from "@/components/sections/Pricing";
 import Questionnaire from "@/components/sections/Questionnaire";
 import Contact from "@/components/sections/Contact";
@@ -78,6 +79,7 @@ export default async function Home() {
       <HowItWorks />
       <WhyTeamsChoose />
       <Blog posts={blogPosts} />
+      <HomeTestimonials />
       <Pricing />
       <Questionnaire faqItems={faqItems} />
       <Contact />

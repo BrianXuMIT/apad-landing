@@ -5,7 +5,7 @@ import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import CalendarOutlineIcon from "@/assets/icons/CalendarOutlineIcon";
 import ContactActionButton from "@/components/ui/ContactActionButton";
 import { imageMaps } from "@/lib/image_maps";
-import { BOOK_DEMO_URL } from "@/lib/links";
+import { BOOK_DEMO_URL, SUPPORT_EMAIL, SUPPORT_MAILTO } from "@/lib/links";
 
 type RequestStatus = "idle" | "submitting" | "success" | "error";
 
@@ -79,7 +79,15 @@ export default function Contact() {
               <p className="mt-4 font-kanit text-sm leading-relaxed text-[#EEE8FF] sm:text-base lg:text-lg">
                 Elevate your hiring process with APADCode&apos;s AI-powered
                 interview platform. Join the future of hiring and unlock a new
-                level of efficiency, fairness, and insights.
+                level of efficiency, fairness, and insights. For direct support,
+                email{" "}
+                <a
+                  href={SUPPORT_MAILTO}
+                  className="font-semibold text-white underline decoration-2 decoration-white underline-offset-2 transition-colors hover:text-[#F3EEFF]"
+                >
+                  {SUPPORT_EMAIL}
+                </a>
+                .
               </p>
 
               <form onSubmit={handleSubmit} className="mt-5 max-w-[540px] space-y-3.5">

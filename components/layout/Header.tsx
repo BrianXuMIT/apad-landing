@@ -7,16 +7,25 @@ import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { imageMaps } from "@/lib/image_maps";
 import { REGISTER_URL } from "@/lib/links";
 
-const navLinks = [
+const navPrimaryLinks = [
   { name: "About", href: "/#about" },
-  { name: "AI Interviewer", href: "/#ai-interviewer" },
   { name: "How It Works", href: "/#how-it-works" },
-  // { name: "Why Teams", href: "/#why-teams" },
-  { name: "Blog", href: "/#blogs" },
+];
+
+const navSecondaryLinks = [
+  { name: "Testimonials", href: "/#testimonials" },
   { name: "Pricing", href: "/#pricing" },
   { name: "FAQ", href: "/#assessments" },
-  { name: "Contact", href: "/#contact" },
 ];
+
+const companyLinks = [
+  { name: "Blogs", href: "/blog" },
+  { name: "Solutions", href: "/solutions" },
+  { name: "Why APADCode", href: "/why-apadcode" },
+  { name: "Contact Us", href: "/contact" },
+];
+
+const navLinks = [...navPrimaryLinks, ...navSecondaryLinks];
 
 function getHashFromHref(href: string): string | null {
   const hashIndex = href.indexOf("#");
@@ -89,24 +98,31 @@ function ActionButton({
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
+  const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  const companyMenuRef = React.useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
-  const isContactRoute = pathname === "/contact" || pathname.startsWith("/contact/");
+
+  const isLinkActive = (href: string) => {
+    const hash = getHashFromHref(href);
+
+    if (hash !== null) {
+      return activeSectionId === hash;
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
+  const isCompanyActive = companyLinks.some((link) => isLinkActive(link.href));
 
   useEffect(() => {
-    const onContactRoute =
-      pathname === "/contact" || pathname.startsWith("/contact/");
-
     if (pathname !== "/") {
-      if (onContactRoute) {
-        setActiveSectionId("contact");
-        return;
-      }
       setActiveSectionId(null);
       return;
     }
 
-    const sectionIds = navLinks
+    const sectionIds = [...navLinks, ...companyLinks]
       .map((item) => getHashFromHref(item.href))
       .filter((id): id is string => Boolean(id));
 
@@ -169,13 +185,47 @@ const Header = () => {
     };
   }, [pathname]);
 
+  useEffect(() => {
+    setCompanyOpen(false);
+    setMobileCompanyOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      setMobileCompanyOpen(false);
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
+      if (!companyOpen) return;
+
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+
+      if (companyMenuRef.current?.contains(target)) return;
+      setCompanyOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [companyOpen]);
+
   return (
     <header className="fixed left-0 right-0 top-0 z-50 w-full px-3 pt-3 sm:px-5 sm:pt-4">
       {menuOpen ? (
         <button
           type="button"
           aria-label="Close menu"
-          onClick={() => setMenuOpen(false)}
+          onClick={() => {
+            setMenuOpen(false);
+            setMobileCompanyOpen(false);
+          }}
           className="fixed inset-0 z-40 bg-[#111216]/15 backdrop-blur-[1px] lg:hidden"
         />
       ) : null}
@@ -221,21 +271,17 @@ const Header = () => {
           />
 
           <div className="flex items-center gap-1 rounded-full border border-white/70 bg-white/58 px-2 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
-            {navLinks.map((link) => {
+            {navPrimaryLinks.map((link) => {
               const hash = getHashFromHref(link.href);
-              const isActive =
-                hash !== null &&
-                (activeSectionId === hash ||
-                  (isContactRoute && hash === "contact"));
 
               return (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setActiveSectionId(hash)}
-                  aria-current={isActive ? "location" : undefined}
+                  aria-current={isLinkActive(link.href) ? "location" : undefined}
                   className={`rounded-full px-2.5 py-1.5 font-kanit text-[14px] font-medium transition-all duration-300 ${
-                    isActive
+                    isLinkActive(link.href)
                       ? "bg-white/80 text-[#111216]"
                       : "text-[#383D4E] hover:bg-white/80 hover:text-[#111216]"
                   }`}
@@ -244,6 +290,91 @@ const Header = () => {
                 </Link>
               );
             })}
+
+            {navSecondaryLinks.map((link) => {
+              const hash = getHashFromHref(link.href);
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setActiveSectionId(hash)}
+                  aria-current={isLinkActive(link.href) ? "location" : undefined}
+                  className={`rounded-full px-2.5 py-1.5 font-kanit text-[14px] font-medium transition-all duration-300 ${
+                    isLinkActive(link.href)
+                      ? "bg-white/80 text-[#111216]"
+                      : "text-[#383D4E] hover:bg-white/80 hover:text-[#111216]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+
+            <div
+              ref={companyMenuRef}
+              className="relative"
+            >
+              <button
+                type="button"
+                aria-expanded={companyOpen}
+                aria-haspopup="menu"
+                onClick={() => setCompanyOpen((prev) => !prev)}
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 font-kanit text-[14px] font-medium transition-all duration-300 ${
+                  isCompanyActive
+                    ? "bg-white/80 text-[#111216]"
+                    : "text-[#383D4E] hover:bg-white/80 hover:text-[#111216]"
+                }`}
+              >
+                <span>Company</span>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                    companyOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                >
+                  <path
+                    d="m5 7 5 6 5-6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              {companyOpen ? (
+                <div
+                  role="menu"
+                  className="absolute left-1/2 top-full mt-2 w-[220px] -translate-x-1/2 rounded-[16px] border border-white/70 bg-[linear-gradient(118deg,rgba(255,255,255,0.96)_0%,rgba(247,241,255,0.94)_52%,rgba(241,249,255,0.95)_100%)] p-2 shadow-[0_16px_32px_rgba(16,24,40,0.14)]"
+                >
+                  {companyLinks.map((link) => {
+                    const hash = getHashFromHref(link.href);
+
+                    return (
+                      <Link
+                        key={link.name}
+                        href={link.href}
+                        onClick={() => {
+                          setActiveSectionId(hash);
+                          setCompanyOpen(false);
+                        }}
+                        aria-current={isLinkActive(link.href) ? "location" : undefined}
+                        className={`block rounded-xl px-3 py-2.5 font-kanit text-[14px] font-medium transition-colors ${
+                          isLinkActive(link.href)
+                            ? "bg-white/85 text-[#111216]"
+                            : "text-[#2D3444] hover:bg-white/85"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+              ) : null}
+            </div>
           </div>
 
           <div className="flex shrink-0 items-center gap-3">
@@ -260,12 +391,8 @@ const Header = () => {
           <div className="absolute left-0 right-0 top-full mt-2 lg:hidden">
             <div className="rounded-[16px] border border-white/70 bg-[linear-gradient(118deg,rgba(255,255,255,0.96)_0%,rgba(247,241,255,0.94)_52%,rgba(241,249,255,0.95)_100%)] p-3 shadow-[0_16px_32px_rgba(16,24,40,0.14)]">
               <div className="flex flex-col gap-1.5">
-                {navLinks.map((link) => {
+                {navPrimaryLinks.map((link) => {
                   const hash = getHashFromHref(link.href);
-                  const isActive =
-                    hash !== null &&
-                    (activeSectionId === hash ||
-                      (isContactRoute && hash === "contact"));
 
                   return (
                     <Link
@@ -275,9 +402,9 @@ const Header = () => {
                         setActiveSectionId(hash);
                         setMenuOpen(false);
                       }}
-                      aria-current={isActive ? "location" : undefined}
+                      aria-current={isLinkActive(link.href) ? "location" : undefined}
                       className={`rounded-xl px-3 py-2.5 font-kanit text-[15px] font-medium transition-colors ${
-                        isActive
+                        isLinkActive(link.href)
                           ? "bg-white/85 text-[#111216]"
                           : "text-[#2D3444] hover:bg-white/85"
                       }`}
@@ -286,6 +413,88 @@ const Header = () => {
                     </Link>
                   );
                 })}
+
+                {navSecondaryLinks.map((link) => {
+                  const hash = getHashFromHref(link.href);
+
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => {
+                        setActiveSectionId(hash);
+                        setMenuOpen(false);
+                      }}
+                      aria-current={isLinkActive(link.href) ? "location" : undefined}
+                      className={`rounded-xl px-3 py-2.5 font-kanit text-[15px] font-medium transition-colors ${
+                        isLinkActive(link.href)
+                          ? "bg-white/85 text-[#111216]"
+                          : "text-[#2D3444] hover:bg-white/85"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
+
+                <div className="rounded-xl border border-white/65 bg-white/55 p-1">
+                  <button
+                    type="button"
+                    onClick={() => setMobileCompanyOpen((prev) => !prev)}
+                    aria-expanded={mobileCompanyOpen}
+                    className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-kanit text-[15px] font-medium transition-colors ${
+                      isCompanyActive
+                        ? "bg-white/85 text-[#111216]"
+                        : "text-[#2D3444] hover:bg-white/85"
+                    }`}
+                  >
+                    <span>Company</span>
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 20 20"
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        mobileCompanyOpen ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                    >
+                      <path
+                        d="m5 7 5 6 5-6"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+
+                  {mobileCompanyOpen ? (
+                    <div className="mt-1.5 flex flex-col gap-1">
+                      {companyLinks.map((link) => {
+                        const hash = getHashFromHref(link.href);
+
+                        return (
+                          <Link
+                            key={link.name}
+                            href={link.href}
+                            onClick={() => {
+                              setActiveSectionId(hash);
+                              setMenuOpen(false);
+                              setMobileCompanyOpen(false);
+                            }}
+                            aria-current={isLinkActive(link.href) ? "location" : undefined}
+                            className={`rounded-lg px-3 py-2.5 font-kanit text-[14px] font-medium transition-colors ${
+                              isLinkActive(link.href)
+                                ? "bg-white/85 text-[#111216]"
+                                : "text-[#2D3444] hover:bg-white/85"
+                            }`}
+                          >
+                            {link.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>
           </div>

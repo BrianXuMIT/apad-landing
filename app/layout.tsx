@@ -88,7 +88,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${kanit.variable}`}>
-      <body className="bg-white font-kanit antialiased">
+      <body className="flex min-h-screen flex-col bg-white font-kanit antialiased">
         {gtmId ? (
           <>
             <Script id="gtm-init" strategy="beforeInteractive">
@@ -115,7 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           Skip to content
         </a>
         <Header />
-        <main id="main-content" className="overflow-x-hidden">
+        <main id="main-content" className="flex-1 overflow-x-hidden">
           {children}
         </main>
         <Footer />

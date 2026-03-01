@@ -1,5 +1,6 @@
 import { imageMaps } from "@/lib/image_maps";
 import type { BlogPost } from "@/lib/blog-posts";
+import { SUPPORT_EMAIL } from "@/lib/links";
 
 export const siteConfig = {
   name: "APADCode",
@@ -11,7 +12,16 @@ export const siteConfig = {
   ogImage: "https://www.apadcode.com/og.svg",
   logoUrl: imageMaps.brand.logo,
   defaultLocale: "en_US",
-  contactEmail: "cto@apadcode.com",
+  contactEmail: SUPPORT_EMAIL,
+  supportEmail: SUPPORT_EMAIL,
+  contactPhone: "+1 857 429 3177",
+  hqAddress: {
+    streetAddress: "8080 Westpark Drive null 53791",
+    addressLocality: "Houston",
+    addressRegion: "TX",
+    postalCode: "77063",
+    addressCountry: "US",
+  },
 } as const;
 
 export type FaqEntry = {
@@ -33,19 +43,45 @@ export function toIsoDate(dateLabel: string): string {
 }
 
 export function buildOrganizationSchema() {
+  const contactPoint: Array<Record<string, unknown>> = [
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: siteConfig.contactEmail,
+      areaServed: "US",
+      availableLanguage: ["en"],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: siteConfig.supportEmail,
+      areaServed: "US",
+      availableLanguage: ["en"],
+    },
+  ];
+
+  if (siteConfig.contactPhone) {
+    contactPoint.forEach((point) => {
+      point.telephone = siteConfig.contactPhone;
+    });
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.legalName,
     url: siteConfig.url,
     logo: siteConfig.logoUrl,
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        contactType: "sales",
-        email: siteConfig.contactEmail,
-      },
-    ],
+    email: siteConfig.supportEmail,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.hqAddress.streetAddress,
+      addressLocality: siteConfig.hqAddress.addressLocality,
+      addressRegion: siteConfig.hqAddress.addressRegion,
+      postalCode: siteConfig.hqAddress.postalCode,
+      addressCountry: siteConfig.hqAddress.addressCountry,
+    },
+    contactPoint,
   };
 }
 
@@ -115,6 +151,45 @@ export function buildBreadcrumbSchema(
 }
 
 export function buildContactPageSchema() {
+  const mainEntity: Record<string, unknown> = {
+    "@type": "Organization",
+    name: siteConfig.legalName,
+    url: siteConfig.url,
+    email: siteConfig.supportEmail,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.hqAddress.streetAddress,
+      addressLocality: siteConfig.hqAddress.addressLocality,
+      addressRegion: siteConfig.hqAddress.addressRegion,
+      postalCode: siteConfig.hqAddress.postalCode,
+      addressCountry: siteConfig.hqAddress.addressCountry,
+    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: siteConfig.contactEmail,
+        areaServed: "US",
+        availableLanguage: ["en"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: siteConfig.supportEmail,
+        areaServed: "US",
+        availableLanguage: ["en"],
+      },
+    ],
+  };
+
+  if (siteConfig.contactPhone) {
+    (mainEntity.contactPoint as Array<Record<string, unknown>>).forEach(
+      (point) => {
+        point.telephone = siteConfig.contactPhone;
+      }
+    );
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -122,11 +197,8 @@ export function buildContactPageSchema() {
     url: absoluteUrl("/contact"),
     description:
       "Request a demo or schedule a meeting to learn how APADCode improves technical hiring.",
-    about: {
-      "@type": "Organization",
-      name: siteConfig.legalName,
-      url: siteConfig.url,
-    },
+    about: mainEntity,
+    mainEntity,
   };
 }
 

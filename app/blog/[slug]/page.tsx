@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "Blog", path: "/" },
+          { name: "Blog", path: "/blog" },
           { name: post.title, path: `/blog/${post.slug}` },
         ])}
       />
@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
       <div className="relative z-10 mx-auto w-full max-w-[980px] px-4 sm:px-8 lg:px-12">
         <Link
-          href="/#blogs"
+          href="/blog"
           className="inline-flex items-center gap-2 rounded-full border border-[#C9B4FF]/70 bg-white/80 px-4 py-2 font-kanit text-[15px] text-[#373B4B] shadow-[0_8px_18px_rgba(96,76,164,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A787FF]/80 hover:bg-white"
         >
           <svg
