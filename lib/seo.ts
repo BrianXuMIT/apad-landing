@@ -1,6 +1,12 @@
 import { imageMaps } from "@/lib/image_maps";
 import type { BlogPost } from "@/lib/blog-posts";
-import { SUPPORT_EMAIL } from "@/lib/links";
+import {
+  CRUNCHBASE_URL,
+  LINKEDIN_URL,
+  MEDIUM_URL,
+  SUPPORT_EMAIL,
+  X_URL,
+} from "@/lib/links";
 import { pricingFeatures, pricingPlans } from "@/lib/pricing-plans";
 
 export const siteConfig = {
@@ -12,6 +18,7 @@ export const siteConfig = {
     "APADCode is an AI-powered live coding interview platform that evaluates how candidates think, communicate, and solve problems in real time.",
   ogImage: "https://www.apadcode.com/og.svg",
   logoUrl: imageMaps.brand.logo,
+  sameAs: [LINKEDIN_URL, MEDIUM_URL, X_URL, CRUNCHBASE_URL],
   defaultLocale: "en_US",
   contactEmail: SUPPORT_EMAIL,
   supportEmail: SUPPORT_EMAIL,
@@ -84,6 +91,7 @@ export function buildOrganizationSchema() {
     name: siteConfig.legalName,
     url: siteConfig.url,
     logo: siteConfig.logoUrl,
+    sameAs: siteConfig.sameAs,
     email: siteConfig.supportEmail,
     address: {
       "@type": "PostalAddress",
