@@ -9,7 +9,11 @@ import { BOOK_DEMO_URL, SUPPORT_EMAIL, SUPPORT_MAILTO } from "@/lib/links";
 
 type RequestStatus = "idle" | "submitting" | "success" | "error";
 
-export default function Contact() {
+type ContactProps = {
+  standalone?: boolean;
+};
+
+export default function Contact({ standalone = false }: ContactProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -61,10 +65,20 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative isolate z-[40] mt-8 w-full overflow-visible p-4 sm:mt-10 sm:px-6 sm:pb-20 lg:mt-44 lg:px-10 lg:py-16"
+      className={`relative isolate z-[40] w-full overflow-visible ${
+        standalone
+          ? "px-3 py-0 sm:px-5 sm:py-0 lg:px-8 lg:py-0"
+          : "mt-8 p-4 sm:mt-10 sm:px-6 sm:pb-20 lg:mt-44 lg:px-10 lg:py-16"
+      }`}
     >
       <div className="mx-auto w-full max-w-[1400px]">
-        <div className="relative overflow-visible rounded-[24px] bg-gradient-to-r from-[#8C45FF] to-[#992DFF] pl-6 pr-10 pt-7 sm:pl-10 sm:pr-14 sm:pt-10 lg:px-12 lg:pt-11 lg:pb-0">
+        <div
+          className={`relative overflow-visible rounded-[24px] bg-gradient-to-r from-[#8C45FF] to-[#992DFF] ${
+            standalone
+              ? "pl-5 pr-7 pt-5 sm:pl-8 sm:pr-10 sm:pt-6 lg:px-10 lg:pt-7 lg:pb-0"
+              : "pl-6 pr-10 pt-7 sm:pl-10 sm:pr-14 sm:pt-10 lg:px-12 lg:pt-11 lg:pb-0"
+          }`}
+        >
           <img
             src={imageMaps.sections.contact.specialist}
             alt=""
@@ -183,7 +197,11 @@ export default function Contact() {
               <img
                 src={imageMaps.sections.contact.specialist}
                 alt="Interview specialist"
-                className="pointer-events-none relative z-[30] ml-auto w-[88%] object-contain sm:w-[84%] md:absolute md:bottom-0 md:right-[-24px] md:h-[120%] md:w-auto md:max-w-none lg:right-[-54px] lg:h-[150%]"
+                className={`pointer-events-none relative z-[30] ml-auto w-[88%] object-contain sm:w-[84%] md:absolute md:bottom-0 md:w-auto md:max-w-none ${
+                  standalone
+                    ? "md:right-[-14px] md:h-[108%] lg:right-[-30px] lg:h-[124%]"
+                    : "md:right-[-24px] md:h-[120%] lg:right-[-54px] lg:h-[150%]"
+                }`}
               />
             </div>
           </div>

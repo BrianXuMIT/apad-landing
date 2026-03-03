@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-20 sm:pt-24">
+    <div className="flex min-h-[calc(100svh-56px)] items-end pb-14 pt-4 sm:min-h-[calc(100svh-64px)] sm:pb-16 sm:pt-6">
       <JsonLd data={buildContactPageSchema()} />
       <JsonLd
         data={buildWebPageSchema({
@@ -43,7 +43,9 @@ export default function ContactPage() {
         ])}
       />
       <h1 className="sr-only">Contact APADCode</h1>
-      <Contact />
+      <div className="w-full">
+        <Contact standalone />
+      </div>
     </div>
   );
 }

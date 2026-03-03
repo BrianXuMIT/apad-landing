@@ -14,8 +14,8 @@ const navPrimaryLinks = [
 
 const navSecondaryLinks = [
   { name: "Testimonials", href: "/#testimonials" },
-  { name: "Pricing", href: "/#pricing" },
-  { name: "FAQ", href: "/#assessments" },
+  { name: "FAQ", href: "/#faq" },
+  { name: "Pricing", href: "/price" },
 ];
 
 const companyLinks = [
@@ -117,7 +117,8 @@ const Header = () => {
   const isCompanyActive = companyLinks.some((link) => isLinkActive(link.href));
 
   useEffect(() => {
-    if (pathname !== "/") {
+    const trackSectionIdsOnPath = pathname === "/";
+    if (!trackSectionIdsOnPath) {
       setActiveSectionId(null);
       return;
     }

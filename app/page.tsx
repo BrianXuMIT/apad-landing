@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Intro from "@/components/sections/Intro";
 import UniqueFeatures from "@/components/sections/UniqueFeatures";
-import WhyTeamsChoose from "@/components/sections/WhyTeamsChoose";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Blog from "@/components/sections/Blog";
 import HomeTestimonials from "@/components/sections/HomeTestimonials";
-import Pricing from "@/components/sections/Pricing";
 import Questionnaire from "@/components/sections/Questionnaire";
 import Contact from "@/components/sections/Contact";
 import JsonLd from "@/components/seo/JsonLd";
@@ -80,7 +78,6 @@ export default async function Home() {
       {/* <WhyTeamsChoose /> */}
       <Blog posts={blogPosts} />
       <HomeTestimonials />
-      <Pricing />
       <Questionnaire faqItems={faqItems} />
       <Contact />
     </>

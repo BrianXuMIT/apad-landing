@@ -1,6 +1,7 @@
 import { imageMaps } from "@/lib/image_maps";
 import type { BlogPost } from "@/lib/blog-posts";
 import { SUPPORT_EMAIL } from "@/lib/links";
+import { pricingFeatures, pricingPlans } from "@/lib/pricing-plans";
 
 export const siteConfig = {
   name: "APADCode",
@@ -27,6 +28,17 @@ export const siteConfig = {
 export type FaqEntry = {
   question: string;
   answer: string;
+};
+
+type PricingOfferSchema = {
+  "@type": "Offer";
+  name: string;
+  price: string;
+  priceCurrency: "USD";
+  availability: "https://schema.org/InStock";
+  url: string;
+  category: string;
+  description: string;
 };
 
 export function absoluteUrl(path = "/"): string {
@@ -97,6 +109,30 @@ export function buildWebSiteSchema() {
 }
 
 export function buildSoftwareApplicationSchema() {
+  const pricedPlans: PricingOfferSchema[] = [];
+  for (const plan of pricingPlans) {
+    const monthlyMatch = plan.monthlyBilling
+      .replace(/,/g, "")
+      .match(/\$([0-9]+(?:\.[0-9]+)?)/);
+
+    if (monthlyMatch) {
+      pricedPlans.push({
+        "@type": "Offer",
+        name: `${plan.name} (Monthly)`,
+        price: monthlyMatch[1],
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: absoluteUrl("/price#pricing"),
+        category: "Monthly subscription",
+        description: `${plan.bestFor}. ${plan.includedInterviewsMonthly}. Additional interviews: ${plan.additionalInterviews}.`,
+      });
+    }
+  }
+
+  const monthlyPrices = pricedPlans
+    .map((offer) => Number(offer.price))
+    .filter((price) => Number.isFinite(price));
+
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -110,13 +146,90 @@ export function buildSoftwareApplicationSchema() {
       "@type": "Brand",
       name: siteConfig.name,
     },
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      url: absoluteUrl("/contact"),
-    },
+    offers:
+      pricedPlans.length > 0 && monthlyPrices.length > 0
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: "USD",
+            lowPrice: String(Math.min(...monthlyPrices)),
+            highPrice: String(Math.max(...monthlyPrices)),
+            offerCount: String(pricedPlans.length),
+            url: absoluteUrl("/price#pricing"),
+            offers: pricedPlans,
+          }
+        : {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            url: absoluteUrl("/contact"),
+          },
+  };
+}
+
+export function buildPricingOfferCatalogSchema() {
+  const offers: PricingOfferSchema[] = pricingPlans.flatMap((plan) => {
+    const monthlyMatch = plan.monthlyBilling
+      .replace(/,/g, "")
+      .match(/\$([0-9]+(?:\.[0-9]+)?)/);
+    const annualMatch = plan.annualBilling
+      .replace(/,/g, "")
+      .match(/\$([0-9]+(?:\.[0-9]+)?)/);
+
+    const monthlyOffer = monthlyMatch
+      ? {
+          "@type": "Offer",
+          name: `${plan.name} (Monthly)`,
+          price: monthlyMatch[1],
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          category: "Monthly subscription",
+          url: absoluteUrl("/price#pricing"),
+          description: `${plan.bestFor}. Includes ${plan.includedInterviewsMonthly}. Additional interviews: ${plan.additionalInterviews}.`,
+        }
+      : null;
+
+    const annualOffer = annualMatch
+      ? {
+          "@type": "Offer",
+          name: `${plan.name} (Annual)`,
+          price: annualMatch[1],
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          category: "Annual subscription",
+          url: absoluteUrl("/price#pricing"),
+          description: `${plan.bestFor}. Includes ${plan.includedInterviewsAnnual}. Additional interviews: ${plan.additionalInterviews}.`,
+        }
+      : null;
+
+    return [monthlyOffer, annualOffer].filter(
+      (offer): offer is PricingOfferSchema => Boolean(offer)
+    );
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "APADCode Pricing",
+    url: absoluteUrl("/price#pricing"),
+    itemListElement: offers,
+  };
+}
+
+export function buildPricingFeaturesItemListSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "APADCode Pricing Feature Comparison",
+    url: absoluteUrl("/price#pricing"),
+    itemListOrder: "https://schema.org/ItemListUnordered",
+    numberOfItems: pricingFeatures.length,
+    itemListElement: pricingFeatures.map((feature, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: feature.name,
+      description: feature.description,
+    })),
   };
 }
 
