@@ -15,24 +15,22 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 rounded-full border border-[#8C45FF]/22 bg-white/70 px-4 py-2 shadow-[0_8px_18px_rgba(114,87,182,0.14)] backdrop-blur-sm">
             <span className="h-2 w-2 rounded-full bg-[#F59E0B] shadow-[0_0_0_3px_rgba(251,191,36,0.28)]" />
             <span className="bg-[linear-gradient(92deg,#3A3F53_0%,#6544A8_100%)] bg-clip-text text-[13px] font-medium tracking-[0.04em] text-transparent sm:text-[14px]">
-              AI Interview Intelligence
+              Cognitive Evaluation Infrastructure
             </span>
           </div>
 
           <h1 className="mt-6 max-w-[760px] text-[36px] font-medium leading-[1.1] tracking-[-0.01em] text-[#171A25] sm:text-[50px] lg:text-[62px]">
-            AI-Powered{" "}
+            Build{" "}
             <span className="bg-[linear-gradient(98deg,#5B38C9_0%,#0F89E5_100%)] bg-clip-text text-transparent">
-              Interactive Coding
+            Structured Engineering
             </span>{" "}
-            Evaluation
+            Intelligence
           </h1>
           <p className="mt-5 max-w-[690px] text-[18px] leading-[1.62] text-[#34394C] sm:text-[20px] lg:text-[23px]">
-            Built as the{" "}
             <span className="bg-[linear-gradient(95deg,#5F3CCF_0%,#198DE8_100%)] bg-clip-text font-semibold text-transparent">
-              World&apos;s First AI Interviewer
+              APADCode{" "}
             </span>{" "}
-            for human-like live coding interviews, APADCode delivers deep
-            technical screening without interviewer bottlenecks.
+            replaces first-round technical interviews while transforming interaction into structured cognitive signals — creating measurable, defensible evaluation infrastructure.
           </p>
 
           <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-3 lg:mt-10 lg:justify-start">
