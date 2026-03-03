@@ -122,7 +122,7 @@ export function buildSoftwareApplicationSchema() {
         price: monthlyMatch[1],
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
-        url: absoluteUrl("/price#pricing"),
+        url: absoluteUrl("/price"),
         category: "Monthly subscription",
         description: `${plan.bestFor}. ${plan.includedInterviewsMonthly}. Additional interviews: ${plan.additionalInterviews}.`,
       });
@@ -154,7 +154,7 @@ export function buildSoftwareApplicationSchema() {
             lowPrice: String(Math.min(...monthlyPrices)),
             highPrice: String(Math.max(...monthlyPrices)),
             offerCount: String(pricedPlans.length),
-            url: absoluteUrl("/price#pricing"),
+            url: absoluteUrl("/price"),
             offers: pricedPlans,
           }
         : {
@@ -184,7 +184,7 @@ export function buildPricingOfferCatalogSchema() {
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
           category: "Monthly subscription",
-          url: absoluteUrl("/price#pricing"),
+          url: absoluteUrl("/price"),
           description: `${plan.bestFor}. Includes ${plan.includedInterviewsMonthly}. Additional interviews: ${plan.additionalInterviews}.`,
         }
       : null;
@@ -197,7 +197,7 @@ export function buildPricingOfferCatalogSchema() {
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
           category: "Annual subscription",
-          url: absoluteUrl("/price#pricing"),
+          url: absoluteUrl("/price"),
           description: `${plan.bestFor}. Includes ${plan.includedInterviewsAnnual}. Additional interviews: ${plan.additionalInterviews}.`,
         }
       : null;
@@ -211,7 +211,7 @@ export function buildPricingOfferCatalogSchema() {
     "@context": "https://schema.org",
     "@type": "OfferCatalog",
     name: "APADCode Pricing",
-    url: absoluteUrl("/price#pricing"),
+    url: absoluteUrl("/price"),
     itemListElement: offers,
   };
 }
@@ -221,7 +221,7 @@ export function buildPricingFeaturesItemListSchema() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "APADCode Pricing Feature Comparison",
-    url: absoluteUrl("/price#pricing"),
+    url: absoluteUrl("/price"),
     itemListOrder: "https://schema.org/ItemListUnordered",
     numberOfItems: pricingFeatures.length,
     itemListElement: pricingFeatures.map((feature, index) => ({

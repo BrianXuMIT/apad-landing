@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Explore all APADCode pages including solutions, why APADCode, contact, and blog resources.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
   alternates: {
