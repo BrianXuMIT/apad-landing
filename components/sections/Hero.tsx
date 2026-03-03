@@ -6,10 +6,15 @@ import { imageMaps } from "@/lib/image_maps";
 const Hero = () => {
   return (
     <section className="relative z-10 flex min-h-screen w-full items-center overflow-hidden px-4 pb-12 pt-24 font-kanit sm:px-6 sm:pt-[124px] lg:px-12 lg:pb-16 lg:pt-[146px]">
-      <div className="pointer-events-none absolute left-[-160px] top-[-220px] h-[460px] w-[460px] rounded-full bg-[#9A4DFF]/26 blur-[120px]" />
-      <div className="pointer-events-none absolute right-[-180px] top-[14%] h-[520px] w-[520px] rounded-full bg-[#5FA9FF]/24 blur-[132px]" />
-      <div className="pointer-events-none absolute bottom-[-230px] left-[12%] h-[420px] w-[420px] rounded-full bg-[#A855F7]/20 blur-[130px]" />
-
+      <div
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          backgroundImage: `url('${imageMaps.sections.hero.background}')`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      />
       <div className="relative mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:gap-8">
         <div className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#8C45FF]/22 bg-white/70 px-4 py-2 shadow-[0_8px_18px_rgba(114,87,182,0.14)] backdrop-blur-sm">
@@ -59,20 +64,6 @@ const Hero = () => {
               <p className="mt-1 text-[22px] font-medium leading-none text-[#1D2131]">
                 3x faster hiring
               </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative mx-auto w-full max-w-[700px]">
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8F46FF]/34 blur-[125px]" />
-          <div className="relative rounded-[30px] border border-white/70 bg-[linear-gradient(128deg,rgba(255,255,255,0.85)_0%,rgba(247,238,255,0.82)_52%,rgba(241,248,255,0.86)_100%)] p-3 shadow-[0_26px_48px_rgba(59,42,118,0.18)]">
-            <div className="relative overflow-hidden rounded-[24px] border border-white/75 bg-[linear-gradient(140deg,#FFFFFF_0%,#F8F2FF_60%,#F2F7FF_100%)]">
-              <div className="pointer-events-none absolute -right-10 top-[-38px] h-[220px] w-[220px] rounded-full bg-[#A855F7]/18 blur-[65px]" />
-              <img
-                src={imageMaps.sections.hero.main}
-                alt="APADCode interview visual"
-                className="relative z-10 mx-auto h-full max-h-[640px] w-full object-contain"
-              />
             </div>
           </div>
         </div>

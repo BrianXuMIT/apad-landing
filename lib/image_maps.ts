@@ -7,6 +7,10 @@ export const imageMaps = {
     hero: {
       main:
         "https://res.cloudinary.com/dnvcelwkl/image/upload/v1771192574/landing_image_tudbbp.png",
+      background:
+        "https://res.cloudinary.com/dnvcelwkl/image/upload/v1772539758/neural_back_big_as5qe6.webp",
+      accent:
+        "https://res.cloudinary.com/dnvcelwkl/image/upload/v1772529783/hero_dia_bpwxlo.png",
     },
     uniqueFeatures: {
       tradeoffRobot:
@@ -46,4 +50,3 @@ export const imageMaps = {
       "https://res.cloudinary.com/dxboqivs9/image/upload/v1771131459/ChatGPT_Image_Feb_14_2026_08_57_16_PM_ok3tfc.png",
   },
 } as const;
-
