@@ -9,52 +9,52 @@ export type IntroBlock = {
 
 export const introBlocks: IntroBlock[] = [
   {
-    id: "shortlist",
-    heading: "Get to a shortlist faster",
+    id: "replacement",
+    heading: "Replace first-round interviews",
     blurb:
-      "Review the results and move candidates to the next step without scheduling another phone screen.",
-    detailTitle: "One interview. Complete signal.",
+      "Conduct live, adaptive technical interviews without scheduling human screeners or sacrificing depth.",
+    detailTitle: "One interview. Structured evaluation.",
     detailCopy: [
-      "APADCode replaces fragmented technical screens with a single, AI-led interview that captures coding skill, reasoning depth, and communication all in one structured experience.",
-      "Hiring teams get rich transcripts, decision summaries, and calibrated scores they can trust, without adding time to their schedule.",
+      "APADCode replaces fragmented phone screens with a single AI-led session that captures coding ability, reasoning process, and communication in one structured flow.",
+      "Hiring teams receive decision-ready summaries and structured signals without adding coordination overhead to their workflow.",
     ],
-    signals: ["Reasoning Depth", "Communication Clarity", "Code Quality"],
+    signals: ["Live Orchestration", "Structured Capture", "Decision-Ready Output"],
   },
   {
-    id: "smarter",
-    heading: "Run smarter interviews",
+    id: "cognitive-signals",
+    heading: "Extract structured cognitive signals",
     blurb:
-      "The expert-trained AI interviewer gathers the exact insights your hiring managers need so they can spend time going deep, not screening.",
-    detailTitle: "Decisions with context, not guesswork.",
+      "Transform live interview interaction into measurable reasoning features not just outcome-based scores.",
+    detailTitle: "From conversation to feature vectors.",
     detailCopy: [
-      "Each session adapts in real time based on candidate responses, then captures clear evidence of skill progression and tradeoff thinking.",
-      "Recruiters and hiring managers receive structured summaries that surface strengths, gaps, and recommendation confidence in minutes.",
+      "Each session generates structured metrics such as strategy identification latency, constraint awareness, complexity reasoning, and iteration behavior.",
+      "These signals create a behavioral profile that goes beyond code correctness and surface-level rubric grading.",
     ],
-    signals: ["Adaptive Follow-ups", "Evidence Trail", "Decision Confidence"],
+    signals: ["Strategy Modeling", "Complexity Awareness", "Iteration Behavior"],
   },
   {
-    id: "problem-solving",
-    heading: "Evaluate real problem-solving",
+    id: "architecture",
+    heading: "Two-engine evaluation architecture",
     blurb:
-      "See how candidates think, communicate, and adapt in real time not just whether they reached the right answer.",
-    detailTitle: "See how engineers actually solve.",
+      "Separate real-time interview control from asynchronous cognitive intelligence modeling.",
+    detailTitle: "Execution layer. Intelligence layer.",
     detailCopy: [
-      "Candidates work through realistic tasks while APADCode tracks strategy shifts, debugging patterns, and architecture decisions.",
-      "You get a deeper read on practical ability, so interview outcomes map to on-the-job performance instead of puzzle memorization.",
+      "The Interview Control Engine manages live interaction and adaptive probing, while the Cognitive Intelligence Engine processes structured logs into behavioral feature vectors.",
+      "This separation ensures scalable performance, transparent evaluation logic, and long-term defensibility.",
     ],
-    signals: ["Approach Quality", "Tradeoff Thinking", "Debugging Process"],
+    signals: ["Interview Control Engine", "Cognitive Intelligence Engine", "Structured Feature Store"],
   },
   {
-    id: "consistent",
-    heading: "Consistent, bias-aware screening",
+    id: "compounding",
+    heading: "Compounding evaluation intelligence",
     blurb:
-      "Every candidate gets the same high-quality interview experience, evaluated with consistent criteria across roles and teams.",
-    detailTitle: "Fairness built into every session.",
+      "Structured behavioral data accumulates over time, strengthening signal quality and calibration.",
+    detailTitle: "Data that improves with scale.",
     detailCopy: [
-      "Standardized scoring frameworks and rubric-based analysis keep evaluations aligned across candidates, teams, and hiring cycles.",
-      "Organizations reduce interviewer variability while maintaining transparency into how every recommendation was produced.",
+      "As interview volume grows, feature distributions stabilize and enable benchmarking, calibration, and emerging predictive correlations.",
+      "APADCode becomes not just an interview tool, but a continuously improving evaluation intelligence infrastructure.",
     ],
-    signals: ["Rubric Consistency", "Bias Controls", "Cross-team Alignment"],
+    signals: ["Benchmarking Potential", "Signal Calibration", "Predictive Modeling"],
   },
 ];
 

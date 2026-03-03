@@ -1,8 +1,6 @@
 import React from "react";
 import SectionLayout from "./SectionLayout";
 import SparkleStarIcon from "@/assets/icons/SparkleStarIcon";
-import GlowImage from "@/components/ui/GlowImage";
-import { imageMaps } from "@/lib/image_maps";
 import {
   uniqueFeaturesCompromisePoints,
   uniqueFeaturesTradeoffPoints,
@@ -22,17 +20,14 @@ export default function UniqueFeatures() {
     <SectionLayout
       sectionId="ai-interviewer"
       badgeText="Real interviews. Real thinking"
-      title="What Makes APADCode Different"
-      description="Not just a test, Not just an interview."
+      title="The Missing Layer in Technical Hiring"
+      description="Most screening tools measure output. APADCode models engineering reasoning."
       decorations={<></>}
     >
-      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-        <div className="max-w-[740px]">
-          <h3 className="mt-6 text-center font-kanit text-[28px] leading-[1.14] tracking-[-0.01em] text-[#171A25] sm:text-[32px] lg:mt-14 lg:text-left lg:text-[40px]">
-            Traditional hiring forces a{" "}
-            <span className="bg-[linear-gradient(96deg,#6F3FE2_0%,#1393E9_100%)] bg-clip-text text-transparent">
-              Trade-off
-            </span>
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+        <div className="rounded-[24px] border border-[#DCCEFF]/52 bg-[linear-gradient(135deg,#FFFFFF_0%,#F7F2FF_100%)] p-6 shadow-[0_14px_30px_rgba(88,73,145,0.08)] sm:p-8">
+          <h3 className="text-center font-kanit text-[28px] leading-[1.14] tracking-[-0.01em] text-[#171A25] sm:text-[32px] lg:text-left lg:text-[38px]">
+            Output-Based Screening
           </h3>
           <ul className="mt-7 divide-y divide-[#DCCEFF]/55 border-y border-[#DCCEFF]/45">
             {uniqueFeaturesTradeoffPoints.map((point) => (
@@ -46,26 +41,9 @@ export default function UniqueFeatures() {
           </ul>
         </div>
 
-        <GlowImage
-          src={imageMaps.sections.uniqueFeatures.tradeoffRobot}
-          alt="Futuristic APADCode robot"
-          containerClassName="mx-auto w-full max-w-[300px] lg:max-w-[420px]"
-        />
-      </div>
-
-      <div className="mt-12 grid grid-cols-1 justify-between gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-10 lg:mt-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
-        <GlowImage
-          src={imageMaps.sections.uniqueFeatures.compromiseRobot}
-          alt="APADCode assistant robot"
-          containerClassName="justify-self-start relative order-2 mx-auto w-full max-w-[300px] md:order-1 lg:max-w-[420px]"
-        />
-
-        <div className="order-1 justify-self-end md:order-2">
-          <h3 className="text-center font-kanit text-[28px] leading-[1.14] tracking-[-0.01em] text-[#171A25] sm:text-[32px] lg:text-left lg:text-[40px]">
-            APADCode removes the{" "}
-            <span className="bg-[linear-gradient(96deg,#6F3FE2_0%,#1393E9_100%)] bg-clip-text text-transparent">
-              Compromise
-            </span>
+        <div className="rounded-[24px] border border-[#DCCEFF]/52 bg-[linear-gradient(135deg,#FFFFFF_0%,#EEF7FF_100%)] p-6 shadow-[0_14px_30px_rgba(56,106,156,0.08)] sm:p-8">
+          <h3 className="text-center font-kanit text-[28px] leading-[1.14] tracking-[-0.01em] text-[#171A25] sm:text-[32px] lg:text-left lg:text-[38px]">
+            Structured Cognitive Evaluation
           </h3>
           <ul className="mt-7 divide-y divide-[#DCCEFF]/55 border-y border-[#DCCEFF]/45">
             {uniqueFeaturesCompromisePoints.map((point) => (

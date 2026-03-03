@@ -147,6 +147,10 @@ export default function Blog({ posts }: BlogProps) {
             </p>
           </AnimatedBorderCard>
         )}
+
+        <div className="mt-7 flex justify-center">
+          <ReadMoreLink href="/blog" label="Read All Blogs" />
+        </div>
       </div>
     </SectionLayout>
   );

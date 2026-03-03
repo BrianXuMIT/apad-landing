@@ -17,7 +17,7 @@ export default function Questionnaire({ faqItems }: QuestionnaireProps) {
 
   return (
     <SectionLayout
-      sectionId="assessments"
+      sectionId="faq"
       badgeText="Smart answers to common questions"
       title="Your frequently asked questions"
       decorations={
@@ -36,7 +36,7 @@ export default function Questionnaire({ faqItems }: QuestionnaireProps) {
               return (
                 <div
                   key={item.id}
-                  className="border-b border-[#1A1D25]/30 pb-4"
+                  className="border-b border-[#1A1D25]/30 pb-3"
                 >
                   <div className="rounded-[4px] border border-transparent bg-transparent px-0 transition-colors duration-200">
                     <button
@@ -44,7 +44,7 @@ export default function Questionnaire({ faqItems }: QuestionnaireProps) {
                       onClick={() =>
                         setActiveIndex((prev) => (prev === index ? null : index))
                       }
-                      className="flex w-full items-center justify-between gap-6 px-0 py-5 text-left"
+                      className="flex w-full items-center justify-between gap-6 px-0 py-4 text-left"
                       aria-expanded={isActive}
                     >
                       <span className="font-kanit text-[24px] font-light leading-[1.25] text-[#111216] lg:text-[24px]">
@@ -59,7 +59,7 @@ export default function Questionnaire({ faqItems }: QuestionnaireProps) {
                   <div
                     className={`grid overflow-hidden transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out ${
                       isActive
-                        ? "mt-2 grid-rows-[1fr] opacity-100"
+                        ? "mt-1.5 grid-rows-[1fr] opacity-100"
                         : "mt-0 grid-rows-[0fr] opacity-0"
                     }`}
                   >

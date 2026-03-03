@@ -7,6 +7,38 @@ import { FaEnvelope } from "react-icons/fa6";
 import SectionLayout from "./SectionLayout";
 import { testimonials } from "@/lib/why-apadcode-content";
 
+const earlyValidationStats = [
+  {
+    metric: "2",
+    label: "Production Design Partners",
+    proof: "Replacing first-round technical interviews",
+    accent: "#8C45FF",
+    glow: "rgba(140,69,255,0.18)",
+  },
+  {
+    metric: "70+",
+    label: "Live Interviews Conducted",
+    proof: "Executed as first-round replacements in active backend hiring",
+    accent: "#4F74F6",
+    glow: "rgba(79,116,246,0.16)",
+  },
+  {
+    metric: "8-12",
+    label: "Structured Cognitive Signals",
+    proof: "Automatically extracted per interview session",
+    accent: "#0AAFF9",
+    glow: "rgba(10,175,249,0.16)",
+  },
+  {
+    metric: "Feature Store",
+    label: "Active",
+    proof: "Normalized behavioral data accumulating across interviews",
+    context: "Outcome correlation in progress",
+    accent: "#6C7290",
+    glow: "rgba(108,114,144,0.14)",
+  },
+] as const;
+
 export default function HomeTestimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -50,7 +82,7 @@ export default function HomeTestimonials() {
       sectionClassName="overflow-x-hidden"
       badgeText="Real Client Feedback"
       title="Testimonials"
-      description="What hiring leaders say after adopting APADCode in technical screening workflows."
+      description="Engineering teams replacing first-round interviews with structured cognitive evaluation."
       decorations={
         <>
           <div className="pointer-events-none absolute left-1/2 top-[18%] h-[320px] w-[150vw] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(140,69,255,0.18)_0%,rgba(140,69,255,0.08)_34%,rgba(140,69,255,0)_74%)] blur-[88px]" />
@@ -59,10 +91,10 @@ export default function HomeTestimonials() {
       }
     >
       <div className="relative mx-auto mt-10 w-full max-w-[1320px] overflow-visible lg:mt-12">
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50%] w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(140,69,255,0.20)_0%,rgba(140,69,255,0.09)_38%,rgba(140,69,255,0)_76%)]" />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[42%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(10,175,249,0.16)_0%,rgba(10,175,249,0.06)_40%,rgba(10,175,249,0)_78%)]" />
-
         <div className="relative min-h-[560px] px-2 py-6 sm:px-4 sm:py-8 lg:min-h-[620px] lg:px-6">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50%] w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(140,69,255,0.20)_0%,rgba(140,69,255,0.09)_38%,rgba(140,69,255,0)_76%)]" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[42%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(10,175,249,0.16)_0%,rgba(10,175,249,0.06)_40%,rgba(10,175,249,0)_78%)]" />
+
           <AnimatePresence initial={false} mode="sync">
             {supporting.map((item, index) => (
               <motion.article
@@ -213,6 +245,71 @@ export default function HomeTestimonials() {
             </motion.article>
           </AnimatePresence>
         </div>
+
+        <section className="relative mt-5 overflow-hidden rounded-[28px] border border-[#C7D5EC]/85 bg-[linear-gradient(152deg,#FEFFFF_0%,#F4F8FF_46%,#F7F4FF_100%)] shadow-[0_22px_46px_rgba(29,47,88,0.10)]">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-[linear-gradient(90deg,rgba(140,69,255,0)_0%,rgba(140,69,255,0.36)_48%,rgba(140,69,255,0)_100%)]" />
+          <div className="flex flex-col items-center justify-between gap-3 border-b border-[#DDE6F6] px-5 py-4 sm:flex-row sm:px-6">
+            <p className="font-kanit text-[11px] uppercase tracking-[0.12em] text-[#566382]">
+              Early Production Validation
+            </p>
+            <motion.span
+              aria-label="First 3 Months"
+              className="relative inline-flex items-center overflow-hidden rounded-full border border-[#AFC0E8] bg-[linear-gradient(180deg,#FFFFFF_0%,#F1F6FF_100%)] px-5 py-1.5 font-kanit text-[12px] uppercase tracking-[0.11em] text-[#334C80]"
+              animate={{
+                scale: [1, 1.045, 1],
+                boxShadow: [
+                  "0 0 0 rgba(88,120,214,0)",
+                  "0 0 0 7px rgba(88,120,214,0.14)",
+                  "0 0 0 rgba(88,120,214,0)",
+                ],
+              }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.span
+                className="pointer-events-none absolute inset-y-0 left-[-45%] w-[35%] bg-white/85 blur-[1px]"
+                animate={{ x: ["0%", "380%"] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <span className="relative z-10">First 3 Months</span>
+            </motion.span>
+          </div>
+          <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 md:p-5">
+            {earlyValidationStats.map((item) => (
+              <article
+                key={`${item.metric}-${item.label}`}
+                className="relative overflow-hidden rounded-[20px_20px_14px_20px] border border-[#D3DEEF] bg-[linear-gradient(175deg,#FFFFFF_0%,#FAFCFF_100%)] px-5 py-6 sm:px-6 sm:py-7"
+                style={{ boxShadow: `inset 0 3px 0 ${item.accent}` }}
+              >
+                <div
+                  className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-2xl"
+                  style={{ backgroundColor: item.glow }}
+                  aria-hidden="true"
+                />
+                <div className="pointer-events-none absolute bottom-0 right-0 h-10 w-10 rounded-tl-[14px] border-l border-t border-[#E2E9F7] bg-[#F8FBFF]" />
+                <p
+                  className={`font-kanit leading-[0.92] tracking-[-0.026em] bg-[linear-gradient(160deg,#1D2A45_0%,#2C4975_54%,#5C7298_100%)] bg-clip-text text-transparent ${
+                    /\d/.test(item.metric)
+                      ? "text-[56px] sm:text-[64px] lg:text-[72px]"
+                      : "text-[40px] sm:text-[46px] lg:text-[52px]"
+                  }`}
+                >
+                  {item.metric}
+                </p>
+                <p className="mt-2 font-kanit text-[16px] uppercase tracking-[0.08em] text-[#314264] sm:text-[18px]">
+                  {item.label}
+                </p>
+                <p className="mt-3 max-w-[420px] font-kanit text-[16px] leading-[1.34] text-[#2D3B56] sm:text-[17px]">
+                  {item.proof}
+                </p>
+                {"context" in item ? (
+                  <p className="mt-2 font-kanit text-[14px] leading-[1.34] text-[#5F6E8C] sm:text-[15px]">
+                    {item.context}
+                  </p>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </SectionLayout>
   );

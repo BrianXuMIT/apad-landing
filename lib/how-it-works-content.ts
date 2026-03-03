@@ -7,31 +7,31 @@ export type HowItWorksFeature = {
 
 export const howItWorksFeatures: HowItWorksFeature[] = [
   {
-    title: "Live Coding Environment",
+    title: "Live Interview Orchestration",
     description:
-      "Candidates solve real problems in an executable coding sandbox just like a real interview.",
-    outcome: "Evaluate practical coding behavior instead of puzzle memorization.",
+      "The Interview Control Engine conducts structured, adaptive technical interviews in real time.",
+    outcome: "Captures high-fidelity interaction data — not static answers.",
     icon: "live",
   },
   {
-    title: "AI-Led Interview Flow",
+    title: "Structured Interaction Logging",
     description:
-      "APAD Code asks follow-up questions, explores alternatives, and adapts difficulty based on responses.",
-    outcome: "Conversations stay adaptive, role-relevant, and deeply technical.",
+      "Every probe, response, revision, and timing event is logged as structured data.",
+    outcome: "Creates analyzable behavioral traces.",
     icon: "ai",
   },
   {
-    title: "Actionable Insights",
+    title: "Cognitive Feature Extraction",
     description:
-      "Hiring teams receive structured insights not just pass/fail scores.",
-    outcome: "Teams get decision-ready evidence they can align on quickly.",
+      "The Cognitive Intelligence Engine transforms raw logs into measurable reasoning features.",
+    outcome: "Converts interviews into structured feature vectors.",
     icon: "insights",
   },
   {
-    title: "In-Depth Skill Evaluation",
+    title: "Composite Modeling & Calibration",
     description:
-      "Beyond correctness, it evaluates: Problem-solving approach, code quality, debugging mindset, communication clarity.",
-    outcome: "Final recommendations reflect real engineering readiness.",
+      "Feature vectors are normalized, scored, and benchmarked across roles and teams.",
+    outcome: "Enables scalable, defensible evaluation infrastructure.",
     icon: "skills",
   },
 ];
