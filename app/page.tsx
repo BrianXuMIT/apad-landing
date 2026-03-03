@@ -77,7 +77,7 @@ export default async function Home() {
       <Intro />
       <UniqueFeatures />
       <HowItWorks />
-      <WhyTeamsChoose />
+      {/* <WhyTeamsChoose /> */}
       <Blog posts={blogPosts} />
       <HomeTestimonials />
       <Pricing />
