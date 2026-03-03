@@ -115,8 +115,8 @@ export default function HowItWorks() {
     <SectionLayout
       sectionId="how-it-works"
       badgeText="Human-level insight. AI-level scale."
-      title="How It Works"
-      description="Log in, design skill-based tests, and let AI handle the rest: custom topics, adaptive difficulty, timers, and result tracking in one place."
+      title="From Live Interview to Structured Intelligence"
+      description=""
       decorations={
         <>
           <div className="pointer-events-none absolute left-[-130px] bottom-[10%] h-[320px] w-[320px] rounded-full bg-[#7A3BFF]/28 blur-[120px]" />
