@@ -24,7 +24,7 @@ export const revalidate = 900;
 export const fetchCache = "force-cache";
 
 export const metadata: Metadata = {
-  title: "AI-Powered Live Coding Interviews",
+  title: "AI-Conducted Technical Interviews",
   description: siteConfig.description,
   alternates: {
     canonical: "/",
