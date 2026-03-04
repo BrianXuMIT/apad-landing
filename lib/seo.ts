@@ -13,9 +13,9 @@ export const siteConfig = {
   name: "APADCode",
   legalName: "APADCode, Inc.",
   url: "https://www.apadcode.com",
-  defaultTitle: "APADCode | AI-Powered Live Coding Interviews",
+  defaultTitle: "APADCode | AI-Conducted Technical Interviews",
   description:
-    "APADCode is an AI-powered live coding interview platform that evaluates how candidates think, communicate, and solve problems in real time.",
+    "AI agents that conduct live coding interviews and evaluate how engineers think, communicate, and solve problems during technical hiring.",
   ogImage: "https://www.apadcode.com/og.svg",
   logoUrl: imageMaps.brand.logo,
   sameAs: [LINKEDIN_URL, MEDIUM_URL, X_URL, CRUNCHBASE_URL],
@@ -24,7 +24,7 @@ export const siteConfig = {
   supportEmail: SUPPORT_EMAIL,
   contactPhone: "+1 857 429 3177",
   hqAddress: {
-    streetAddress: "8080 Westpark Drive null 53791",
+    streetAddress: "8080 Westpark Dr",
     addressLocality: "Houston",
     addressRegion: "TX",
     postalCode: "77063",
