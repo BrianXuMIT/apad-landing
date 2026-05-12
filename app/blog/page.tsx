@@ -121,14 +121,9 @@ export default async function BlogIndexPage() {
 
               <div className="mt-6 space-y-3">
                 <div className="flex items-center gap-3 rounded-[14px] border border-[#DDE2F0] bg-white/90 p-3">
-                  <img
-                    src={founder.image}
-                    alt={founder.imageAlt}
-                    className="h-[58px] w-[58px] rounded-full object-cover"
-                  />
                   <div>
                     <p className="font-kanit text-[18px] leading-[1.1] text-[#171C2A]">
-                      {founder.name}
+                      <a href="https://www.linkedin.com/in/kenneth-bulaon">{founder.name}</a>
                     </p>
                     <p className="font-kanit text-[12px] uppercase tracking-[0.09em] text-[#59607A]">
                       {founder.role}
