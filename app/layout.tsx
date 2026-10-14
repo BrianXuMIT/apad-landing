@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import HiringBadge from "@/components/layout/HiringBadge";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 const kanit = Kanit({
@@ -119,6 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {children}
         </main>
         <Footer />
+        <HiringBadge />
       </body>
     </html>
   );

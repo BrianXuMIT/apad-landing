@@ -1,6 +1,7 @@
 import { imageMaps } from "@/lib/image_maps";
 import type { BlogPost } from "@/lib/blog-posts";
 import {
+  CAREERS_URL,
   CRUNCHBASE_URL,
   LINKEDIN_URL,
   MEDIUM_URL,
@@ -18,7 +19,7 @@ export const siteConfig = {
     "AI agents that conduct live coding interviews and evaluate how engineers think, communicate, and solve problems during technical hiring.",
   ogImage: "https://www.apadcode.com/og.svg",
   logoUrl: imageMaps.brand.logo,
-  sameAs: [LINKEDIN_URL, MEDIUM_URL, X_URL, CRUNCHBASE_URL],
+  sameAs: [LINKEDIN_URL, MEDIUM_URL, X_URL, CRUNCHBASE_URL, CAREERS_URL],
   defaultLocale: "en_US",
   contactEmail: SUPPORT_EMAIL,
   supportEmail: SUPPORT_EMAIL,
