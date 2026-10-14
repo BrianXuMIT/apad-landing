@@ -10,3 +10,4 @@ export const X_URL = "https://x.com/apadcode";
 export const CRUNCHBASE_URL =
   "https://www.crunchbase.com/organization/apadcode";
 export const WHATSAPP_URL = "https://wa.me/18574293177";
+export const CAREERS_URL = "https://jobs.ashbyhq.com/apadcode";

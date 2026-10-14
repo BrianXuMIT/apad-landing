@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { imageMaps } from "@/lib/image_maps";
-import { REGISTER_URL } from "@/lib/links";
+import { CAREERS_URL, REGISTER_URL } from "@/lib/links";
 
 const navPrimaryLinks = [
   { name: "About", href: "/#about" },
@@ -18,12 +18,24 @@ const navSecondaryLinks = [
   { name: "Pricing", href: "/price" },
 ];
 
-const companyLinks = [
+type CompanyLink = { name: string; href: string; external?: boolean };
+
+const companyLinks: CompanyLink[] = [
   { name: "Blogs", href: "/blog" },
   { name: "Solutions", href: "/solutions" },
   { name: "Why APADCode", href: "/why-apadcode" },
   { name: "Contact Us", href: "/contact" },
+  { name: "Careers", href: CAREERS_URL, external: true },
 ];
+
+const externalLinkProps = (link: CompanyLink) =>
+  link.external
+    ? {
+        target: "_blank",
+        rel: "noopener noreferrer",
+        title: `${link.name} at APADCode`,
+      }
+    : {};
 
 const navLinks = [...navPrimaryLinks, ...navSecondaryLinks];
 
@@ -358,6 +370,7 @@ const Header = () => {
                       <Link
                         key={link.name}
                         href={link.href}
+                        {...externalLinkProps(link)}
                         onClick={() => {
                           setActiveSectionId(hash);
                           setCompanyOpen(false);
@@ -477,6 +490,7 @@ const Header = () => {
                           <Link
                             key={link.name}
                             href={link.href}
+                            {...externalLinkProps(link)}
                             onClick={() => {
                               setActiveSectionId(hash);
                               setMenuOpen(false);
