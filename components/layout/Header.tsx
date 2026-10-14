@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { imageMaps } from "@/lib/image_maps";
-import { CAREERS_URL, REGISTER_URL } from "@/lib/links";
+import { CAREERS_URL } from "@/lib/links";
 
 const navPrimaryLinks = [
   { name: "About", href: "/#about" },
@@ -27,6 +27,15 @@ const companyLinks: CompanyLink[] = [
   { name: "Contact Us", href: "/contact" },
   { name: "Careers", href: CAREERS_URL, external: true },
 ];
+
+function ActiveDot() {
+  return (
+    <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22C55E] opacity-75 motion-reduce:animate-none" />
+      <span className="relative inline-flex h-2 w-2 rounded-full bg-[#22C55E]" />
+    </span>
+  );
+}
 
 const externalLinkProps = (link: CompanyLink) =>
   link.external
@@ -267,6 +276,7 @@ const Header = () => {
             />
           </div>
 
+          {/* Sign Up temporarily hidden
           <ActionButton
             label="Sign Up"
             showIcon={false}
@@ -274,6 +284,8 @@ const Header = () => {
             href={REGISTER_URL}
             openInNewTab
           />
+          */}
+          <div className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" aria-hidden="true" />
         </div>
 
         <div className="hidden items-center justify-between gap-6 lg:flex">
@@ -376,13 +388,14 @@ const Header = () => {
                           setCompanyOpen(false);
                         }}
                         aria-current={isLinkActive(link.href) ? "location" : undefined}
-                        className={`block rounded-xl px-3 py-2.5 font-kanit text-[14px] font-medium transition-colors ${
+                        className={`flex items-center justify-between rounded-xl px-3 py-2.5 font-kanit text-[14px] font-medium transition-colors ${
                           isLinkActive(link.href)
                             ? "bg-white/85 text-[#111216]"
                             : "text-[#2D3444] hover:bg-white/85"
                         }`}
                       >
                         {link.name}
+                        {link.external ? <ActiveDot /> : null}
                       </Link>
                     );
                   })}
@@ -392,7 +405,9 @@ const Header = () => {
           </div>
 
           <div className="flex shrink-0 items-center gap-3">
+            {/* Sign Up temporarily hidden
             <ActionButton label="Sign Up" href={REGISTER_URL} openInNewTab />
+            */}
             <ActionButton
               label="Request Demo"
               primary
@@ -497,13 +512,14 @@ const Header = () => {
                               setMobileCompanyOpen(false);
                             }}
                             aria-current={isLinkActive(link.href) ? "location" : undefined}
-                            className={`rounded-lg px-3 py-2.5 font-kanit text-[14px] font-medium transition-colors ${
+                            className={`flex items-center justify-between rounded-lg px-3 py-2.5 font-kanit text-[14px] font-medium transition-colors ${
                               isLinkActive(link.href)
                                 ? "bg-white/85 text-[#111216]"
                                 : "text-[#2D3444] hover:bg-white/85"
                             }`}
                           >
                             {link.name}
+                            {link.external ? <ActiveDot /> : null}
                           </Link>
                         );
                       })}
